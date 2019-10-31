@@ -18,7 +18,7 @@ const App = props => {
     filter: "blur(8px)",
     webkitFilter: "blur(8px)",
     position: "absolute",
-    zIndex: "-1",
+    zIndex: "-1"
   };
 
   const btnChangeBackground = () => {
@@ -31,6 +31,7 @@ const App = props => {
     }
   };
 
+  //test
   return (
     <>
       <div className="container-fluid p-0 Navbar">
