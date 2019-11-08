@@ -19,6 +19,7 @@ body {
 .ContentContainer {
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.2); /* Black w/opacity/see-through */
+  backdrop-filter: blur(10px);
 }
 
 .boxStyle {
@@ -33,4 +34,9 @@ body {
 .overflowy--scroll {
   overflow-y: scroll;
   max-height: 70vh;
+}
+
+.Freq--SingleObject--boxStyle {
+  align-items: flex-end;
+  justify-content: center;
 }

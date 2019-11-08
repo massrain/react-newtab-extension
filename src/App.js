@@ -15,8 +15,7 @@ const App = props => {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    filter: "blur(8px)",
-    webkitFilter: "blur(8px)",
+    /* webkitFilter: "blur(8px)", */
     position: "absolute",
     zIndex: "-1"
   };

@@ -5,7 +5,7 @@ const SingleBookmark = props => {
     <div className="card border-success mb-3">
       <div className="card-body px-4 py-1">
         <p className="card-text">
-          {props.item.title} ->{" "}
+          {props.item.title} ->
           <a href={props.item.url} rel="noopener noreferrer">
             Link
           </a>

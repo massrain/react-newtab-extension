@@ -12,6 +12,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-dev": "react-app-rewired start",
     "build": "INLINE_RUNTIME_CHUNK=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -32,6 +33,8 @@
     ]
   },
   "devDependencies": {
-    "webpack-jarvis": "^0.3.2"
+    "react-app-rewired": "^2.1.5",
+    "webpack-jarvis": "^0.3.2",
+    "write-file-webpack-plugin": "^4.5.1"
   }
 }
