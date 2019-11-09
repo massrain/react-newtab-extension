@@ -13,7 +13,7 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "permissions": ["storage", "tabs", "bookmarks", "history"],
+  "permissions": ["storage", "tabs", "bookmarks", "history", "topSites"],
   "browser_action": {
     "default_icon": {
       "16": "icons/16.png",
