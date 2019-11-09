@@ -1,6 +1,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 #root {
   width: 100%;
@@ -8,12 +9,26 @@ body {
 }
 
 .Navbar {
-  /*height: 70px !important;*/
+  height: 70px !important;
+}
+
+.optionsPopup {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
 }
 
 .BodyContent {
   height: calc(100vh - 70px);
   width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 99;
 }
 
 .ContentContainer {
@@ -39,4 +54,11 @@ body {
 .Freq--SingleObject--boxStyle {
   align-items: flex-end;
   justify-content: center;
+  user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.Freq--SingleObject--boxStyle:hover {
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
 }

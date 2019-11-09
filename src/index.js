@@ -7,6 +7,7 @@ import App from "./App";
 
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+import "animate.css/animate.min.css";
 
 import "./index.css";
 

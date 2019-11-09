@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animate.css": "^3.7.2",
     "bootstrap": "^4.3.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -32,9 +33,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "react-app-rewired": "^2.1.5",
-    "webpack-jarvis": "^0.3.2",
-    "write-file-webpack-plugin": "^4.5.1"
-  }
+  "devDependencies": {}
 }

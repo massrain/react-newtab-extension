@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import GridLayout from "react-grid-layout";
-import { SingleObject } from "./frequentlyused/SingleObject";
+import SingleObject from "./frequentlyused/SingleObject";
 
 const FrequentlyUsed = () => {
   const initialLayout = [
@@ -46,12 +46,30 @@ const FrequentlyUsed = () => {
 
   return (
     <>
+      <div class="modal fade bd-example-modal-sm" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">asdasldkalksdalsd</div>
+        </div>
+      </div>
       <div className="row no-gutters justify-content-end">
-        <button className="btn btn-sm btn-warning rounded-0" onClick={btnEditGrid}>
-          Düzenle
+        <button
+          className="btn btn-sm btn-primary rounded-0"
+          type="button"
+          data-toggle="modal"
+          data-target=".bd-example-modal-sm"
+          style={{ display: EditMode ? "block" : "none" }}
+        >
+          Yeni Ekle
         </button>
-        <button className="btn btn-sm btn-secondary rounded-0 ml-1" onClick={btnFinishEditGrid}>
+        <button
+          className="btn btn-sm btn-success rounded-0 ml-1"
+          style={{ display: EditMode ? "block" : "none" }}
+          onClick={btnFinishEditGrid}
+        >
           Düzenlemeyi Bitir
+        </button>
+        <button className="btn btn-sm btn-warning rounded-0 ml-1" onClick={btnEditGrid}>
+          Düzenle
         </button>
       </div>
       <div className="row no-gutters mt-3">
@@ -64,7 +82,7 @@ const FrequentlyUsed = () => {
           width={1200}
           key={GridComponentKey}
         >
-          <div key="a" className="border border-warning">
+          <div key="a">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Google"}
@@ -72,7 +90,7 @@ const FrequentlyUsed = () => {
               contentIcon={"https://img.icons8.com/plasticine/2x/google-logo.png"}
             />
           </div>
-          <div key="b" className="border border-danger">
+          <div key="b">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Galatasaray Sözlük"}
@@ -80,7 +98,7 @@ const FrequentlyUsed = () => {
               contentIcon={"https://img.icons8.com/plasticine/2x/google-logo.png"}
             />
           </div>
-          <div key="c" className="border border-success">
+          <div key="c">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Ekşi Sözlük"}
@@ -88,7 +106,7 @@ const FrequentlyUsed = () => {
               contentIcon={"https://img.icons8.com/plasticine/2x/google-logo.png"}
             />
           </div>
-          <div key="d" className="border border-danger">
+          <div key="d">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Youtube"}
@@ -96,7 +114,7 @@ const FrequentlyUsed = () => {
               contentIcon={"https://img.icons8.com/plasticine/2x/google-logo.png"}
             />
           </div>
-          <div key="e" className="border border-secondary">
+          <div key="e">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Gmail"}

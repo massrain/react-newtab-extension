@@ -30,9 +30,9 @@ const NavBar = props => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <button className="btn nav-link" onClick={() => {props.setOptionsVisibility("block")}}>
                 Ayarlar
-              </Link>
+              </button>
             </li>
             <li className="nav-item">
               <button className="btn btn-sm btn-danger" onClick={props.btnChangeBackground}>

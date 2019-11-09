@@ -1,9 +1,8 @@
 import React from "react";
 import { useLocalStorage } from "./options/methods";
 
-const OptionsPopup = () => {
+const OptionsPopup = props => {
   const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", "Bob");
-
   const saveLayoutData = () => {
     setLayoutData("emre");
   };
@@ -19,7 +18,46 @@ const OptionsPopup = () => {
     //3. load it to localstorage
   };
 
-  return <></>;
+  return (
+    <>
+      <div
+        className="container-fluid p-0 optionsPopup animated fadeInDown"
+        style={{ display: props.OptionsVisibility }}
+      >
+        <div className="row h-100 no-gutters justify-content-end text-center">
+          <div
+            className="col-md-10"
+            onClick={() => {
+              props.setOptionsVisibility("none");
+            }}
+          ></div>
+          <div className="col-md-2 bg-primary text-white">
+            <div className="row no-gutters mt-5 justify-content-center">
+              <h5>TabExtension</h5>
+            </div>
+            <hr className="border-white" />
+            <div className="row no-gutters mt-3 justify-content-center">
+              <div className="col-12 px-4">
+                <p className="mb-1">Hava durumu ayarları</p>
+                <label>Şehir</label>
+                <input type="text" class="form-control form-control-sm text-primary" />
+                <button className="btn btn-sm btn-info">Onayla</button>
+              </div>
+            </div>
+            <hr className="border-white" />
+            <div className="row no-gutters mt-3 justify-content-center">
+              <div className="col-12 px-4">
+                <p className="mb-1">Sık Ziyaret Edilenler</p>
+                <button className="btn btn-sm btn-info">Dışa Aktar</button>
+                <br/>
+                <button className="btn btn-sm btn-info">İçe Aktar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default OptionsPopup;
