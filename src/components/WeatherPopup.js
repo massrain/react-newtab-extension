@@ -17,7 +17,7 @@ const responsekek = {
   cod: 200
 };
 
-const WeatherPopup = () => {
+const WeatherPopup = props => {
   const [WeatherData, setWeatherData] = useState(null);
   const [defaultCity, setDefaultCity] = useState("314967");
 
@@ -39,14 +39,18 @@ const WeatherPopup = () => {
 
   return (
     <>
-      <div className="row">
-        <div className="col-4">
-          <h2>
-            {responsekek.name} - {responsekek.sys.country}
-          </h2>
-          <img src={"http://openweathermap.org/img/w/" + responsekek.weather[0].icon + ".png"} alt="" />
-          <h3>{responsekek.weather[0].description}</h3>
-          <h1>{responsekek.main.temp}&deg;</h1>
+      <div className="container-fluid p-4 WeatherPopup text-white text-center" style={{ display: props.WeatherVisibility }}>
+        <div className="row no-gutters">
+          <div className="col-12">
+            <h4>
+              {responsekek.name} - {responsekek.sys.country}
+            </h4>
+            <h5>
+              <img src={"http://openweathermap.org/img/w/" + responsekek.weather[0].icon + ".png"} alt="" />-{" "}
+              {responsekek.weather[0].description}
+            </h5>
+            <h3>{responsekek.main.temp}&deg;</h3>
+          </div>
         </div>
       </div>
     </>

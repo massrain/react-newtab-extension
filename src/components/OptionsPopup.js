@@ -31,26 +31,28 @@ const OptionsPopup = props => {
               props.setOptionsVisibility("none");
             }}
           ></div>
-          <div className="col-md-2 bg-primary text-white">
-            <div className="row no-gutters mt-5 justify-content-center">
-              <h5>TabExtension</h5>
-            </div>
-            <hr className="border-white" />
-            <div className="row no-gutters mt-3 justify-content-center">
-              <div className="col-12 px-4">
-                <p className="mb-1">Hava durumu ayarları</p>
-                <label>Şehir</label>
-                <input type="text" class="form-control form-control-sm text-primary" />
-                <button className="btn btn-sm btn-info">Onayla</button>
+          <div className="col-md-2 text-white optionsContainer">
+            <div className="container-fluid optionsColumnContainer py-4">
+              <div className="row no-gutters justify-content-center">
+                <h5>TabExtension</h5>
               </div>
-            </div>
-            <hr className="border-white" />
-            <div className="row no-gutters mt-3 justify-content-center">
-              <div className="col-12 px-4">
-                <p className="mb-1">Sık Ziyaret Edilenler</p>
-                <button className="btn btn-sm btn-info">Dışa Aktar</button>
-                <br/>
-                <button className="btn btn-sm btn-info">İçe Aktar</button>
+              <hr className="border-white" />
+              <div className="row no-gutters mt-3 justify-content-center">
+                <div className="col-12 px-4">
+                  <p className="mb-1">Hava durumu ayarları</p>
+                  <label>Şehir</label>
+                  <input type="text" className="form-control form-control-sm text-primary" />
+                  <button className="btn btn-sm btn-info">Onayla</button>
+                </div>
+              </div>
+              <hr className="border-white" />
+              <div className="row no-gutters mt-3 justify-content-center">
+                <div className="col-12 px-4">
+                  <p className="mb-1">Sık Ziyaret Edilenler</p>
+                  <button className="btn btn-sm btn-info">Dışa Aktar</button>
+                  <br />
+                  <button className="btn btn-sm btn-info">İçe Aktar</button>
+                </div>
               </div>
             </div>
           </div>

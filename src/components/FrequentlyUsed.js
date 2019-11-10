@@ -46,11 +46,6 @@ const FrequentlyUsed = () => {
 
   return (
     <>
-      <div class="modal fade bd-example-modal-sm" role="dialog" tabindex="-1">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">asdasldkalksdalsd</div>
-        </div>
-      </div>
       <div className="row no-gutters justify-content-end">
         <button
           className="btn btn-sm btn-primary rounded-0"

@@ -4,7 +4,34 @@ import { Link } from "react-router-dom";
 const NavBar = props => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary Navbar">
+      <div className="col-md-4">
+        <button className="btn btn-sm btn-success" onClick={props.changeWeatherVisibility}>
+          Weather
+        </button>
+        <button className="ml-2 btn btn-sm btn-success" onClick={props.btnChangeBackground}>
+          &
+        </button>
+      </div>
+      <div className="col-md-8 justify-content-end text-right">
+        <Link className="btn btn-sm btn-success mr-2" to="/">
+          Anasayfa
+        </Link>
+        <Link className="btn btn-sm btn-success mr-2" to="/bookmarks">
+          Bookmarklar
+        </Link>
+        <Link className="btn btn-sm btn-success mr-2" to="/history">
+          Geçmiş
+        </Link>
+        <button
+          className="btn btn-sm btn-success"
+          onClick={() => {
+            props.setOptionsVisibility("block");
+          }}
+        >
+          Ayarlar
+        </button>
+      </div>
+      {/*       <nav className="navbar navbar-expand-lg navbar-dark bg-primary Navbar">
         <Link className="navbar-brand" to="/">
           Deneme..
         </Link>
@@ -42,6 +69,7 @@ const NavBar = props => {
           </ul>
         </div>
       </nav>
+  */}{" "}
     </>
   );
 };

@@ -16,7 +16,7 @@ const Mainpage = () => {
   return (
     <>
       <div className="row no-gutters justify-content-center">
-        <div className="col-8 border border-success p-3">
+        <div className="col-8 p-3">
           <SearchBar />
         </div>
       </div>
@@ -29,10 +29,10 @@ const Mainpage = () => {
         </div>
       </div>
 
-      <div className="row no-gutters justify-content-center mt-4 text-white">
+      <div className="row no-gutters justify-content-center mt-4">
         <div className="col-12 text-center">
           <hr />
-          <p className="lead">Sık Kullanılanlar</p>
+          <p className="lead text-white">Sık Kullanılanlar</p>
         </div>
         <div className="col-10">
           <FrequentlyUsed />

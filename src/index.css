@@ -1,7 +1,6 @@
 body {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }
 #root {
   width: 100%;
@@ -22,7 +21,7 @@ body {
 }
 
 .BodyContent {
-  height: calc(100vh - 70px);
+  height: 100%;
   width: 100%;
   background-position: center;
   background-size: cover;
@@ -35,6 +34,8 @@ body {
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.2); /* Black w/opacity/see-through */
   backdrop-filter: blur(10px);
+  height: fit-content;
+  border-radius: 20px;
 }
 
 .boxStyle {
@@ -61,4 +62,29 @@ body {
 
 .Freq--SingleObject--boxStyle:hover {
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+.WeatherPopup {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: fit-content;
+  width: fit-content;
+  z-index: 5000 !important;
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.optionsContainer {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.optionsColumnContainer {
+  height: fit-content;
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
 }

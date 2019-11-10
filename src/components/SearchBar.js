@@ -23,21 +23,27 @@ const SearchBar = () => {
     <>
       <nav>
         <div className="nav nav-tabs">
-          <a className="nav-item nav-link active" data-toggle="tab" href="#nav-home">
+          <a className="nav-item nav-link active" data-toggle="tab" href="#nav-all">
             Tümünde Ara
           </a>
-          <a className="nav-item nav-link" data-toggle="tab" href="#nav-profile">
+          <a className="nav-item nav-link" data-toggle="tab" href="#nav-photo">
             Görsellerde Ara
           </a>
-          <a className="nav-item nav-link" data-toggle="tab" href="#nav-contact">
+          <a className="nav-item nav-link" data-toggle="tab" href="#nav-video">
             Videolarda Ara
           </a>
         </div>
       </nav>
       <div className="tab-content">
-        <div className="tab-pane fade show active" id="nav-home">
+        <div className="tab-pane fade show active" id="nav-all">
           <div className="form-group mt-3">
             <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <select className="form-control rounded-0">
+                  <option>Google</option>
+                  <option>Yandex</option>
+                </select>
+              </div>
               <input
                 type="text"
                 ref={ibSearchText}
@@ -52,9 +58,15 @@ const SearchBar = () => {
             </div>
           </div>
         </div>
-        <div className="tab-pane fade" id="nav-profile">
+        <div className="tab-pane fade" id="nav-photo">
           <div className="form-group mt-3">
             <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <select className="form-control rounded-0">
+                  <option>Google</option>
+                  <option>Yandex</option>
+                </select>
+              </div>
               <input
                 type="text"
                 ref={ibSearchImage}
@@ -69,9 +81,15 @@ const SearchBar = () => {
             </div>
           </div>
         </div>
-        <div className="tab-pane fade" id="nav-contact">
+        <div className="tab-pane fade" id="nav-video">
           <div className="form-group mt-3">
             <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <select className="form-control rounded-0">
+                  <option>Google</option>
+                  <option>Yandex</option>
+                </select>
+              </div>
               <input
                 type="text"
                 ref={ibSearchVideo}
