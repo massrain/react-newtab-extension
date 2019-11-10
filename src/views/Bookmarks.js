@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import SingleBookmark from "../components/SingleBookmark.js";
 
 const Bookmarks = props => {
+
   const [BookmarkList, setBookmarkList] = useState([]);
   useEffect(() => {
     const getBookmarks = async () => {
@@ -41,7 +42,7 @@ const Bookmarks = props => {
 
   return (
     <>
-      <div className="row no-gutters justify-content-center overflowy--scroll">
+      <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle">
         <div className="col-8">
           {BookmarkList.length > 0 ? BookmarkList.map(item => <SingleBookmark item={item} key={item.id} />) : null}
         </div>

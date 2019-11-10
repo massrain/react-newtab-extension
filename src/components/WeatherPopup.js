@@ -13,20 +13,19 @@ const responsekek = {
   sys: { type: 1, id: 6984, country: "TR", sunrise: 1573274077, sunset: 1573311604 },
   timezone: 10800,
   id: 314967,
-  name: "Fethiye",
+  name: "Fethiyye",
   cod: 200
 };
 
 const WeatherPopup = props => {
-  const [WeatherData, setWeatherData] = useState(null);
-  const [defaultCity, setDefaultCity] = useState("314967");
+  const [WeatherData, setWeatherData] = useState(responsekek);
 
   useEffect(() => {
     let apiKey = "&APPID=de2bc1df4881bd9386c18266a8b5a378";
     let endpoint =
-      "http://api.openweathermap.org/data/2.5/weather?id=" + defaultCity + "&units=metric&lang=tr" + apiKey;
+      "http://api.openweathermap.org/data/2.5/weather?q=" + props.weatherCity + "&units=metric&lang=tr" + apiKey;
 
-    /*   axios
+    axios
       .get(endpoint)
       .then(res => {
         setWeatherData(res.data);
@@ -34,22 +33,24 @@ const WeatherPopup = props => {
       .catch(err => {
         console.log(err);
       });
-   */
   }, []);
 
   return (
     <>
-      <div className="container-fluid p-4 WeatherPopup text-white text-center" style={{ display: props.WeatherVisibility }}>
+      <div
+        className="container-fluid p-4 WeatherPopup text-white text-center"
+        style={{ display: props.WeatherVisibility }}
+      >
         <div className="row no-gutters">
           <div className="col-12">
             <h4>
-              {responsekek.name} - {responsekek.sys.country}
+              {WeatherData.name} - {WeatherData.sys.country}
             </h4>
             <h5>
-              <img src={"http://openweathermap.org/img/w/" + responsekek.weather[0].icon + ".png"} alt="" />-{" "}
-              {responsekek.weather[0].description}
+              <img src={"http://openweathermap.org/img/w/" + WeatherData.weather[0].icon + ".png"} alt="" />-{" "}
+              {WeatherData.weather[0].description}
             </h5>
-            <h3>{responsekek.main.temp}&deg;</h3>
+            <h3>{Math.floor(WeatherData.main.temp)}&deg;</h3>
           </div>
         </div>
       </div>

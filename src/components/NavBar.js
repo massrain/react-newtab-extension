@@ -1,25 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const NavBar = props => {
   return (
     <>
       <div className="col-md-4">
-        <button className="btn btn-sm btn-success" onClick={props.changeWeatherVisibility}>
-          Weather
+        <button className="btn btn-sm btn-outline-light" onClick={props.changeWeatherVisibility}>
+          Hava Durumu
         </button>
-        <button className="ml-2 btn btn-sm btn-success" onClick={props.btnChangeBackground}>
-          &
+        <button className="ml-2 btn btn-sm btn-outline-light" onClick={props.btnChangeBackground}>
+          Arkaplan
         </button>
       </div>
       <div className="col-md-8 justify-content-end text-right">
-        <Link className="btn btn-sm btn-success mr-2" to="/">
+        <Link className="btn btn-sm btn-outline-light mr-2" to="/">
           Anasayfa
         </Link>
-        <Link className="btn btn-sm btn-success mr-2" to="/bookmarks">
-          Bookmarklar
+        <Link className="btn btn-sm btn-outline-light mr-2" to="/bookmarks">
+          Yer imleri
         </Link>
-        <Link className="btn btn-sm btn-success mr-2" to="/history">
+        <Link className="btn btn-sm btn-outline-light mr-2" to="/history">
           Geçmiş
         </Link>
         <button
@@ -69,9 +69,9 @@ const NavBar = props => {
           </ul>
         </div>
       </nav>
-  */}{" "}
+  */}
     </>
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar);

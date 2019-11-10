@@ -2,40 +2,32 @@ import React, { useState } from "react";
 import GridLayout from "react-grid-layout";
 import SingleObject from "./frequentlyused/SingleObject";
 
-const FrequentlyUsed = () => {
-  const initialLayout = [
-    { i: "b", x: 0, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true },
-    { i: "a", x: 2, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true },
-    { i: "c", x: 4, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true },
-    { i: "d", x: 6, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true },
-    { i: "e", x: 8, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true }
-  ];
-
-  const [LayoutState, setLayoutState] = useState(initialLayout);
+const FrequentlyUsed = props => {
+  //const [LayoutState, setLayoutState] = useState(props.LayoutData);
   const [GridComponentKey, setGridComponentKey] = useState(5);
   const [EditMode, setEditMode] = useState(false);
 
   const btnEditGrid = () => {
     setEditMode(true);
-    let layoutCopy = LayoutState;
+    let layoutCopy = props.LayoutData;
     layoutCopy.forEach(element => {
       element.static = false;
     });
-    setLayoutState(layoutCopy);
+    props.setLayoutData(layoutCopy);
     setGridComponentKey(Math.floor(Math.random() * 100));
   };
   const btnFinishEditGrid = () => {
     setEditMode(false);
-    let layoutCopy = LayoutState;
+    let layoutCopy = props.LayoutData;
     layoutCopy.forEach(element => {
       element.static = true;
     });
-    setLayoutState(layoutCopy);
+    props.setLayoutData(layoutCopy);
     setGridComponentKey(Math.floor(Math.random() * 100));
   };
 
   const onLayoutChange = newLayout => {
-    setLayoutState(newLayout);
+    props.setLayoutData(newLayout);
   };
 
   const redirectLink = link => {
@@ -70,7 +62,7 @@ const FrequentlyUsed = () => {
       <div className="row no-gutters mt-3">
         <GridLayout
           className="layout"
-          layout={LayoutState}
+          layout={props.LayoutData}
           onLayoutChange={onLayoutChange}
           cols={12}
           rowHeight={30}

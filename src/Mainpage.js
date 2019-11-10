@@ -4,7 +4,7 @@ import React from "react";
 import SearchBar from "./components/SearchBar";
 import FrequentlyUsed from "./components/FrequentlyUsed";
 
-const Mainpage = () => {
+const Mainpage = props => {
   const goDefaultTab = () => {
     chrome.tabs.getCurrent(tab => {
       chrome.tabs.update(tab.id, {
@@ -35,7 +35,7 @@ const Mainpage = () => {
           <p className="lead text-white">Sık Kullanılanlar</p>
         </div>
         <div className="col-10">
-          <FrequentlyUsed />
+          <FrequentlyUsed LayoutData={props.LayoutData} setLayoutData={props.setLayoutData} />
         </div>
       </div>
     </>

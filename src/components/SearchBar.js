@@ -23,13 +23,13 @@ const SearchBar = () => {
     <>
       <nav>
         <div className="nav nav-tabs">
-          <a className="nav-item nav-link active" data-toggle="tab" href="#nav-all">
+          <a className="nav-item nav-link text-searchbar active" data-toggle="tab" href="#nav-all">
             Tümünde Ara
           </a>
-          <a className="nav-item nav-link" data-toggle="tab" href="#nav-photo">
+          <a className="nav-item nav-link text-searchbar" data-toggle="tab" href="#nav-photo">
             Görsellerde Ara
           </a>
-          <a className="nav-item nav-link" data-toggle="tab" href="#nav-video">
+          <a className="nav-item nav-link text-searchbar" data-toggle="tab" href="#nav-video">
             Videolarda Ara
           </a>
         </div>
@@ -39,7 +39,7 @@ const SearchBar = () => {
           <div className="form-group mt-3">
             <div className="input-group mb-3">
               <div className="input-group-prepend">
-                <select className="form-control rounded-0">
+                <select className="form-control rounded-0 bg-transparent">
                   <option>Google</option>
                   <option>Yandex</option>
                 </select>
@@ -47,7 +47,7 @@ const SearchBar = () => {
               <input
                 type="text"
                 ref={ibSearchText}
-                className="form-control rounded-0"
+                className="form-control rounded-0 bg-transparent"
                 placeholder="Aramak istediğiniz.."
               />
               <div className="input-group-append">
@@ -62,7 +62,7 @@ const SearchBar = () => {
           <div className="form-group mt-3">
             <div className="input-group mb-3">
               <div className="input-group-prepend">
-                <select className="form-control rounded-0">
+                <select className="form-control rounded-0 bg-transparent">
                   <option>Google</option>
                   <option>Yandex</option>
                 </select>
@@ -70,7 +70,7 @@ const SearchBar = () => {
               <input
                 type="text"
                 ref={ibSearchImage}
-                className="form-control rounded-0"
+                className="form-control rounded-0 bg-transparent"
                 placeholder="Aramak istediğiniz.."
               />
               <div className="input-group-append">
@@ -85,7 +85,7 @@ const SearchBar = () => {
           <div className="form-group mt-3">
             <div className="input-group mb-3">
               <div className="input-group-prepend">
-                <select className="form-control rounded-0">
+                <select className="form-control rounded-0 bg-transparent">
                   <option>Google</option>
                   <option>Yandex</option>
                 </select>
@@ -93,7 +93,7 @@ const SearchBar = () => {
               <input
                 type="text"
                 ref={ibSearchVideo}
-                className="form-control rounded-0"
+                className="form-control rounded-0 bg-transparent"
                 placeholder="Aramak istediğiniz.."
               />
               <div className="input-group-append">
