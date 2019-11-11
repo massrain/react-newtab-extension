@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import SingleBookmark from "../components/SingleBookmark";
 
 const History = props => {
-  const [HistoryList, setHistoryList] = useState(null);
+  const [HistoryList, setHistoryList] = useState([]);
   const [HistoryDisplayer, setHistoryDisplayer] = useState(false);
 
   useEffect(() => {
@@ -14,6 +14,7 @@ const History = props => {
       });
     });
     function processNode(node) {
+      console.log(node);
       // print leaf nodes URLs to console
       if (node.url) {
         arrayOfHistory.push({ id: node.id, url: node.url, title: node.title });
@@ -27,19 +28,20 @@ const History = props => {
     if (HistoryList.length > 0 && HistoryDisplayer === "none") {
       setHistoryDisplayer("block");
     }
+    props.history.push("/history");
   };
 
   return (
     <React.Fragment>
       <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle">
-        <div className="col-8">
+        <div className="col-8 justify-content-center text-center">
           <button className="btn btn-light" onClick={btnSyncHistory}>
-            Yer imlerimi senkronize et
+            Tarayıcı geçmişini senkronize et
           </button>
           <br />
           <div style={{ display: HistoryDisplayer }}>
             {HistoryList.map(item => (
-              <SingleBookmark item={item} key={item.id} />
+              <SingleBookmark item={item} key={item.id} colorTextData={props.colorTextData}/>
             ))}
           </div>
         </div>

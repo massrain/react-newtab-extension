@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { saveAs } from "file-saver";
 import iziToast from "izitoast";
+import { CirclePicker } from "react-color";
+import { bootstrapToHexColors } from "./options/methods";
 
 const OptionsPopup = props => {
   const ibWeatherCity = useRef(null);
@@ -20,12 +22,18 @@ const OptionsPopup = props => {
   const onChangeWeatherUnits = e => {
     props.changeWeatherUnits(e.target.value);
   };
+  const handleNavbarColorComplete = (color, event) => {
+    props.changeColorTextData(color.hex.toLowerCase(), "navButtons");
+  };
+  const handleTextColorComplete = (color, event) => {
+    props.changeColorTextData(color.hex.toLowerCase(), "mains");
+  };
   return (
     <>
       <div className="container-fluid p-0 optionsPopup animated fadeIn" style={{ display: props.OptionsVisibility }}>
         <div className="row h-100 no-gutters justify-content-end text-center">
           <div
-            className="col-md-10"
+            className="col-md-10 optionsContainer"
             onClick={() => {
               props.setOptionsVisibility("none");
             }}
@@ -34,6 +42,14 @@ const OptionsPopup = props => {
             <div className="container-fluid optionsColumnContainer py-5">
               <div className="row no-gutters justify-content-center">
                 <h4>TabExtension</h4>
+                <button
+                  className="btn btn-sm btn-link text-danger"
+                  onClick={() => {
+                    props.setOptionsVisibility("none");
+                  }}
+                >
+                  X
+                </button>
               </div>
               <hr className="border-white" />
               <div className="row no-gutters mt-3 justify-content-center">
@@ -131,6 +147,64 @@ const OptionsPopup = props => {
                         </option>
                         <option value="bing" className="text-primary">
                           Bing
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr className="border-white" />
+              <div className="row no-gutters mt-3 justify-content-center">
+                <div className="col-12 px-4">
+                  <p className="mb-1">Renkler</p>
+                  <div className="row no-gutters">
+                    <div className="col-12 justify-content-center text-center">
+                      <div className="row no-gutters justify-content-center text-center">
+                        <span>Üst Butonlar</span>
+                      </div>
+                      <div className="row no-gutters justify-content-center text-center">
+                        <CirclePicker
+                          circleSize={22}
+                          width={"150px"}
+                          circleSpacing={12}
+                          colors={["#2c3e50", "#95a5a6", "#18bc9c", "#3498db", "#f39c12", "#e74c3c", "#ecf0f1"]}
+                          onChangeComplete={handleNavbarColorComplete}
+                          color={bootstrapToHexColors(props.colorTextData.navButtons)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row no-gutters">
+                    <div className="col-12">
+                      <div className="row no-gutters justify-content-center text-center">
+                        <span>Yazılar</span>
+                      </div>
+                      <div className="row no-gutters justify-content-center text-center">
+                        <CirclePicker
+                          circleSize={22}
+                          width={"150px"}
+                          circleSpacing={12}
+                          colors={["#2c3e50", "#95a5a6", "#18bc9c", "#3498db", "#f39c12", "#e74c3c", "#ecf0f1"]}
+                          onChangeComplete={handleTextColorComplete}
+                          color={bootstrapToHexColors(props.colorTextData.mains)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row no-gutters">
+                    <div className="col-12">
+                      <span>İkon Görünümü</span>
+                      <select
+                        className="form-control rounded-0 bg-transparent text-white"
+                        onChange={props.changeIconsVisibility}
+                        value={props.iconsVisibility}
+                      >
+                        <option value="true" className="text-primary">
+                          Açık
+                        </option>
+                        <option value="false" className="text-primary">
+                          Kapalı
                         </option>
                       </select>
                     </div>

@@ -59,14 +59,14 @@ const FrequentlyUsed = props => {
   return (
     <>
       <div className="row no-gutters justify-content-end">
-        <button
+{/*         <button
           className="btn btn-sm btn-primary rounded-0"
           type="button"
           style={{ display: EditMode ? "block" : "none" }}
           onClick={btnAddNew}
         >
           Yeni Ekle
-        </button>
+        </button> */}
         <button
           className="btn btn-sm btn-success rounded-0 ml-1"
           style={{ display: EditMode ? "block" : "none" }}
@@ -92,40 +92,45 @@ const FrequentlyUsed = props => {
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Google"}
+              colorTextData={props.colorTextData}
               contentLink={"https://google.com.tr"}
-              contentIcon={"https://img.icons8.com/plasticine/2x/google-logo.png"}
+              contentIcon={"/assets/site/google.png"}
             />
           </div>
           <div key="b">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Galatasaray Sözlük"}
+              colorTextData={props.colorTextData}
               contentLink={"https://rerererarara.net"}
-              contentIcon={"https://img.icons8.com/plasticine/2x/google-logo.png"}
+              contentIcon={"/assets/site/gssozluk.jpg"}
             />
           </div>
           <div key="c">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Ekşi Sözlük"}
+              colorTextData={props.colorTextData}
               contentLink={"https://eksisozluk.com"}
-              contentIcon={"https://img.icons8.com/plasticine/2x/google-logo.png"}
+              contentIcon={"/assets/site/eksisozluk.png"}
             />
           </div>
           <div key="d">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Youtube"}
+              colorTextData={props.colorTextData}
               contentLink={"https://youtube.com"}
-              contentIcon={"https://img.icons8.com/plasticine/2x/google-logo.png"}
+              contentIcon={"/assets/site/youtube.png"}
             />
           </div>
           <div key="e">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Gmail"}
+              colorTextData={props.colorTextData}
               contentLink={"https://gmail.com"}
-              contentIcon={"https://img.icons8.com/plasticine/2x/google-logo.png"}
+              contentIcon={"/assets/site/gmail.png"}
             />
           </div>
         </GridLayout>

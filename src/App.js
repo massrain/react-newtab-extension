@@ -19,7 +19,7 @@ const App = props => {
     { i: "e", x: 8, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true }
   ];
 
-  const TextColors = {};
+  const TextColors = { mains: "white", navButtons: "outline", sides: "#ffffff" };
   const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 1);
   const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "tabext");
   const [OptionsVisibility, setOptionsVisibility] = useState("none");
@@ -27,10 +27,12 @@ const App = props => {
   const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "Fethiye");
   const [weatherUnits, setWeatherUnits] = useLocalStorage("weatherunits", "metric");
   const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", initialLayout);
-  const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", initialLayout);
+  const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", TextColors);
+  const [iconsVisibility, setIconsVisibility] = useLocalStorage("iconsvisibility", "true");
 
   useEffect(() => {
     props.history.push("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const backgroundStyle = {
@@ -62,6 +64,41 @@ const App = props => {
   const changeImgBackgroundChoice = e => {
     setImgBackgroundChoice(e.target.value);
   };
+  const changeIconsVisibility = e => {
+    iconsVisibility === "true" ? setIconsVisibility("false") : setIconsVisibility("true");
+  };
+  const changeColorTextData = (newColor, keyColor) => {
+    console.log(newColor);
+    let resultWord;
+    switch (newColor) {
+      case "#2c3e50":
+        resultWord = "primary";
+        break;
+      case "#95a5a6":
+        resultWord = "secondary";
+        break;
+      case "#18bc9c":
+        resultWord = "success";
+        break;
+      case "#3498db":
+        resultWord = "info";
+        break;
+      case "#f39c12":
+        resultWord = "warning";
+        break;
+      case "#e74c3c":
+        resultWord = "danger";
+        break;
+      case "#ecf0f1":
+        resultWord = "light";
+        break;
+      default:
+        break;
+    }
+    let colorPack = colorTextData;
+    colorPack[keyColor] = resultWord;
+    setColorTextData(colorPack);
+  };
   //test
 
   return (
@@ -70,6 +107,8 @@ const App = props => {
       <div className="container-fluid p-0 BodyContent d-flex flex-column">
         <div className="row no-gutters">
           <NavBar
+            colorTextData={colorTextData}
+            iconsVisibility={iconsVisibility}
             btnChangeBackground={btnChangeBackground}
             setOptionsVisibility={setOptionsVisibility}
             changeWeatherVisibility={changeWeatherVisibility}
@@ -81,17 +120,38 @@ const App = props => {
               <Route
                 exact
                 path="/"
-                render={props => <Mainpage {...props} LayoutData={LayoutData} setLayoutData={setLayoutData} />}
+                render={props => (
+                  <Mainpage
+                    {...props}
+                    LayoutData={LayoutData}
+                    setLayoutData={setLayoutData}
+                    colorTextData={colorTextData}
+                  />
+                )}
               />
               <Route
                 exact
                 path="/bookmarks"
-                render={props => <Bookmarks {...props} LayoutData={LayoutData} setLayoutData={setLayoutData} />}
+                render={props => (
+                  <Bookmarks
+                    {...props}
+                    LayoutData={LayoutData}
+                    setLayoutData={setLayoutData}
+                    colorTextData={colorTextData}
+                  />
+                )}
               />
               <Route
                 exact
                 path="/history"
-                render={props => <History {...props} LayoutData={LayoutData} setLayoutData={setLayoutData} />}
+                render={props => (
+                  <History
+                    {...props}
+                    LayoutData={LayoutData}
+                    setLayoutData={setLayoutData}
+                    colorTextData={colorTextData}
+                  />
+                )}
               />
             </Switch>
           </div>
@@ -115,6 +175,10 @@ const App = props => {
         weatherUnits={weatherUnits}
         imgBackgroundChoice={imgBackgroundChoice}
         changeImgBackgroundChoice={changeImgBackgroundChoice}
+        changeColorTextData={changeColorTextData}
+        colorTextData={colorTextData}
+        iconsVisibility={iconsVisibility}
+        changeIconsVisibility={changeIconsVisibility}
       />
     </>
   );
@@ -125,23 +189,34 @@ export default withRouter(App);
 /*
 TODO: 
 SIKKULLANILANLAR YENİ EKLE
-?? YER İMLERİ VE HİSTORY ÇEKİM BUTONLA
+ARKAPLAN API + KATEGORİ
 ++ SANTİGRAT FAHRENHEİT
 ++ YANDEX ARAMA
 ++ BİNG ARAMA
 ++ WEBSİTE İÇERİSİNDE ARAMA
-++SIK KULLANILANLAR BORDERCOLOR
+++ SIK KULLANILANLAR BORDERCOLOR
 ++ BİNG ARKAPLANLARI
 
-HİSTORY VE BOOKMARK LİNK FULL CARDTA
-TEXTLER DİNAMİK
-TEXTLER RENKLİ COLORPICKER
-BUTON RENKLERİ
-BUTON RENKLERI COLORPICKER
-ARKAPLAN API + KATEGORİ
+++ YER İMLERİ VE HİSTORY ÇEKİM BUTONLA
+++ HİSTORY VE BOOKMARK LİNK FULL CARDTA
+
+++ TEXTLER DİNAMİK
+++ TEXTLER RENKLİ COLORPICKER
+++ BUTON RENKLERİ
+++ BUTON RENKLERI COLORPICKER
 
 NAVBAR BUTON İKON
 SIK KULLANILANLAR İKONLARI
 HİSTORY VE BOOKMARK İCON
 
+HAVADURUMU VISIBILITY PERSISTENT STATE
+BOOKMARK + HISTORY WEBSITE ICONS
 */
+
+
+/* "icons": {
+  "16": "icons/16.png",
+  "32": "icons/32.png",
+  "48": "icons/48.png",
+  "128": "icons/128.png"
+}, */

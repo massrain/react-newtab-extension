@@ -13,7 +13,7 @@ const responsekek = {
   sys: { type: 1, id: 6984, country: "TR", sunrise: 1573274077, sunset: 1573311604 },
   timezone: 10800,
   id: 314967,
-  name: "Fethiyye",
+  name: "Fethiye",
   cod: 200
 };
 
@@ -29,15 +29,16 @@ const WeatherPopup = props => {
       props.weatherUnits +
       "&lang=tr" +
       apiKey;
-    setWeatherData(responsekek);
-    /*     axios
+    //setWeatherData(responsekek);
+    axios
       .get(endpoint)
       .then(res => {
         setWeatherData(res.data);
       })
       .catch(err => {
         console.log(err);
-      }); */
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

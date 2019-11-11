@@ -1,8 +1,11 @@
 import React from "react";
 
 const SingleBookmark = props => {
+  const navToUrl = () => {
+    window.open(props.item.url, "_blank");
+  };
   return (
-    <div className="card border-secondary bg-transparent text-white mb-3">
+    <div className={`card border-secondary bg-transparent itemCard text-${props.colorTextData.mains} mb-3 cursor--pointer`} onClick={navToUrl}>
       <div className="card-body px-4 py-1">
         <p className="card-text">
           {props.item.title} ->

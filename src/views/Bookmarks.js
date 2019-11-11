@@ -10,10 +10,8 @@ const Bookmarks = props => {
   useEffect(() => {
     const getBookmarks = () => {
       //let kappa = chrome.bookmarks.getTree();
-      console.log("hello getBookmarks");
       let arrayOfBookmarks = [];
       chrome.bookmarks.getTree(function(itemTree) {
-        console.log("itemTree");
         //console.log(itemTree);
         itemTree.forEach(function(item) {
           processNode(item);
@@ -44,18 +42,19 @@ const Bookmarks = props => {
     if (BookmarkList.length > 0 && BookmarkDisplayer === "none") {
       setBookmarkDisplayer("block");
     }
+    props.history.push("/bookmarks");
   };
   return (
     <>
       <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle">
-        <div className="col-8">
+        <div className="col-8 justify-content-center text-center">
           <button className="btn btn-light" onClick={btnSyncBookmark}>
             Yer imlerimi senkronize et
           </button>
-          <br/>
+          <br />
           <div style={{ display: BookmarkDisplayer }}>
             {BookmarkList.map(item => (
-              <SingleBookmark item={item} key={item.id} />
+              <SingleBookmark item={item} key={item.id} colorTextData={props.colorTextData} />
             ))}
           </div>
         </div>

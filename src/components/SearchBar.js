@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const SearchBar = () => {
+const SearchBar = props => {
   const [searchWebsite, setSearchWebsite] = useState("google");
   const ibSearchText = useRef(null);
   const ibSearchImage = useRef(null);
@@ -56,19 +56,39 @@ const SearchBar = () => {
     <>
       <nav>
         <div className="nav nav-tabs">
-          <a className="nav-item nav-link text-searchbar active" data-toggle="tab" href="#nav-all">
+          <a
+            className={`nav-item nav-link text-searchbar active text-${props.colorTextData.mains}`}
+            data-toggle="tab"
+            href="#nav-all"
+          >
             Tümü
           </a>
-          <a className="nav-item nav-link text-searchbar" data-toggle="tab" href="#nav-photo">
+          <a
+            className={`nav-item nav-link text-searchbar text-${props.colorTextData.mains}`}
+            data-toggle="tab"
+            href="#nav-photo"
+          >
             Görseller
           </a>
-          <a className="nav-item nav-link text-searchbar" data-toggle="tab" href="#nav-video">
+          <a
+            className={`nav-item nav-link text-searchbar text-${props.colorTextData.mains}`}
+            data-toggle="tab"
+            href="#nav-video"
+          >
             Videolar
           </a>
-          <a className="nav-item nav-link text-searchbar" data-toggle="tab" href="#nav-map">
+          <a
+            className={`nav-item nav-link text-searchbar text-${props.colorTextData.mains}`}
+            data-toggle="tab"
+            href="#nav-map"
+          >
             Harita
           </a>
-          <a className="nav-item nav-link text-searchbar" data-toggle="tab" href="#nav-website">
+          <a
+            className={`nav-item nav-link text-searchbar text-${props.colorTextData.mains}`}
+            data-toggle="tab"
+            href="#nav-website"
+          >
             Websitede
           </a>
         </div>
@@ -207,7 +227,7 @@ const SearchBar = () => {
                 placeholder="Aramak istediğiniz.."
               />
               <div className="input-group-append">
-                <button className="btn btn-danger rounded-0 px-5" onClick={mapSearch}>
+                <button className="btn btn-success rounded-0 px-5" onClick={mapSearch}>
                   Ara
                 </button>
               </div>
@@ -242,7 +262,7 @@ const SearchBar = () => {
                 placeholder="Aramak istediğiniz.."
               />
               <div className="input-group-append">
-                <button className="btn btn-danger rounded-0 px-5" onClick={websiteSearch}>
+                <button className="btn btn-primary rounded-0 px-5" onClick={websiteSearch}>
                   Ara
                 </button>
               </div>

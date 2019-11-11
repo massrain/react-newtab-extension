@@ -17,7 +17,7 @@ const Mainpage = props => {
     <>
       <div className="row no-gutters justify-content-center">
         <div className="col-8 p-3">
-          <SearchBar />
+          <SearchBar colorTextData={props.colorTextData} />
         </div>
       </div>
 
@@ -32,10 +32,14 @@ const Mainpage = props => {
       <div className="row no-gutters justify-content-center mt-4">
         <div className="col-12 text-center">
           <hr />
-          <p className="lead text-white">Sık Kullanılanlar</p>
+          <p className={`lead text-${props.colorTextData.mains}`}>Sık Kullanılanlar</p>
         </div>
         <div className="col-10">
-          <FrequentlyUsed LayoutData={props.LayoutData} setLayoutData={props.setLayoutData} />
+          <FrequentlyUsed
+            LayoutData={props.LayoutData}
+            setLayoutData={props.setLayoutData}
+            colorTextData={props.colorTextData}
+          />
         </div>
       </div>
     </>
