@@ -5,10 +5,10 @@ import React, { useEffect, useState } from "react";
 import SingleBookmark from "../components/SingleBookmark.js";
 
 const Bookmarks = props => {
-
   const [BookmarkList, setBookmarkList] = useState([]);
+  const [BookmarkDisplayer, setBookmarkDisplayer] = useState(false);
   useEffect(() => {
-    const getBookmarks = async () => {
+    const getBookmarks = () => {
       //let kappa = chrome.bookmarks.getTree();
       console.log("hello getBookmarks");
       let arrayOfBookmarks = [];
@@ -40,11 +40,24 @@ const Bookmarks = props => {
     getBookmarks();
   }, []);
 
+  const btnSyncBookmark = () => {
+    if (BookmarkList.length > 0 && BookmarkDisplayer === "none") {
+      setBookmarkDisplayer("block");
+    }
+  };
   return (
     <>
       <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle">
         <div className="col-8">
-          {BookmarkList.length > 0 ? BookmarkList.map(item => <SingleBookmark item={item} key={item.id} />) : null}
+          <button className="btn btn-light" onClick={btnSyncBookmark}>
+            Yer imlerimi senkronize et
+          </button>
+          <br/>
+          <div style={{ display: BookmarkDisplayer }}>
+            {BookmarkList.map(item => (
+              <SingleBookmark item={item} key={item.id} />
+            ))}
+          </div>
         </div>
       </div>
     </>

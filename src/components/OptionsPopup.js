@@ -5,9 +5,6 @@ import iziToast from "izitoast";
 const OptionsPopup = props => {
   const ibWeatherCity = useRef(null);
 
-  const saveLayoutData = () => {
-    props.setLayoutData("emre");
-  };
   const exportLayoutData = () => {
     // 1. get data from localstorage or state
     let blob = new Blob([JSON.stringify(props.LayoutData)], { type: "application/json;charset=utf-8" });
@@ -20,6 +17,9 @@ const OptionsPopup = props => {
     //3. load it to localstorage
   };
 
+  const onChangeWeatherUnits = e => {
+    props.changeWeatherUnits(e.target.value);
+  };
   return (
     <>
       <div className="container-fluid p-0 optionsPopup animated fadeIn" style={{ display: props.OptionsVisibility }}>
@@ -73,8 +73,9 @@ const OptionsPopup = props => {
                         type="radio"
                         name="weatherRadios"
                         id="rdWeatherFahrenheit"
-                        value="option1"
-                        defaultChecked
+                        value="metric"
+                        checked={props.weatherUnits === "metric"}
+                        onChange={onChangeWeatherUnits}
                       />
                       <label className="form-check-label" htmlFor="rdWeatherFahrenheit">
                         [°C]
@@ -86,7 +87,9 @@ const OptionsPopup = props => {
                         type="radio"
                         name="weatherRadios"
                         id="rdWeatherCelcius"
-                        value="option2"
+                        checked={props.weatherUnits === "imperial"}
+                        onChange={onChangeWeatherUnits}
+                        value="imperial"
                       />
                       <label className="form-check-label" htmlFor="rdWeatherCelcius">
                         [°F]
@@ -99,13 +102,39 @@ const OptionsPopup = props => {
               <div className="row no-gutters mt-3 justify-content-center">
                 <div className="col-12 px-4">
                   <p className="mb-1">Sık Kullanılanlar</p>
-                  <button className="btn btn-sm btn-info" onClick={exportLayoutData}>
-                    Dışa Aktar
-                  </button>
-                  <br />
-                  <button className="btn btn-sm btn-info" onClick={importLayoutData}>
-                    İçe Aktar
-                  </button>
+                  <div className="row no-gutters">
+                    <div className="col-12">
+                      <button className="btn btn-sm btn-info" onClick={exportLayoutData}>
+                        Dışa Aktar
+                      </button>
+                      <button className="btn btn-sm btn-info" onClick={importLayoutData}>
+                        İçe Aktar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr className="border-white" />
+              <div className="row no-gutters mt-3 justify-content-center">
+                <div className="col-12 px-4">
+                  <p className="mb-1">Arkaplan</p>
+                  <div className="row no-gutters">
+                    <div className="col-12">
+                      <select
+                        className="form-control rounded-0 bg-transparent text-white"
+                        onChange={props.changeImgBackgroundChoice}
+                        value={props.imgBackgroundChoice}
+                      >
+                        <option value="tabext" className="text-primary">
+                          Uzantı
+                        </option>
+                        <option value="bing" className="text-primary">
+                          Bing
+                        </option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

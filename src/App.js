@@ -19,18 +19,25 @@ const App = props => {
     { i: "e", x: 8, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true }
   ];
 
+  const TextColors = {};
   const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 1);
+  const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "tabext");
   const [OptionsVisibility, setOptionsVisibility] = useState("none");
   const [WeatherVisibility, setWeatherVisibility] = useState("none");
-  const [weatherCity, setWeatherCity] = useLocalStorage("weathercity","Fethiye");
+  const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "Fethiye");
+  const [weatherUnits, setWeatherUnits] = useLocalStorage("weatherunits", "metric");
   const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", initialLayout);
+  const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", initialLayout);
 
   useEffect(() => {
     props.history.push("/");
   }, []);
 
   const backgroundStyle = {
-    backgroundImage: `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
+    backgroundImage:
+      imgBackgroundChoice === "tabext"
+        ? `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
+        : "url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
 
   const btnChangeBackground = () => {
@@ -48,6 +55,12 @@ const App = props => {
   };
   const changeWeatherCity = newCity => {
     setWeatherCity(newCity);
+  };
+  const changeWeatherUnits = newUnits => {
+    setWeatherUnits(newUnits);
+  };
+  const changeImgBackgroundChoice = e => {
+    setImgBackgroundChoice(e.target.value);
   };
   //test
 
@@ -85,14 +98,23 @@ const App = props => {
         </div>
       </div>
 
-      <WeatherPopup WeatherVisibility={WeatherVisibility} weatherCity={weatherCity} />
+      <WeatherPopup
+        WeatherVisibility={WeatherVisibility}
+        weatherCity={weatherCity}
+        setWeatherUnits={setWeatherUnits}
+        weatherUnits={weatherUnits}
+      />
       <OptionsPopup
         OptionsVisibility={OptionsVisibility}
         setOptionsVisibility={setOptionsVisibility}
-        changeWeatherCity={changeWeatherCity}
         weatherCity={weatherCity}
+        changeWeatherCity={changeWeatherCity}
         LayoutData={LayoutData}
         setLayoutData={setLayoutData}
+        changeWeatherUnits={changeWeatherUnits}
+        weatherUnits={weatherUnits}
+        imgBackgroundChoice={imgBackgroundChoice}
+        changeImgBackgroundChoice={changeImgBackgroundChoice}
       />
     </>
   );
@@ -100,21 +122,23 @@ const App = props => {
 
 export default withRouter(App);
 
-
 /*
 TODO: 
-NAVBAR BUTON İKON
-YER İMLERİ VE HİSTORY ÇEKİM BUTONLA
-SANTİGRAT FAHRENHEİT
-SIK KULLANILANLAR İKON
-YANDEX ARAMA
-WEBSİTE İÇERİSİNDE ARAMA
-BUTON RENKLERİ
-BİNG ARKAPLANLARI
 SIKKULLANILANLAR YENİ EKLE
+?? YER İMLERİ VE HİSTORY ÇEKİM BUTONLA
+++ SANTİGRAT FAHRENHEİT
+SIK KULLANILANLAR İKON
+++ YANDEX ARAMA
+++ BİNG ARAMA
+++ WEBSİTE İÇERİSİNDE ARAMA
 HİSTORY VE BOOKMARK LİNK FULL CARDTA
 HİSTORY VE BOOKMARK İCON
+++ BİNG ARKAPLANLARI
+TEXTLER DİNAMİK
+BUTON RENKLERİ
+++SIK KULLANILANLAR BORDERCOLOR
 TEXTLER RENKLİ COLORPİCKER
 ARKAPLAN KATEGORİ
+NAVBAR BUTON İKON
 
 */

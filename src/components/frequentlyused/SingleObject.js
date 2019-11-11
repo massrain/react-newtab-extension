@@ -4,7 +4,7 @@ const SingleObject = props => {
   return (
     <>
       <div
-        className="container-fluid d-flex h-100 cursor--pointer Freq--SingleObject--boxStyle border border-danger text-white"
+        className="container-fluid d-flex h-100 cursor--pointer Freq--SingleObject--boxStyle border border-secondary text-white"
         onClick={() => props.redirectLink(props.contentLink)}
       >
         <div className="row no-gutters">

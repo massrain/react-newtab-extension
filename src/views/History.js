@@ -4,6 +4,7 @@ import SingleBookmark from "../components/SingleBookmark";
 
 const History = props => {
   const [HistoryList, setHistoryList] = useState(null);
+  const [HistoryDisplayer, setHistoryDisplayer] = useState(false);
 
   useEffect(() => {
     let arrayOfHistory = [];
@@ -21,25 +22,30 @@ const History = props => {
     }
     setHistoryList(arrayOfHistory);
   }, []);
-  if (HistoryList === null) {
-    return (
-      <div className="row no-gutters justify-content-center overflowy--scroll">
-        <div className="col-8">spinner{console.log("SPINNEERR")}</div>
-      </div>
-    );
-  } else {
-    return (
-      <React.Fragment>
-        <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle">
-          <div className="col-8">
+
+  const btnSyncHistory = () => {
+    if (HistoryList.length > 0 && HistoryDisplayer === "none") {
+      setHistoryDisplayer("block");
+    }
+  };
+
+  return (
+    <React.Fragment>
+      <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle">
+        <div className="col-8">
+          <button className="btn btn-light" onClick={btnSyncHistory}>
+            Yer imlerimi senkronize et
+          </button>
+          <br />
+          <div style={{ display: HistoryDisplayer }}>
             {HistoryList.map(item => (
               <SingleBookmark item={item} key={item.id} />
             ))}
           </div>
         </div>
-      </React.Fragment>
-    );
-  }
+      </div>
+    </React.Fragment>
+  );
 };
 
 export default History;

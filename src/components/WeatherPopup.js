@@ -23,16 +23,21 @@ const WeatherPopup = props => {
   useEffect(() => {
     let apiKey = "&APPID=de2bc1df4881bd9386c18266a8b5a378";
     let endpoint =
-      "http://api.openweathermap.org/data/2.5/weather?q=" + props.weatherCity + "&units=metric&lang=tr" + apiKey;
-
-    axios
+      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      props.weatherCity +
+      "&units=" +
+      props.weatherUnits +
+      "&lang=tr" +
+      apiKey;
+    setWeatherData(responsekek);
+    /*     axios
       .get(endpoint)
       .then(res => {
         setWeatherData(res.data);
       })
       .catch(err => {
         console.log(err);
-      });
+      }); */
   }, []);
 
   return (

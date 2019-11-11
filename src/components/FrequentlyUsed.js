@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import GridLayout from "react-grid-layout";
 import SingleObject from "./frequentlyused/SingleObject";
+import Modal from "react-modal";
 
 const FrequentlyUsed = props => {
   //const [LayoutState, setLayoutState] = useState(props.LayoutData);
   const [GridComponentKey, setGridComponentKey] = useState(5);
   const [EditMode, setEditMode] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
+  const ibNewWebsiteLink = useRef(null);
+  const ibNewWebsiteName = useRef(null);
   const btnEditGrid = () => {
     setEditMode(true);
     let layoutCopy = props.LayoutData;
@@ -36,15 +40,30 @@ const FrequentlyUsed = props => {
     }
   };
 
+  const btnAddNew = () => {
+    handleOpenModal();
+  };
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  const btnAddNewWebsiteConfirm = () => {
+    console.log(props.LayoutData);
+    let pushContent = { i: "f", x: 8, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true };
+    props.setLayoutData(arrBooth => arrBooth.concat(pushContent));
+    //props.setLayoutData();
+  };
+
   return (
     <>
       <div className="row no-gutters justify-content-end">
         <button
           className="btn btn-sm btn-primary rounded-0"
           type="button"
-          data-toggle="modal"
-          data-target=".bd-example-modal-sm"
           style={{ display: EditMode ? "block" : "none" }}
+          onClick={btnAddNew}
         >
           Yeni Ekle
         </button>
@@ -111,6 +130,58 @@ const FrequentlyUsed = props => {
           </div>
         </GridLayout>
       </div>
+      <Modal
+        isOpen={showModal}
+        ariaHideApp={false}
+        contentLabel="Minimal Modal Example"
+        style={{
+          overlay: {
+            backgroundColor: "rgba(30,30,30,0.75)",
+            zIndex: "99999"
+          },
+          content: {
+            color: "lightsteelblue",
+            backgroundColor: "rgba(30,30,30,0.75)",
+            top: "20vh",
+            left: "20vw",
+            right: "20vw",
+            bottom: "20vh"
+          }
+        }}
+      >
+        <div className="container">
+          <div className="row no-gutters justify-content-center">
+            <div className="col-10 justify-content-center">
+              <div className="row no-gutters justify-content-center mt-2">
+                <input
+                  type="text"
+                  placeholder="Yeni site ismi"
+                  className="form-control rounded-0 bg-transparent text-white"
+                  ref={ibNewWebsiteName}
+                />
+              </div>
+              <div className="row no-gutters justify-content-center mt-2">
+                <input
+                  type="text"
+                  placeholder="Yeni site linki"
+                  className="form-control rounded-0 bg-transparent text-white"
+                  ref={ibNewWebsiteLink}
+                />
+              </div>
+              <div className="row no-gutters justify-content-center mt-2">
+                <button className="btn btn-success" onClick={btnAddNewWebsiteConfirm}>
+                  Kaydet
+                </button>
+              </div>
+              <div className="row no-gutters justify-content-center mt-2">
+                <button className="btn btn-primary" onClick={handleCloseModal}>
+                  Kapat
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };
