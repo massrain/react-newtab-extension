@@ -5,7 +5,10 @@ const SingleBookmark = props => {
     window.open(props.item.url, "_blank");
   };
   return (
-    <div className={`card border-secondary bg-transparent itemCard text-${props.colorTextData.mains} mb-3 cursor--pointer`} onClick={navToUrl}>
+    <div
+      className={`card border-secondary bg-transparent itemCard text-${props.colorTextData.mains} mb-3 cursor--pointer`}
+      onClick={navToUrl}
+    >
       <div className="card-body px-4 py-1">
         <p className="card-text">
           {props.item.title} ->
@@ -19,3 +22,9 @@ const SingleBookmark = props => {
 };
 
 export default SingleBookmark;
+
+/* 
+
+style="background-image: url("chrome://favicon/size/16@2x/https://buckysroom.org/"); background-position: center center; background-size: auto;"
+
+*/

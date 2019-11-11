@@ -83,3 +83,8 @@ export const bootstrapToHexColors = bootstrap => {
   }
   return resultWord;
 };
+
+export const unixToDay = timestamp => {
+  const days = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
+  return days[new Date(timestamp * 1000).getDay()];
+};

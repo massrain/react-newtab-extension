@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { unixToDay } from "./options/methods";
 
 const responsekek = {
   coord: { lon: 29.12, lat: 36.62 },
@@ -57,6 +58,69 @@ const WeatherPopup = props => {
               {WeatherData.weather[0].description}
             </h5>
             <h3>{Math.floor(WeatherData.main.temp)}&deg;</h3>
+          </div>
+        </div>
+        <div className="row no-gutters">
+          <div className="col-12 p-0">
+            {/* First Row */}
+            <div className="row no-gutters">
+              <div className="col-2">Ayarlar</div>
+              <div className="col-8">{city.name}</div>
+              <div className="col-2">C*</div>
+            </div>
+            {/* Second Row */}
+            <div className="row no-gutters">
+              <div className="col">
+                <div className="row no-gutters">Temp</div>
+                <div className="row no-gutters">{list[0].main.temp}</div>
+                <div className="row no-gutters">*C</div>
+              </div>
+
+              <div className="col">
+                <div className="row no-gutters">Humidity</div>
+                <div className="row no-gutters">{list[0].main.humidity}</div>
+                <div className="row no-gutters">%</div>
+              </div>
+              <div className="col">
+                <div className="row no-gutters">Wind</div>
+                <div className="row no-gutters">{list[0].wind.speek}</div>
+                <div className="row no-gutters">km/h</div>
+              </div>
+            </div>
+
+            {/* Third Row */}
+            <div className="row no-gutters">
+              <div className="col">
+                <div className="row no-gutters">{unixToDay(list[0].dt)}</div>
+                <div className="row no-gutters">{list[0].weather.icon}</div>
+                <div className="row no-gutters">{list[0].main.temp_max}</div>
+                <div className="row no-gutters">{list[0].main.temp_min}</div>
+              </div>
+              <div className="col">
+                <div className="row no-gutters">{unixToDay(list[1].dt)}</div>
+                <div className="row no-gutters">{list[1].weather.icon}</div>
+                <div className="row no-gutters">{list[1].main.temp_max}</div>
+                <div className="row no-gutters">{list[1].main.temp_min}</div>
+              </div>
+              <div className="col">
+                <div className="row no-gutters">{unixToDay(list[2].dt)}</div>
+                <div className="row no-gutters">{list[2].weather.icon}</div>
+                <div className="row no-gutters">{list[2].main.temp_max}</div>
+                <div className="row no-gutters">{list[2].main.temp_min}</div>
+              </div>
+              <div className="col">
+                <div className="row no-gutters">{unixToDay(list[3].dt)}</div>
+                <div className="row no-gutters">{list[3].weather.icon}</div>
+                <div className="row no-gutters">{list[3].main.temp_max}</div>
+                <div className="row no-gutters">{list[3].main.temp_min}</div>
+              </div>
+              <div className="col">
+                <div className="row no-gutters">{unixToDay(list[4].dt)}</div>
+                <div className="row no-gutters">{list[4].weather.icon}</div>
+                <div className="row no-gutters">{list[4].main.temp_max}</div>
+                <div className="row no-gutters">{list[4].main.temp_min}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
