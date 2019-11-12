@@ -46,13 +46,13 @@ const Bookmarks = props => {
   };
   return (
     <>
-      <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle">
+      <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle mt-3">
         <div className="col-8 justify-content-center text-center">
-          <button className="btn btn-light" onClick={btnSyncBookmark}>
+          <button className="btn btn-outline-light" onClick={btnSyncBookmark}>
             Yer imlerimi senkronize et
           </button>
           <br />
-          <div style={{ display: BookmarkDisplayer }}>
+          <div className="mt-3" style={{ display: BookmarkDisplayer }}>
             {BookmarkList.map(item => (
               <SingleBookmark item={item} key={item.id} colorTextData={props.colorTextData} />
             ))}

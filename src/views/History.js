@@ -33,15 +33,15 @@ const History = props => {
 
   return (
     <React.Fragment>
-      <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle">
+      <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle mt-3">
         <div className="col-8 justify-content-center text-center">
-          <button className="btn btn-light" onClick={btnSyncHistory}>
+          <button className="btn btn-outline-light" onClick={btnSyncHistory}>
             Tarayıcı geçmişini senkronize et
           </button>
           <br />
-          <div style={{ display: HistoryDisplayer }}>
+          <div className="mt-3" style={{ display: HistoryDisplayer }}>
             {HistoryList.map(item => (
-              <SingleBookmark item={item} key={item.id} colorTextData={props.colorTextData}/>
+              <SingleBookmark item={item} key={item.id} colorTextData={props.colorTextData} />
             ))}
           </div>
         </div>

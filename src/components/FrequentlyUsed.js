@@ -51,22 +51,33 @@ const FrequentlyUsed = props => {
   };
   const btnAddNewWebsiteConfirm = () => {
     console.log(props.LayoutData);
-    let pushContent = { i: "f", x: 8, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true };
+    let pushContent = {
+      i: "f",
+      x: 8,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: true
+    };
     props.setLayoutData(arrBooth => arrBooth.concat(pushContent));
     //props.setLayoutData();
   };
 
   return (
     <>
-      <div className="row no-gutters justify-content-end">
-{/*         <button
+      {/*      <div className="row no-gutters justify-content-end">
+         <button
           className="btn btn-sm btn-primary rounded-0"
           type="button"
           style={{ display: EditMode ? "block" : "none" }}
           onClick={btnAddNew}
         >
           Yeni Ekle
-        </button> */}
+        </button> 
         <button
           className="btn btn-sm btn-success rounded-0 ml-1"
           style={{ display: EditMode ? "block" : "none" }}
@@ -78,6 +89,7 @@ const FrequentlyUsed = props => {
           Düzenle
         </button>
       </div>
+      */}
       <div className="row no-gutters mt-3">
         <GridLayout
           className="layout"
@@ -174,7 +186,10 @@ const FrequentlyUsed = props => {
                 />
               </div>
               <div className="row no-gutters justify-content-center mt-2">
-                <button className="btn btn-success" onClick={btnAddNewWebsiteConfirm}>
+                <button
+                  className="btn btn-success"
+                  onClick={btnAddNewWebsiteConfirm}
+                >
                   Kaydet
                 </button>
               </div>

@@ -33,17 +33,17 @@ const OptionsPopup = props => {
       <div className="container-fluid p-0 optionsPopup animated fadeIn" style={{ display: props.OptionsVisibility }}>
         <div className="row h-100 no-gutters justify-content-end text-center">
           <div
-            className="col-md-10 optionsContainer"
+            className="col-md-10 optionsContainer h-100"
             onClick={() => {
               props.setOptionsVisibility("none");
             }}
           ></div>
-          <div className="col-md-2 text-white optionsContainer">
-            <div className="container-fluid optionsColumnContainer py-5">
-              <div className="row no-gutters justify-content-center">
-                <h4>TabExtension</h4>
+          <div className="col-md-2 text-white optionsContainer h-100">
+            <div className="container-fluid optionsColumnContainer h-100 scroll-y py-5 d-flex flex-column justify-content-evenly">
+              <div className="row no-gutters align-items-center" style={{ justifyContent: "space-evenly" }}>
+                <h5 className="m-0">TabExtension</h5>
                 <button
-                  className="btn btn-sm btn-link text-danger"
+                  className="btn btn-link text-danger p-1"
                   onClick={() => {
                     props.setOptionsVisibility("none");
                   }}
@@ -51,8 +51,9 @@ const OptionsPopup = props => {
                   X
                 </button>
               </div>
-              <hr className="border-white" />
-              <div className="row no-gutters mt-3 justify-content-center">
+              <hr className="border-white mx-3" />
+
+              <div className="row no-gutters justify-content-center">
                 <div className="col-12 px-4">
                   <div className="row no-gutters mt-1 justify-content-center text-center">
                     <h5 className="mb-1">Hava Durumu</h5>
@@ -114,8 +115,9 @@ const OptionsPopup = props => {
                   </div>
                 </div>
               </div>
-              <hr className="border-white" />
-              <div className="row no-gutters mt-3 justify-content-center">
+              <hr className="border-white mx-3" />
+
+              <div className="row no-gutters justify-content-center">
                 <div className="col-12 px-4">
                   <p className="mb-1">Sık Kullanılanlar</p>
                   <div className="row no-gutters">
@@ -130,9 +132,9 @@ const OptionsPopup = props => {
                   </div>
                 </div>
               </div>
+              <hr className="border-white mx-3" />
 
-              <hr className="border-white" />
-              <div className="row no-gutters mt-3 justify-content-center">
+              <div className="row no-gutters justify-content-center">
                 <div className="col-12 px-4">
                   <p className="mb-1">Arkaplan</p>
                   <div className="row no-gutters">
@@ -153,9 +155,9 @@ const OptionsPopup = props => {
                   </div>
                 </div>
               </div>
+              <hr className="border-white mx-3" />
 
-              <hr className="border-white" />
-              <div className="row no-gutters mt-3 justify-content-center">
+              <div className="row no-gutters justify-content-center">
                 <div className="col-12 px-4">
                   <p className="mb-1">Renkler</p>
                   <div className="row no-gutters">
@@ -192,6 +194,12 @@ const OptionsPopup = props => {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+              <hr className="border-white mx-3" />
+              <div className="row no-gutters justify-content-center">
+                <div className="col-12 px-4">
+                  <p className="mb-1">Renkler</p>
                   <div className="row no-gutters">
                     <div className="col-12">
                       <span>İkon Görünümü</span>

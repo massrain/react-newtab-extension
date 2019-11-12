@@ -5,25 +5,24 @@ import Mainpage from "./Mainpage";
 import Bookmarks from "./views/Bookmarks";
 import History from "./views/History";
 
-import { useLocalStorage } from "./components/options/methods";
+import { useLocalStorage, initialLayout } from "./components/options/methods";
 import NavBar from "./components/NavBar";
 import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
+import DigitalClock from "./components/DigitalClock";
+import { wallpaperDataBing } from "./components/options/cachedwallpapers";
 
 const App = props => {
-  const initialLayout = [
-    { i: "b", x: 0, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true },
-    { i: "a", x: 2, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true },
-    { i: "c", x: 4, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true },
-    { i: "d", x: 6, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true },
-    { i: "e", x: 8, y: 0, w: 2, h: 2, minW: 2, maxW: 4, minH: 2, maxH: 4, static: true }
-  ];
-
-  const TextColors = { mains: "white", navButtons: "outline", sides: "#ffffff" };
+  const TextColors = {
+    mains: "white",
+    navButtons: "outline",
+    sides: "#ffffff"
+  };
   const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 1);
   const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "tabext");
   const [OptionsVisibility, setOptionsVisibility] = useState("none");
   const [WeatherVisibility, setWeatherVisibility] = useState("none");
+  const [BookmarksVisibility, setBookmarksVisibility] = useState("block");
   const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "Fethiye");
   const [weatherUnits, setWeatherUnits] = useLocalStorage("weatherunits", "metric");
   const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", initialLayout);
@@ -38,13 +37,14 @@ const App = props => {
   const backgroundStyle = {
     backgroundImage:
       imgBackgroundChoice === "tabext"
-        ? `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
+        ? /*         ? `url("/assets/wallpapers/firewatch${imgBackground}.jpg")` */
+          `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
         : "url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
 
   const btnChangeBackground = () => {
     console.log(backgroundStyle);
-    if (imgBackground > 4) {
+    if (imgBackground > 5) {
       setImgBackground(1);
     } else {
       let newNumber = imgBackground + 1;
@@ -54,6 +54,12 @@ const App = props => {
 
   const changeWeatherVisibility = () => {
     WeatherVisibility === "none" ? setWeatherVisibility("block") : setWeatherVisibility("none");
+  };
+  const changeBookmarksVisibility = () => {
+    console.log("iworked");
+    console.log(BookmarksVisibility);
+    console.log("iworked");
+    BookmarksVisibility === "none" ? setBookmarksVisibility("block") : setBookmarksVisibility("none");
   };
   const changeWeatherCity = newCity => {
     setWeatherCity(newCity);
@@ -103,8 +109,9 @@ const App = props => {
 
   return (
     <>
-      <div className="bg-img BodyContent" style={backgroundStyle}></div>
-      <div className="container-fluid p-0 BodyContent d-flex flex-column">
+      <div className="pageOverlay z-index-98"></div>
+      <div className="bg-img BodyContent z-index-97" style={backgroundStyle}></div>
+      <div className="container-fluid p-0 BodyContent d-flex flex-column z-index-99">
         <div className="row no-gutters h-100">
           <div className="col-1">
             <div className="row no-gutters flex-column h-100 justify-content-between Navbar">
@@ -114,12 +121,14 @@ const App = props => {
                 btnChangeBackground={btnChangeBackground}
                 setOptionsVisibility={setOptionsVisibility}
                 changeWeatherVisibility={changeWeatherVisibility}
+                changeBookmarksVisibility={changeBookmarksVisibility}
+                BookmarksVisibility={BookmarksVisibility}
               />
             </div>
           </div>
-          <div className="col-11">
-            <div className="row no-gutters flex-grow-1 align-items-center">
-              <div className="container py-3 mb-5 ContentContainer">
+          <div className="col-10 d-flex flex-column">
+            <div className="row no-gutters flex-grow-1 align-items-start">
+              <div className="container py-3 mb-5 ContentContainer" style={{ display: BookmarksVisibility }}>
                 <Switch>
                   <Route
                     exact
@@ -160,7 +169,19 @@ const App = props => {
                 </Switch>
               </div>
             </div>
+            <div className="row no-gutters flex-grow-0 align-items-center">
+              <div className="container">
+                <div className="row no-gutters justify-content-center">
+                  <div className="col-12 text-center">
+                    <h3 className={`display-4 text-${colorTextData.mains}`}>
+                      <DigitalClock />
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          <div className="col-1"></div>
         </div>
       </div>
 
@@ -221,17 +242,22 @@ DATA IMPORT
 export filename
 
 -- V2
-SAAT
+??SAAT
 ++NAVBAR SOL
-NAVBAR BG HOVER
-İCONS HOVER BÜYÜME
-FREQUENTS STYLE
-SIK KULLANILANLAR STYLE
-ARAMA STYLE
-OPTIONS STYLE SOL
-BOOKMARKS İCONS
-HİSTORY İCONS
+++NAVBAR BG HOVER
+++İCONS HOVER BÜYÜME
+
+++FREQUENTS STYLE
+++SIK KULLANILANLAR STYLE
+++ARAMA STYLE
+
+++OPTIONS STYLE SOL
+
+++BOOKMARKS İCONS
+++HİSTORY İCONS
+
 FREQUENTS EKLEME
+WALLPAPER API
 */
 
 /* "icons": {

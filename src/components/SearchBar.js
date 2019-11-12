@@ -2,11 +2,13 @@ import React, { useState, useRef } from "react";
 
 const SearchBar = props => {
   const [searchWebsite, setSearchWebsite] = useState("google");
+  const [searchType, setSearchType] = useState("default");
   const ibSearchText = useRef(null);
   const ibSearchImage = useRef(null);
   const ibSearchVideo = useRef(null);
   const ibSearchMap = useRef(null);
   const ibSearchWebsite = useRef(null);
+  const ibSearchBox = useRef(null);
 
   const defaultSearch = () => {
     let linkGoogle = `http://www.google.com/search?q=${ibSearchText.current.value}`;
@@ -52,221 +54,105 @@ const SearchBar = props => {
   const onSearchWebsiteChange = e => {
     setSearchWebsite(e.target.value);
   };
+  const onSearchTypeChange = e => {
+    setSearchType(e.target.value);
+  };
+  const btnSearchClick = () => {
+    if (searchType === "default") {
+      let linkGoogle = `http://www.google.com/search?q=${ibSearchBox.current.value}`;
+      let linkYandex = `https://yandex.com.tr/search/?text=${ibSearchBox.current.value}`;
+      let linkBing = `https://www.bing.com/search?q=${ibSearchBox.current.value}`;
+      if (searchWebsite === "google") window.open(linkGoogle, "_blank");
+      else if (searchWebsite === "yandex") window.open(linkYandex, "_blank");
+      else if (searchWebsite === "bing") window.open(linkBing, "_blank");
+    } else if (searchType === "image") {
+      let linkGoogle = `https://google.com/search?tbm=isch&q=${ibSearchBox.current.value}`;
+      let linkYandex = `https://yandex.com.tr/gorsel/search?&text=${ibSearchBox.current.value}`;
+      let linkBing = `https://www.bing.com/images/search?q=${ibSearchBox.current.value}`;
+      if (searchWebsite === "google") window.open(linkGoogle, "_blank");
+      else if (searchWebsite === "yandex") window.open(linkYandex, "_blank");
+      else if (searchWebsite === "bing") window.open(linkBing, "_blank");
+    } else if (searchType === "video") {
+      let linkGoogle = `https://google.com/search?tbm=vid&q=${ibSearchBox.current.value}`;
+      let linkYandex = `https://yandex.com.tr/video/search?&text=${ibSearchBox.current.value}`;
+      let linkBing = `https://www.bing.com/videos/search?q=${ibSearchBox.current.value}`;
+      if (searchWebsite === "google") window.open(linkGoogle, "_blank");
+      else if (searchWebsite === "yandex") window.open(linkYandex, "_blank");
+      else if (searchWebsite === "bing") window.open(linkBing, "_blank");
+    } else if (searchType === "map") {
+      let linkGoogle = `https://www.google.com/maps?q=${ibSearchBox.current.value}`;
+      let linkYandex = `https://yandex.com.tr/harita/?text=${ibSearchBox.current.value}`;
+      let linkBing = `https://www.bing.com/maps?q=${ibSearchBox.current.value}`;
+      if (searchWebsite === "google") window.open(linkGoogle, "_blank");
+      else if (searchWebsite === "yandex") window.open(linkYandex, "_blank");
+      else if (searchWebsite === "bing") window.open(linkBing, "_blank");
+    } else if (searchType === "website") {
+      let linkGoogle = `https://www.google.com/search?q=site%3Arerererarara.net+${ibSearchBox.current.value}`;
+      let linkYandex = `https://yandex.com.tr/search/?text=url%3Drerererarara.net+${ibSearchBox.current.value}`;
+      let linkBing = `https://www.bing.com/search?q=site%3A"rerererarara.net%22+${ibSearchBox.current.value}`;
+      if (searchWebsite === "google") window.open(linkGoogle, "_blank");
+      else if (searchWebsite === "yandex") window.open(linkYandex, "_blank");
+      else if (searchWebsite === "bing") window.open(linkBing, "_blank");
+    }
+  };
   return (
     <>
-      <nav>
-        <div className="nav nav-tabs">
-          <a
-            className={`nav-item nav-link text-searchbar active text-${props.colorTextData.mains}`}
-            data-toggle="tab"
-            href="#nav-all"
-          >
-            Tümü
-          </a>
-          <a
-            className={`nav-item nav-link text-searchbar text-${props.colorTextData.mains}`}
-            data-toggle="tab"
-            href="#nav-photo"
-          >
-            Görseller
-          </a>
-          <a
-            className={`nav-item nav-link text-searchbar text-${props.colorTextData.mains}`}
-            data-toggle="tab"
-            href="#nav-video"
-          >
-            Videolar
-          </a>
-          <a
-            className={`nav-item nav-link text-searchbar text-${props.colorTextData.mains}`}
-            data-toggle="tab"
-            href="#nav-map"
-          >
-            Harita
-          </a>
-          <a
-            className={`nav-item nav-link text-searchbar text-${props.colorTextData.mains}`}
-            data-toggle="tab"
-            href="#nav-website"
-          >
-            Websitede
-          </a>
-        </div>
-      </nav>
-      <div className="tab-content">
-        {/* ALL */}
-        <div className="tab-pane fade show active" id="nav-all">
-          <div className="form-group mt-3">
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <select
-                  className="form-control rounded-0 bg-transparent text-white"
-                  onChange={onSearchWebsiteChange}
-                  value={searchWebsite}
-                >
-                  <option value="google" className="text-primary">
-                    Google
-                  </option>
-                  <option value="yandex" className="text-primary">
-                    Yandex
-                  </option>
-                  <option value="bing" className="text-primary">
-                    Bing
-                  </option>
-                </select>
-              </div>
-              <input
-                type="text"
-                ref={ibSearchText}
-                className="form-control rounded-0 bg-transparent text-white"
-                placeholder="Aramak istediğiniz.."
-              />
-              <div className="input-group-append">
-                <button className="btn btn-info rounded-0 px-5" onClick={defaultSearch}>
-                  Ara
-                </button>
-              </div>
-            </div>
+      <div className="form-group mt-3">
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <select
+              className="form-control rounded-0 bg-transparent text-white border-0 searchBorder"
+              onChange={onSearchWebsiteChange}
+              value={searchWebsite}
+            >
+              <option value="google" className="text-primary">
+                Google
+              </option>
+              <option value="yandex" className="text-primary">
+                Yandex
+              </option>
+              <option value="bing" className="text-primary">
+                Bing
+              </option>
+            </select>
           </div>
-        </div>
-        {/* PHOTO */}
-        <div className="tab-pane fade" id="nav-photo">
-          <div className="form-group mt-3">
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <select
-                  className="form-control rounded-0 bg-transparent text-white"
-                  onChange={onSearchWebsiteChange}
-                  value={searchWebsite}
-                >
-                  <option value="google" className="text-primary">
-                    Google
-                  </option>
-                  <option value="yandex" className="text-primary">
-                    Yandex
-                  </option>
-                  <option value="bing" className="text-primary">
-                    Bing
-                  </option>
-                </select>
-              </div>
-              <input
-                type="text"
-                ref={ibSearchImage}
-                className="form-control rounded-0 bg-transparent text-white"
-                placeholder="Aramak istediğiniz.."
-              />
-              <div className="input-group-append">
-                <button className="btn btn-warning rounded-0 px-5" onClick={imageSearch}>
-                  Ara
-                </button>
-              </div>
-            </div>
+          <div className="input-group-prepend">
+            <select
+              className="form-control rounded-0 bg-transparent text-white border-0 searchBorder"
+              onChange={onSearchTypeChange}
+              value={searchType}
+            >
+              <option value="default" className="text-primary">
+                Tümü
+              </option>
+              <option value="image" className="text-primary">
+                Görseller
+              </option>
+              <option value="video" className="text-primary">
+                Videolar
+              </option>
+              <option value="map" className="text-primary">
+                Harita
+              </option>
+              <option value="website" className="text-primary">
+                Website
+              </option>
+            </select>
           </div>
-        </div>
-        {/* VIDEO */}
-        <div className="tab-pane fade" id="nav-video">
-          <div className="form-group mt-3">
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <select
-                  className="form-control rounded-0 bg-transparent text-white"
-                  onChange={onSearchWebsiteChange}
-                  value={searchWebsite}
-                >
-                  <option value="google" className="text-primary">
-                    Google
-                  </option>
-                  <option value="yandex" className="text-primary">
-                    Yandex
-                  </option>
-                  <option value="bing" className="text-primary">
-                    Bing
-                  </option>
-                </select>
-              </div>
-              <input
-                type="text"
-                ref={ibSearchVideo}
-                className="form-control rounded-0 bg-transparent text-white"
-                placeholder="Aramak istediğiniz.."
-              />
-              <div className="input-group-append">
-                <button className="btn btn-danger rounded-0 px-5" onClick={videoSearch}>
-                  Ara
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* MAP */}
-        <div className="tab-pane fade" id="nav-map">
-          <div className="form-group mt-3">
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <select
-                  className="form-control rounded-0 bg-transparent text-white"
-                  onChange={onSearchWebsiteChange}
-                  value={searchWebsite}
-                >
-                  <option value="google" className="text-primary">
-                    Google
-                  </option>
-                  <option value="yandex" className="text-primary">
-                    Yandex
-                  </option>
-                  <option value="bing" className="text-primary">
-                    Bing
-                  </option>
-                </select>
-              </div>
-              <input
-                type="text"
-                ref={ibSearchMap}
-                className="form-control rounded-0 bg-transparent text-white"
-                placeholder="Aramak istediğiniz.."
-              />
-              <div className="input-group-append">
-                <button className="btn btn-success rounded-0 px-5" onClick={mapSearch}>
-                  Ara
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* WEBSITE */}
-        <div className="tab-pane fade" id="nav-website">
-          <div className="form-group mt-3">
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <select
-                  className="form-control rounded-0 bg-transparent text-white"
-                  onChange={onSearchWebsiteChange}
-                  value={searchWebsite}
-                >
-                  <option value="google" className="text-primary">
-                    Google
-                  </option>
-                  <option value="yandex" className="text-primary">
-                    Yandex
-                  </option>
-                  <option value="bing" className="text-primary">
-                    Bing
-                  </option>
-                </select>
-              </div>
-              <input
-                type="text"
-                ref={ibSearchWebsite}
-                className="form-control rounded-0 bg-transparent text-white"
-                placeholder="Aramak istediğiniz.."
-              />
-              <div className="input-group-append">
-                <button className="btn btn-primary rounded-0 px-5" onClick={websiteSearch}>
-                  Ara
-                </button>
-              </div>
-            </div>
+
+          <input
+            type="text"
+            ref={ibSearchBox}
+            className="form-control rounded-0 bg-transparent text-white border-0 searchBorder "
+            placeholder="Aramak istediğiniz.."
+          />
+          <div className="input-group-append">
+            <button
+              className="btn btn-outline-light px-5"
+              onClick={btnSearchClick}
+            >
+              Ara
+            </button>
           </div>
         </div>
       </div>

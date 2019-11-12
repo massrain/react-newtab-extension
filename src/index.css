@@ -8,11 +8,20 @@ body {
 }
 
 .Navbar {
-  opacity: 0.8;
-  transition: opacity 1s;
+  opacity: 0.5;
+  transition: background 5s;
+  transition: opacity 0.4s;
 }
 .Navbar:hover {
   opacity: 1;
+  background: linear-gradient(270deg, #ffffff00 0%, #00000050 100%);
+}
+
+.navButtons > .btn-sm {
+  transition: transform 0.2s;
+}
+.navButtons > .btn-sm:hover {
+  transform: scale(1.2);
 }
 
 .optionsPopup {
@@ -33,6 +42,15 @@ body {
   position: absolute;
   z-index: 99;
 }
+.z-index-97 {
+  z-index: 97 !important;
+}
+.z-index-98 {
+  z-index: 98 !important;
+}
+.z-index-99 {
+  z-index: 99 !important;
+}
 
 .ContentContainer {
   background-color: rgb(0, 0, 0); /* Fallback color */
@@ -51,6 +69,10 @@ body {
   cursor: pointer;
 }
 
+.scroll-y {
+  overflow-y:scroll;
+}
+
 .overflowy--scroll {
   overflow-y: scroll;
   max-height: 70vh;
@@ -60,18 +82,21 @@ body {
   align-items: flex-end;
   justify-content: center;
   user-select: none;
-  -moz-user-select: none;
-  user-select: none;
 }
 
-.Freq--SingleObject--boxStyle:hover {
+.frequentlyBox {
+  transition: transform 0.2s;
+}
+.frequentlyBox:hover {
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
 }
 
 .WeatherPopup {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 75px;
+  left: 50%;
+  margin-left: -184px;
   height: fit-content;
   width: fit-content;
   z-index: 5000 !important;
@@ -118,6 +143,10 @@ body {
   color: #c0c0c0;
 }
 
+.searchBorder {
+  border-bottom: 1px solid #dee2e6 !important;
+}
+
 .scrollbarStyle::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -126,7 +155,7 @@ body {
 
 .scrollbarStyle::-webkit-scrollbar {
   width: 12px;
-  background-color: #f5f5f5;
+  background-color: transparent;
 }
 
 .scrollbarStyle::-webkit-scrollbar-thumb {
@@ -137,4 +166,16 @@ body {
 
 .itemCard:hover {
   background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.pageOverlay {
+  background-image: url("/assets/wallpapers/wallpaperoverlay.png");
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 0.5s ease;
+  z-index: 100;
 }

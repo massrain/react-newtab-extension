@@ -88,3 +88,66 @@ export const unixToDay = timestamp => {
   const days = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
   return days[new Date(timestamp * 1000).getDay()];
 };
+
+export const initialLayout = [
+  {
+    i: "b",
+    x: 0,
+    y: 0,
+    w: 2,
+    h: 2,
+    minW: 2,
+    maxW: 4,
+    minH: 2,
+    maxH: 4,
+    static: true
+  },
+  {
+    i: "a",
+    x: 2,
+    y: 0,
+    w: 2,
+    h: 2,
+    minW: 2,
+    maxW: 4,
+    minH: 2,
+    maxH: 4,
+    static: true
+  },
+  {
+    i: "c",
+    x: 4,
+    y: 0,
+    w: 2,
+    h: 2,
+    minW: 2,
+    maxW: 4,
+    minH: 2,
+    maxH: 4,
+    static: true
+  },
+  {
+    i: "d",
+    x: 6,
+    y: 0,
+    w: 2,
+    h: 2,
+    minW: 2,
+    maxW: 4,
+    minH: 2,
+    maxH: 4,
+    static: true
+  },
+  {
+    i: "e",
+    x: 8,
+    y: 0,
+    w: 2,
+    h: 2,
+    minW: 2,
+    maxW: 4,
+    minH: 2,
+    maxH: 4,
+    static: true
+  }
+];
