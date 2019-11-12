@@ -13,6 +13,14 @@ const Mainpage = props => {
     });
   };
 
+  const digitalTime = () => {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    setTimeout(digitalTime, 60000);
+    return h + ":" + m;
+  };
+
   return (
     <>
       <div className="row no-gutters justify-content-center">
@@ -40,6 +48,11 @@ const Mainpage = props => {
             setLayoutData={props.setLayoutData}
             colorTextData={props.colorTextData}
           />
+        </div>
+      </div>
+      <div className="row no-gutters justify-content-center mt-3">
+        <div className="col-12 text-center">
+          <h3 className={`display-4 text-${props.colorTextData.mains}`}>{digitalTime()}</h3>
         </div>
       </div>
     </>

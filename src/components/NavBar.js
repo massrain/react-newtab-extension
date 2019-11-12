@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 const NavBar = props => {
   return (
     <>
-      <div className="col-md-4">
+      <div className="container">
         <button
           className={`btn btn-sm btn-outline-${props.colorTextData.navButtons}`}
           onClick={props.changeWeatherVisibility}
@@ -16,7 +16,7 @@ const NavBar = props => {
           )}
         </button>
         <button
-          className={`ml-2 btn btn-sm btn-outline-${props.colorTextData.navButtons}`}
+          className={`btn btn-sm btn-outline-${props.colorTextData.navButtons}`}
           onClick={props.btnChangeBackground}
         >
           {props.iconsVisibility === "true" ? (
@@ -26,22 +26,22 @@ const NavBar = props => {
           )}
         </button>
       </div>
-      <div className="col-md-8 justify-content-end text-right">
-        <Link className={`btn btn-sm btn-outline-${props.colorTextData.navButtons} mr-2`} to="/">
+      <div className="container">
+        <Link className={`btn btn-sm btn-outline-${props.colorTextData.navButtons}`} to="/">
           {props.iconsVisibility === "true" ? (
             <img src={"/assets/site/home.png"} className="img-fluid" alt="" width={24} />
           ) : (
             "Anasayfa"
           )}
         </Link>
-        <Link className={`btn btn-sm btn-outline-${props.colorTextData.navButtons} mr-2`} to="/bookmarks">
+        <Link className={`btn btn-sm btn-outline-${props.colorTextData.navButtons}`} to="/bookmarks">
           {props.iconsVisibility === "true" ? (
             <img src={"/assets/site/bookmark.png"} className="img-fluid" alt="" width={24} />
           ) : (
             "Yer imleri"
           )}
         </Link>
-        <Link className={`btn btn-sm btn-outline-${props.colorTextData.navButtons} mr-2`} to="/history">
+        <Link className={`btn btn-sm btn-outline-${props.colorTextData.navButtons}`} to="/history">
           {props.iconsVisibility === "true" ? (
             <img src={"/assets/site/time.png"} className="img-fluid" alt="" width={24} />
           ) : (

@@ -105,55 +105,61 @@ const App = props => {
     <>
       <div className="bg-img BodyContent" style={backgroundStyle}></div>
       <div className="container-fluid p-0 BodyContent d-flex flex-column">
-        <div className="row no-gutters">
-          <NavBar
-            colorTextData={colorTextData}
-            iconsVisibility={iconsVisibility}
-            btnChangeBackground={btnChangeBackground}
-            setOptionsVisibility={setOptionsVisibility}
-            changeWeatherVisibility={changeWeatherVisibility}
-          />
-        </div>
-        <div className="row no-gutters flex-grow-1 align-items-center">
-          <div className="container py-3 mb-5 ContentContainer">
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={props => (
-                  <Mainpage
-                    {...props}
-                    LayoutData={LayoutData}
-                    setLayoutData={setLayoutData}
-                    colorTextData={colorTextData}
-                  />
-                )}
+        <div className="row no-gutters h-100">
+          <div className="col-1">
+            <div className="row no-gutters flex-column h-100 justify-content-between Navbar">
+              <NavBar
+                colorTextData={colorTextData}
+                iconsVisibility={iconsVisibility}
+                btnChangeBackground={btnChangeBackground}
+                setOptionsVisibility={setOptionsVisibility}
+                changeWeatherVisibility={changeWeatherVisibility}
               />
-              <Route
-                exact
-                path="/bookmarks"
-                render={props => (
-                  <Bookmarks
-                    {...props}
-                    LayoutData={LayoutData}
-                    setLayoutData={setLayoutData}
-                    colorTextData={colorTextData}
+            </div>
+          </div>
+          <div className="col-11">
+            <div className="row no-gutters flex-grow-1 align-items-center">
+              <div className="container py-3 mb-5 ContentContainer">
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    render={props => (
+                      <Mainpage
+                        {...props}
+                        LayoutData={LayoutData}
+                        setLayoutData={setLayoutData}
+                        colorTextData={colorTextData}
+                      />
+                    )}
                   />
-                )}
-              />
-              <Route
-                exact
-                path="/history"
-                render={props => (
-                  <History
-                    {...props}
-                    LayoutData={LayoutData}
-                    setLayoutData={setLayoutData}
-                    colorTextData={colorTextData}
+                  <Route
+                    exact
+                    path="/bookmarks"
+                    render={props => (
+                      <Bookmarks
+                        {...props}
+                        LayoutData={LayoutData}
+                        setLayoutData={setLayoutData}
+                        colorTextData={colorTextData}
+                      />
+                    )}
                   />
-                )}
-              />
-            </Switch>
+                  <Route
+                    exact
+                    path="/history"
+                    render={props => (
+                      <History
+                        {...props}
+                        LayoutData={LayoutData}
+                        setLayoutData={setLayoutData}
+                        colorTextData={colorTextData}
+                      />
+                    )}
+                  />
+                </Switch>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -213,8 +219,20 @@ HAVADURUMU VISIBILITY PERSISTENT STATE
 BOOKMARK + HISTORY WEBSITE ICONS
 DATA IMPORT
 export filename
-*/
 
+-- V2
+SAAT
+++NAVBAR SOL
+NAVBAR BG HOVER
+İCONS HOVER BÜYÜME
+FREQUENTS STYLE
+SIK KULLANILANLAR STYLE
+ARAMA STYLE
+OPTIONS STYLE SOL
+BOOKMARKS İCONS
+HİSTORY İCONS
+FREQUENTS EKLEME
+*/
 
 /* "icons": {
   "16": "icons/16.png",
