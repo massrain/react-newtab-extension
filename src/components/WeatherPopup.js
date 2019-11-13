@@ -16,14 +16,14 @@ const WeatherPopup = props => {
       "&lang=tr" +
       apiKey;
     //setWeatherData(responsekek);
-    /*     axios
+    axios
       .get(endpoint)
       .then(res => {
         setWeatherData(res.data);
       })
       .catch(err => {
         console.log(err);
-      }); */
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

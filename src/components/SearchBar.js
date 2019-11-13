@@ -55,40 +55,40 @@ const SearchBar = props => {
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <select
-              className="form-control rounded-0 bg-transparent text-white border-0 searchBorder"
+              className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder`}
               onChange={onSearchWebsiteChange}
               value={searchWebsite}
             >
-              <option value="google" className="text-primary">
+              <option value="google" className={`text-${props.colorTextData.mains}`}>
                 Google
               </option>
-              <option value="yandex" className="text-primary">
+              <option value="yandex" className={`text-${props.colorTextData.mains}`}>
                 Yandex
               </option>
-              <option value="bing" className="text-primary">
+              <option value="bing" className={`text-${props.colorTextData.mains}`}>
                 Bing
               </option>
             </select>
           </div>
           <div className="input-group-prepend">
             <select
-              className="form-control rounded-0 bg-transparent text-white border-0 searchBorder"
+              className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder`}
               onChange={onSearchTypeChange}
               value={searchType}
             >
-              <option value="default" className="text-primary">
+              <option value="default" className={`text-${props.colorTextData.mains}`}>
                 Tümü
               </option>
-              <option value="image" className="text-primary">
+              <option value="image" className={`text-${props.colorTextData.mains}`}>
                 Görseller
               </option>
-              <option value="video" className="text-primary">
+              <option value="video" className={`text-${props.colorTextData.mains}`}>
                 Videolar
               </option>
-              <option value="map" className="text-primary">
+              <option value="map" className={`text-${props.colorTextData.mains}`}>
                 Harita
               </option>
-              <option value="website" className="text-primary">
+              <option value="website" className={`text-${props.colorTextData.mains}`}>
                 Website
               </option>
             </select>
@@ -97,11 +97,11 @@ const SearchBar = props => {
           <input
             type="text"
             ref={ibSearchBox}
-            className="form-control rounded-0 bg-transparent text-white border-0 searchBorder "
+            className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder border-${props.colorTextData.mains}`}
             placeholder="Aramak istediğiniz.."
           />
           <div className="input-group-append">
-            <button className="btn btn-outline-light px-5" onClick={btnSearchClick}>
+            <button className={`btn btn-outline-${props.colorTextData.mains} px-5`} onClick={btnSearchClick}>
               Ara
             </button>
           </div>

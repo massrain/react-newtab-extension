@@ -10,25 +10,25 @@ import NavBar from "./components/NavBar";
 import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
 import DigitalClock from "./components/DigitalClock";
-import { wallpaperDataBing } from "./components/options/cachedwallpapers";
+//import { wallpaperDataBing } from "./components/options/cachedwallpapers";
 
 const App = props => {
   const TextColors = {
-    mains: "white",
-    navButtons: "outline",
+    mains: "light",
+    navButtons: "light",
     sides: "#ffffff"
   };
-  const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 1);
+  const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 5);
   const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "tabext");
-  const [OptionsVisibility, setOptionsVisibility] = useState("none");
-  const [WeatherVisibility, setWeatherVisibility] = useState("none");
-  const [BookmarksVisibility, setBookmarksVisibility] = useState("block");
-  const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "Fethiye");
+  const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "Ankara");
   const [weatherUnits, setWeatherUnits] = useLocalStorage("weatherunits", "metric");
   const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", initialLayout);
   const [LayoutDetails, setLayoutDetails] = useLocalStorage("freqlayoutdetails", initialLayoutDetails);
   const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", TextColors);
   const [iconsVisibility, setIconsVisibility] = useLocalStorage("iconsvisibility", "true");
+  const [OptionsVisibility, setOptionsVisibility] = useState("none");
+  const [WeatherVisibility, setWeatherVisibility] = useState("none");
+  const [BookmarksVisibility, setBookmarksVisibility] = useState("block");
 
   useEffect(() => {
     props.history.push("/");
@@ -38,28 +38,24 @@ const App = props => {
   const backgroundStyle = {
     backgroundImage:
       imgBackgroundChoice === "tabext"
-        ? /*         ? `url("/assets/wallpapers/firewatch${imgBackground}.jpg")` */
-          `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
-        : "url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
+        ? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
+        : // `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
+          "url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
 
   const btnChangeBackground = () => {
     console.log(backgroundStyle);
-    if (imgBackground > 5) {
+    if (imgBackground > 11) {
       setImgBackground(1);
     } else {
       let newNumber = imgBackground + 1;
       setImgBackground(newNumber);
     }
   };
-
   const changeWeatherVisibility = () => {
     WeatherVisibility === "none" ? setWeatherVisibility("block") : setWeatherVisibility("none");
   };
   const changeBookmarksVisibility = () => {
-    console.log("iworked");
-    console.log(BookmarksVisibility);
-    console.log("iworked");
     BookmarksVisibility === "none" ? setBookmarksVisibility("block") : setBookmarksVisibility("none");
   };
   const changeWeatherCity = newCity => {
@@ -70,6 +66,11 @@ const App = props => {
   };
   const changeImgBackgroundChoice = e => {
     setImgBackgroundChoice(e.target.value);
+  };
+  const changeLayoutDetails = data => {
+    let originalArray = LayoutDetails;
+    let resultArray = originalArray.concat(data);
+    setLayoutDetails(resultArray);
   };
   const changeIconsVisibility = e => {
     iconsVisibility === "true" ? setIconsVisibility("false") : setIconsVisibility("true");
@@ -108,6 +109,14 @@ const App = props => {
   };
   //test
 
+  console.log(imgBackground);
+  console.log(imgBackgroundChoice);
+  console.log(weatherCity);
+  console.log(weatherUnits);
+  console.log(LayoutData);
+  console.log(LayoutDetails);
+  console.log(colorTextData);
+  console.log(iconsVisibility);
   return (
     <>
       <div className="pageOverlay z-index-98"></div>
@@ -140,6 +149,8 @@ const App = props => {
                         LayoutData={LayoutData}
                         setLayoutData={setLayoutData}
                         colorTextData={colorTextData}
+                        LayoutDetails={LayoutDetails}
+                        changeLayoutDetails={changeLayoutDetails}
                       />
                     )}
                   />
@@ -239,7 +250,8 @@ export filename
 ++BOOKMARKS İCONS
 ++HİSTORY İCONS
 
-FREQUENTS EKLEME
+++FREQUENTS EKLEME
+++BOOKMARK SİLME
 WALLPAPER API
 */
 

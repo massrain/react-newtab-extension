@@ -35,6 +35,8 @@ const Mainpage = props => {
             LayoutData={props.LayoutData}
             setLayoutData={props.setLayoutData}
             colorTextData={props.colorTextData}
+            LayoutDetails={props.LayoutDetails}
+            changeLayoutDetails={props.changeLayoutDetails}
           />
         </div>
       </div>
