@@ -91,8 +91,8 @@ export const unixToDay = timestamp => {
 
 export const initialLayout = [
   {
-    i: "b",
-    x: 0,
+    i: "a",
+    x: 2,
     y: 0,
     w: 2,
     h: 2,
@@ -103,8 +103,8 @@ export const initialLayout = [
     static: true
   },
   {
-    i: "a",
-    x: 2,
+    i: "b",
+    x: 0,
     y: 0,
     w: 2,
     h: 2,
@@ -149,5 +149,33 @@ export const initialLayout = [
     minH: 2,
     maxH: 4,
     static: true
+  }
+];
+
+export const initialLayoutDetails = [
+  {
+    name: "Google",
+    link: "https://google.com.tr",
+    icon: "/assets/site/google.png"
+  },
+  {
+    name: "Galatasaray Sözlük",
+    link: "https://rerererarara.net",
+    icon: "/assets/site/gssozluk.jpg"
+  },
+  {
+    name: "Gmail",
+    link: "https://gmail.com",
+    icon: "/assets/site/gmail.png"
+  },
+  {
+    name: "Ekşi Sözlük",
+    link: "https://eksisozluk.com",
+    icon: "/assets/site/eksisozluk.png"
+  },
+  {
+    name: "Youtube",
+    link: "https://youtube.com",
+    icon: "/assets/site/youtube.png"
   }
 ];

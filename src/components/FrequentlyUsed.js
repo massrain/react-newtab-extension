@@ -63,21 +63,23 @@ const FrequentlyUsed = props => {
       maxH: 4,
       static: true
     };
-    props.setLayoutData(arrBooth => arrBooth.concat(pushContent));
+    let originalArray = props.LayoutData;
+    let resultArray = originalArray.concat(pushContent);
+    //props.setLayoutData(resultArray);
     //props.setLayoutData();
   };
 
   return (
     <>
-      {/*      <div className="row no-gutters justify-content-end">
-         <button
+      <div className="row no-gutters justify-content-end">
+        <button
           className="btn btn-sm btn-primary rounded-0"
           type="button"
           style={{ display: EditMode ? "block" : "none" }}
           onClick={btnAddNew}
         >
           Yeni Ekle
-        </button> 
+        </button>
         <button
           className="btn btn-sm btn-success rounded-0 ml-1"
           style={{ display: EditMode ? "block" : "none" }}
@@ -89,8 +91,9 @@ const FrequentlyUsed = props => {
           Düzenle
         </button>
       </div>
-      */}
+
       <div className="row no-gutters mt-3">
+        {console.log(props.LayoutData[3].datag)}
         <GridLayout
           className="layout"
           layout={props.LayoutData}
@@ -100,7 +103,7 @@ const FrequentlyUsed = props => {
           width={1200}
           key={GridComponentKey}
         >
-          <div key="a">
+          {/*           <div key="a">
             <SingleObject
               redirectLink={redirectLink}
               contentName={"Google"}
@@ -144,9 +147,25 @@ const FrequentlyUsed = props => {
               contentLink={"https://gmail.com"}
               contentIcon={"/assets/site/gmail.png"}
             />
-          </div>
+          </div> */}
+
+          {props.LayoutData.map((item, index) => {
+            return (
+              <div key={item.i}>
+                <SingleObject
+                  redirectLink={redirectLink}
+                  contentName={"Gmail"}
+                  colorTextData={props.colorTextData}
+                  contentLink={"https://gmail.com"}
+                  contentIcon={"/assets/site/gmail.png"}
+                />
+              </div>
+            );
+          })}
         </GridLayout>
       </div>
+    
+      {/* props.LayoutData[props.LayoutData.length - 1].i === "d" */}
       <Modal
         isOpen={showModal}
         ariaHideApp={false}
@@ -186,10 +205,7 @@ const FrequentlyUsed = props => {
                 />
               </div>
               <div className="row no-gutters justify-content-center mt-2">
-                <button
-                  className="btn btn-success"
-                  onClick={btnAddNewWebsiteConfirm}
-                >
+                <button className="btn btn-success" onClick={btnAddNewWebsiteConfirm}>
                   Kaydet
                 </button>
               </div>

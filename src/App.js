@@ -5,7 +5,7 @@ import Mainpage from "./Mainpage";
 import Bookmarks from "./views/Bookmarks";
 import History from "./views/History";
 
-import { useLocalStorage, initialLayout } from "./components/options/methods";
+import { useLocalStorage, initialLayout, initialLayoutDetails } from "./components/options/methods";
 import NavBar from "./components/NavBar";
 import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
@@ -26,6 +26,7 @@ const App = props => {
   const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "Fethiye");
   const [weatherUnits, setWeatherUnits] = useLocalStorage("weatherunits", "metric");
   const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", initialLayout);
+  const [LayoutDetails, setLayoutDetails] = useLocalStorage("freqlayoutdetails", initialLayoutDetails);
   const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", TextColors);
   const [iconsVisibility, setIconsVisibility] = useLocalStorage("iconsvisibility", "true");
 
@@ -145,27 +146,9 @@ const App = props => {
                   <Route
                     exact
                     path="/bookmarks"
-                    render={props => (
-                      <Bookmarks
-                        {...props}
-                        LayoutData={LayoutData}
-                        setLayoutData={setLayoutData}
-                        colorTextData={colorTextData}
-                      />
-                    )}
+                    render={props => <Bookmarks {...props} colorTextData={colorTextData} />}
                   />
-                  <Route
-                    exact
-                    path="/history"
-                    render={props => (
-                      <History
-                        {...props}
-                        LayoutData={LayoutData}
-                        setLayoutData={setLayoutData}
-                        colorTextData={colorTextData}
-                      />
-                    )}
-                  />
+                  <Route exact path="/history" render={props => <History {...props} colorTextData={colorTextData} />} />
                 </Switch>
               </div>
             </div>

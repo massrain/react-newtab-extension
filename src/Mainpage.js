@@ -3,16 +3,15 @@ import React from "react";
 
 import SearchBar from "./components/SearchBar";
 import FrequentlyUsed from "./components/FrequentlyUsed";
-import DigitalClock from "./components/DigitalClock";
 
 const Mainpage = props => {
-  const goDefaultTab = () => {
+  /*   const goDefaultTab = () => {
     chrome.tabs.getCurrent(tab => {
       chrome.tabs.update(tab.id, {
         url: "chrome-search://local-ntp/local-ntp.html"
       });
     });
-  };
+  }; */
 
   return (
     <>
