@@ -7,7 +7,7 @@ const WeatherPopup = props => {
   const [WeatherData, setWeatherData] = useState(responseWeatherList);
 
   useEffect(() => {
-    let apiKey = "&APPID=de2bc1df4881bd9386c18266a8b5a378";
+    let apiKey = process.env.REACT_APP_API_KEY;
     let endpoint =
       "http://api.openweathermap.org/data/2.5/forecast?q=" +
       props.weatherCity +
