@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const DigitalClock = () => {
+const DigitalClock = props => {
   const [digitalClock, setDigitalClock] = useState(new Date());
 
   useEffect(() => {
@@ -12,7 +12,14 @@ const DigitalClock = () => {
     };
   }, []);
   return (
-    <>{digitalClock.toLocaleTimeString("tr-TR", { timeStyle: "short" })}</>
+    <span
+      className="cursor--pointer"
+      onClick={() => {
+        props.dateTimeFormat === "en-US" ? props.setDateTimeFormat("tr-TR") : props.setDateTimeFormat("en-US");
+      }}
+    >
+      {digitalClock.toLocaleTimeString(props.dateTimeFormat, { timeStyle: "short" })}
+    </span>
   );
 };
 

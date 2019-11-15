@@ -21,6 +21,17 @@ const App = props => {
     navButtons: "light",
     sides: "#ffffff"
   };
+  const initialNavVisibilities = {
+    Ekranigizle: true,
+    Yardim: true,
+    Yorumla: true,
+    Havadurumu: false,
+    Arkaplan: true,
+    Anasayfa: true,
+    Yerimleri: true,
+    Gecmis: true,
+    Notlar: true
+  };
   const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 5);
   const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "tabext");
   const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "Ankara");
@@ -35,6 +46,8 @@ const App = props => {
   const [WeatherVisibility, setWeatherVisibility] = useLocalStorage("weathervisibility", "none");
   const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "block");
   const [ChooseBgVisibility, setChooseBgVisibility] = useLocalStorage("choosebgvisibility", "block");
+  const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
+  const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
 
   useEffect(() => {
     props.history.push("/");
@@ -70,7 +83,6 @@ const App = props => {
       console.log("location not available");
     }
   };
-
   const backgroundStyle = {
     backgroundImage:
       imgBackgroundChoice === "tabext"
@@ -79,7 +91,6 @@ const App = props => {
         : // `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
           "url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
-
   const btnChangeBackground = () => {
     console.log(backgroundStyle);
     if (imgBackground > 6) {
@@ -109,7 +120,6 @@ const App = props => {
       setImgBackground(newNumber);
     }
   };
-
   const changeImgBackgroundChoice = e => {
     setImgBackgroundChoice(e.target.value);
   };
@@ -156,12 +166,21 @@ const App = props => {
   const changeNotesVisibility = () => {
     NotesVisibility === "none" ? setNotesVisibility("block") : setNotesVisibility("none");
   };
-
   const btnChooseBackground = () => {
     ChooseBgVisibility === "none" ? setChooseBgVisibility("block") : setChooseBgVisibility("none");
   };
+  const selectImageBackground = value => {
+    setImgBackground(value);
+  };
+  const btnBgImageClick = () => {
+    alert("asdasd");
+    setOptionsVisibility("none");
+    changeWeatherVisibility();
+    btnChooseBackground();
+    changeBookmarksVisibility();
+    changeNotesVisibility();
+  };
   //test
-
   /*   console.log(imgBackground);
   console.log(imgBackgroundChoice);
   console.log(weatherCity);
@@ -173,7 +192,7 @@ const App = props => {
   return (
     <>
       <div className="pageOverlay z-index-98"></div>
-      <div className="bg-img BodyContent z-index-97" style={backgroundStyle}></div>
+      <div className="bg-img BodyContent z-index-97" style={backgroundStyle} onClick={btnBgImageClick}></div>
       <div className="container-fluid p-0 BodyContent d-flex flex-column z-index-99">
         <div className="row no-gutters h-100">
           <div className="col-1">
@@ -189,6 +208,7 @@ const App = props => {
                 changeNotesVisibility={changeNotesVisibility}
                 btnRefreshBackground={btnRefreshBackground}
                 btnChooseBackground={btnChooseBackground}
+                navIconVisibilities={navIconVisibilities}
               />
             </div>
           </div>
@@ -224,7 +244,7 @@ const App = props => {
                 <div className="row no-gutters justify-content-center">
                   <div className="col-12 text-center">
                     <h3 className={`display-4 text-${colorTextData.mains}`}>
-                      <DigitalClock />
+                      <DigitalClock dateTimeFormat={dateTimeFormat} setDateTimeFormat={setDateTimeFormat} />
                     </h3>
                   </div>
                 </div>
@@ -256,6 +276,10 @@ const App = props => {
         colorTextData={colorTextData}
         iconsVisibility={iconsVisibility}
         changeIconsVisibility={changeIconsVisibility}
+        navIconVisibilities={navIconVisibilities}
+        setNavIconVisibilities={setNavIconVisibilities}
+        dateTimeFormat={dateTimeFormat}
+        setDateTimeFormat={setDateTimeFormat}
       />
       <NotesPopup NotesVisibility={NotesVisibility} colorTextData={colorTextData} Notes={Notes} setNotes={setNotes} />
       <ChooseBgPopup
@@ -263,6 +287,7 @@ const App = props => {
         imgBackground={imgBackground}
         ChooseBgVisibility={ChooseBgVisibility}
         setChooseBgVisibility={setChooseBgVisibility}
+        selectImageBackground={selectImageBackground}
       />
     </>
   );
@@ -329,14 +354,13 @@ freq add freq mainstream options
 ++weather autolocation
 ++quick notes
 yer imlerini senkronize et
-wallpapers random + selective
-options menu add buttons single visiblity + date-time format
+++ wallpapers random + selective
+++ options menu add buttons single visiblity + date-time format
 ++ help modal
 ++ sidebar uzantıya yorum help btn
-+click closes modals
-notes popup css
-tekil todo gösterimi
-image click close others
+++ click closes modals,image click close others
+++ notes popup css
+++ tekil todo gösterimi
 */
 
 /* "icons": {

@@ -21,6 +21,7 @@ const NavBar = props => {
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={props.changeBookmarksVisibility}
+              style={{ display: props.navIconVisibilities.Ekranigizle ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/focus.png"} className="img-fluid" alt="" width={24} />
@@ -31,6 +32,7 @@ const NavBar = props => {
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={btnHelpClick}
+              style={{ display: props.navIconVisibilities.Yardim ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/help.png"} className="img-fluid" alt="" width={24} />
@@ -41,6 +43,7 @@ const NavBar = props => {
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={props.changeBookmarksVisibility}
+              style={{ display: props.navIconVisibilities.Yorumla ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/comment.png"} className="img-fluid" alt="" width={24} />
@@ -51,6 +54,7 @@ const NavBar = props => {
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={props.changeWeatherVisibility}
+              style={{ display: props.navIconVisibilities.Havadurumu ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/partly.png"} className="img-fluid" alt="" width={24} />
@@ -61,6 +65,7 @@ const NavBar = props => {
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={props.btnRefreshBackground}
+              style={{ display: props.navIconVisibilities.Arkaplan ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/refresh.png"} className="img-fluid" alt="" width={24} />
@@ -78,6 +83,7 @@ const NavBar = props => {
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               to="/"
               onClick={props.BookmarksVisibility === "none" ? props.changeBookmarksVisibility : null}
+              style={{ display: props.navIconVisibilities.Anasayfa ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/home.png"} className="img-fluid" alt="" width={24} />
@@ -88,6 +94,7 @@ const NavBar = props => {
             <Link
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               to="/bookmarks"
+              style={{ display: props.navIconVisibilities.Yerimleri ? "block" : "none" }}
               onClick={props.BookmarksVisibility === "none" ? props.changeBookmarksVisibility : null}
             >
               {props.iconsVisibility === "true" ? (
@@ -96,7 +103,11 @@ const NavBar = props => {
                 "Yer imleri"
               )}
             </Link>
-            <Link className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`} to="/history">
+            <Link
+              className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
+              style={{ display: props.navIconVisibilities.Gecmis ? "block" : "none" }}
+              to="/history"
+            >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/time.png"} className="img-fluid" alt="" width={24} />
               ) : (
@@ -106,6 +117,7 @@ const NavBar = props => {
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={props.changeNotesVisibility}
+              style={{ display: props.navIconVisibilities.Notlar ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/note.png"} className="img-fluid" alt="" width={24} />
@@ -116,6 +128,7 @@ const NavBar = props => {
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={props.btnChooseBackground}
+              style={{ display: props.navIconVisibilities.Arkaplan ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/photo.png"} className="img-fluid" alt="" width={24} />
