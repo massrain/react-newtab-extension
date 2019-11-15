@@ -23,11 +23,11 @@ const NotesPopup = props => {
   return (
     <>
       <div
-        className="container-fluid p-5 WeatherPopup text-white text-center mw--50"
+        className="container-fluid px-3 py-2 NotesPopup text-white text-center mw--50 notesOverflow scrollbarStyle2"
         style={{ display: props.NotesVisibility }}
       >
-        <div className="row no-gutters justify-content-center overflowy--scroll scrollbarStyle">
-          <div className="col-12 justify-content-center text-center">
+        <div className="row no-gutters px-4 justify-content-center ">
+          <div className="col-12 p-1 justify-content-center text-center">
             <div className="row no-gutters">
               <input
                 type="text"

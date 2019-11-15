@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { Route, Switch, withRouter } from "react-router-dom";
 import axios from "axios";
@@ -25,7 +25,7 @@ const App = props => {
     Ekranigizle: true,
     Yardim: true,
     Yorumla: true,
-    Havadurumu: false,
+    Havadurumu: true,
     Arkaplan: true,
     Anasayfa: true,
     Yerimleri: true,
@@ -45,7 +45,7 @@ const App = props => {
   const [OptionsVisibility, setOptionsVisibility] = useLocalStorage("optionsvisibility", "none");
   const [WeatherVisibility, setWeatherVisibility] = useLocalStorage("weathervisibility", "none");
   const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "block");
-  const [ChooseBgVisibility, setChooseBgVisibility] = useLocalStorage("choosebgvisibility", "block");
+  const [ChooseBgVisibility, setChooseBgVisibility] = useLocalStorage("choosebgvisibility", "none");
   const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
   const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
 

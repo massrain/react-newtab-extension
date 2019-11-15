@@ -1,18 +1,41 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
-import Modal from "react-modal";
+import { HelpModal } from "./modals/HelpModal";
+import { BookmarksModal } from "./modals/BookmarksModal";
+import { HistoryModal } from "./modals/HistoryModal";
 
 const NavBar = props => {
   const [showHelpModal, setShowHelpModal] = useState(false);
+  const [showBookmarkModal, setShowBookmarkModal] = useState(false);
+  const [showHistoryModal, setShowHistoryModal] = useState(false);
   const btnHelpClick = () => {
-    showHelpModal ? handleCloseModal() : handleOpenModal();
+    showHelpModal ? handleCloseHelpModal() : handleOpenHelpModal();
   };
-  const handleOpenModal = () => {
+  const btnBookmarkClick = () => {
+    showBookmarkModal ? handleCloseBookmarkModal() : handleOpenBookmarkModal();
+  };
+  const btnHistoryClick = () => {
+    showHistoryModal ? handleCloseHistoryModal() : handleOpenHistoryModal();
+  };
+  const handleOpenHelpModal = () => {
     setShowHelpModal(true);
   };
-  const handleCloseModal = () => {
+  const handleCloseHelpModal = () => {
     setShowHelpModal(false);
   };
+  const handleOpenBookmarkModal = () => {
+    setShowBookmarkModal(true);
+  };
+  const handleCloseBookmarkModal = () => {
+    setShowBookmarkModal(false);
+  };
+  const handleOpenHistoryModal = () => {
+    setShowHistoryModal(true);
+  };
+  const handleCloseHistoryModal = () => {
+    setShowHistoryModal(false);
+  };
+
   return (
     <>
       <div className="container">
@@ -91,29 +114,28 @@ const NavBar = props => {
                 "Anasayfa"
               )}
             </Link>
-            <Link
+            <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
-              to="/bookmarks"
+              onClick={btnBookmarkClick}
               style={{ display: props.navIconVisibilities.Yerimleri ? "block" : "none" }}
-              onClick={props.BookmarksVisibility === "none" ? props.changeBookmarksVisibility : null}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/bookmark.png"} className="img-fluid" alt="" width={24} />
               ) : (
                 "Yer imleri"
               )}
-            </Link>
-            <Link
+            </button>
+            <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
+              onClick={btnHistoryClick}
               style={{ display: props.navIconVisibilities.Gecmis ? "block" : "none" }}
-              to="/history"
             >
               {props.iconsVisibility === "true" ? (
-                <img src={"/assets/site/time.png"} className="img-fluid" alt="" width={24} />
+                <img src={"/assets/site/Time.png"} className="img-fluid" alt="" width={24} />
               ) : (
                 "Geçmiş"
               )}
-            </Link>
+            </button>
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={props.changeNotesVisibility}
@@ -152,56 +174,17 @@ const NavBar = props => {
         </div>
       </div>
 
-      <Modal
-        isOpen={showHelpModal}
-        onRequestClose={handleCloseModal}
-        shouldCloseOnOverlayClick={true}
-        shouldCloseOnEsc={true}
-        contentLabel="Help"
-        style={{
-          overlay: {
-            backgroundColor: "rgba(30,30,30,0.75)",
-            zIndex: "99999"
-          },
-          content: {
-            color: "lightsteelblue",
-            backgroundColor: "rgba(30,30,30,0.75)",
-            top: "20vh",
-            left: "20vw",
-            right: "20vw",
-            bottom: "20vh"
-          }
-        }}
-      >
-        <div className="container">
-          <div className="row no-gutters justify-content-center">
-            <div className="col-10 justify-content-center">
-              <div className="row no-gutters justify-content-center mt-2">
-                <h5>Yardım </h5>
-              </div>
-              <div className="row no-gutters justify-content-center mt-3">
-                <div className="col-10">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sed animi molestias quibusdam
-                    hic placeat iure cupiditate, quas labore dolorum ipsum autem itaque eos architecto modi ea! In,
-                    aliquam voluptatum.
-                    <hr />
-                    <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sed animi molestias quibusdam
-                    hic placeat iure cupiditate, quas labore dolorum ipsum autem itaque eos architecto modi ea! In,
-                    aliquam voluptatum.
-                  </p>
-                </div>
-              </div>
-              <div className="row no-gutters justify-content-center mt-2">
-                <button className="btn btn-primary" onClick={handleCloseModal}>
-                  Kapat
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
+      <HelpModal showHelpModal={showHelpModal} handleCloseModal={handleCloseHelpModal} />
+      <BookmarksModal
+        showBookmarkModal={showBookmarkModal}
+        handleCloseModal={handleCloseBookmarkModal}
+        colorTextData={props.colorTextData}
+      />
+      <HistoryModal
+        showHistoryModal={showHistoryModal}
+        handleCloseModal={handleCloseHistoryModal}
+        colorTextData={props.colorTextData}
+      />
     </>
   );
 };
