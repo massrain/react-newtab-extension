@@ -74,7 +74,7 @@ const OptionsPopup = props => {
                             props.changeWeatherCity(ibWeatherCity.current.value);
                             iziToast.success({
                               title: "Başarılı",
-                              message: "Bir sonraki açılışta şehir yenilenecektir."
+                              message: "Şehir yenilendi"
                             });
                           }}
                         >

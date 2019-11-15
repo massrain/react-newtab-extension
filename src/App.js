@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Route, Switch, withRouter } from "react-router-dom";
+import axios from "axios";
 import Mainpage from "./Mainpage";
 import Bookmarks from "./views/Bookmarks";
 import History from "./views/History";
@@ -32,8 +33,29 @@ const App = props => {
 
   useEffect(() => {
     props.history.push("/");
+    getLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const showPosition = position => {
+    console.log("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
+    axios
+      .get(`https://geocode.xyz/${position.coords.latitude},${position.coords.longitude}?geoit=json`)
+      .then(res => {
+        if (res.data.city.toLowerCase() !== weatherCity.toLowerCase()) setWeatherCity(res.data.city);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+      //navigator.geolocation.getCurrentPosition(geoSuccess, geoError)
+    } else {
+      console.log("location not available");
+    }
+  };
 
   const backgroundStyle = {
     backgroundImage:
@@ -109,14 +131,14 @@ const App = props => {
   };
   //test
 
-  console.log(imgBackground);
+  /*   console.log(imgBackground);
   console.log(imgBackgroundChoice);
   console.log(weatherCity);
   console.log(weatherUnits);
   console.log(LayoutData);
   console.log(LayoutDetails);
   console.log(colorTextData);
-  console.log(iconsVisibility);
+  console.log(iconsVisibility); */
   return (
     <>
       <div className="pageOverlay z-index-98"></div>
@@ -253,6 +275,25 @@ export filename
 ++FREQUENTS EKLEME
 ++BOOKMARK SİLME
 WALLPAPER API
+*/
+/*
+
+--v3
+++arama butonuna yazıp aratınca ENTER
++resolution icons + grid
+freq drag and drop, always draggable
+freq right click menu
+freq add freq mainstream options
+freq singlelayout click name or icon hover pointer
+++weather autolocation
+quick notes
+yer imlerini senkronize et
+wallpapers random + selective
+options menu add buttons single visiblity + date-time format
+++ help modal
+++ sidebar uzantıya yorum help btn
++click closes modals
+
 */
 
 /* "icons": {

@@ -99,6 +99,11 @@ const SearchBar = props => {
             ref={ibSearchBox}
             className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder border-${props.colorTextData.mains}`}
             placeholder="Aramak istediğiniz.."
+            onKeyDown={event => {
+              if (event.key === "Enter") {
+                btnSearchClick();
+              }
+            }}
           />
           <div className="input-group-append">
             <button className={`btn btn-outline-${props.colorTextData.mains} px-5`} onClick={btnSearchClick}>

@@ -107,7 +107,6 @@ const FrequentlyUsed = props => {
       </div>
 
       <div className="row no-gutters mt-3">
-        {console.log(props.LayoutData[3].datag)}
         <GridLayout
           className="layout"
           layout={props.LayoutData}
@@ -182,7 +181,9 @@ const FrequentlyUsed = props => {
       {/* props.LayoutData[props.LayoutData.length - 1].i === "d" */}
       <Modal
         isOpen={showModal}
-        ariaHideApp={false}
+        onRequestClose={handleCloseModal}
+        shouldCloseOnOverlayClick={true}
+        shouldCloseOnEsc={true}
         contentLabel="Minimal Modal Example"
         style={{
           overlay: {

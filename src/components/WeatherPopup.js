@@ -25,7 +25,7 @@ const WeatherPopup = props => {
         console.log(err);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props.weatherCity]);
 
   return (
     <>
