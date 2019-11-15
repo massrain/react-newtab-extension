@@ -12,6 +12,7 @@ import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
 import DigitalClock from "./components/DigitalClock";
 import NotesPopup from "./components/NotesPopup";
+import { ChooseBgPopup } from "./components/ChooseBgPopup";
 //import { wallpaperDataBing } from "./components/options/cachedwallpapers";
 
 const App = props => {
@@ -28,11 +29,12 @@ const App = props => {
   const [LayoutDetails, setLayoutDetails] = useLocalStorage("freqlayoutdetails", initialLayoutDetails);
   const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", TextColors);
   const [iconsVisibility, setIconsVisibility] = useLocalStorage("iconsvisibility", "true");
-  const [Notes, setNotes] = useLocalStorage("quicknotes", {});
-  const [NotesVisibility, setNotesVisibility] = useState("none");
-  const [OptionsVisibility, setOptionsVisibility] = useState("none");
-  const [WeatherVisibility, setWeatherVisibility] = useState("none");
-  const [BookmarksVisibility, setBookmarksVisibility] = useState("block");
+  const [Notes, setNotes] = useLocalStorage("quicknotes", ["İlk Notunuz..."]);
+  const [NotesVisibility, setNotesVisibility] = useLocalStorage("notesvisibility", "none");
+  const [OptionsVisibility, setOptionsVisibility] = useLocalStorage("optionsvisibility", "none");
+  const [WeatherVisibility, setWeatherVisibility] = useLocalStorage("weathervisibility", "none");
+  const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "block");
+  const [ChooseBgVisibility, setChooseBgVisibility] = useLocalStorage("choosebgvisibility", "block");
 
   useEffect(() => {
     props.history.push("/");
@@ -72,14 +74,15 @@ const App = props => {
   const backgroundStyle = {
     backgroundImage:
       imgBackgroundChoice === "tabext"
-        ? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
+        ? //? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
+          `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
         : // `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
           "url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
 
   const btnChangeBackground = () => {
     console.log(backgroundStyle);
-    if (imgBackground > 11) {
+    if (imgBackground > 6) {
       setImgBackground(1);
     } else {
       let newNumber = imgBackground + 1;
@@ -98,6 +101,15 @@ const App = props => {
   const changeWeatherUnits = newUnits => {
     setWeatherUnits(newUnits);
   };
+  const btnRefreshBackground = () => {
+    if (imgBackground > 6) {
+      setImgBackground(1);
+    } else {
+      let newNumber = imgBackground + 1;
+      setImgBackground(newNumber);
+    }
+  };
+
   const changeImgBackgroundChoice = e => {
     setImgBackgroundChoice(e.target.value);
   };
@@ -144,6 +156,10 @@ const App = props => {
   const changeNotesVisibility = () => {
     NotesVisibility === "none" ? setNotesVisibility("block") : setNotesVisibility("none");
   };
+
+  const btnChooseBackground = () => {
+    ChooseBgVisibility === "none" ? setChooseBgVisibility("block") : setChooseBgVisibility("none");
+  };
   //test
 
   /*   console.log(imgBackground);
@@ -171,6 +187,8 @@ const App = props => {
                 changeBookmarksVisibility={changeBookmarksVisibility}
                 BookmarksVisibility={BookmarksVisibility}
                 changeNotesVisibility={changeNotesVisibility}
+                btnRefreshBackground={btnRefreshBackground}
+                btnChooseBackground={btnChooseBackground}
               />
             </div>
           </div>
@@ -239,7 +257,13 @@ const App = props => {
         iconsVisibility={iconsVisibility}
         changeIconsVisibility={changeIconsVisibility}
       />
-      <NotesPopup NotesVisibility={NotesVisibility} />
+      <NotesPopup NotesVisibility={NotesVisibility} colorTextData={colorTextData} Notes={Notes} setNotes={setNotes} />
+      <ChooseBgPopup
+        setImgBackground={setImgBackground}
+        imgBackground={imgBackground}
+        ChooseBgVisibility={ChooseBgVisibility}
+        setChooseBgVisibility={setChooseBgVisibility}
+      />
     </>
   );
 };
@@ -303,7 +327,7 @@ freq right click menu
 freq add freq mainstream options
 ++freq singlelayout click name or icon hover pointer
 ++weather autolocation
-quick notes
+++quick notes
 yer imlerini senkronize et
 wallpapers random + selective
 options menu add buttons single visiblity + date-time format
@@ -312,6 +336,7 @@ options menu add buttons single visiblity + date-time format
 +click closes modals
 notes popup css
 tekil todo gösterimi
+image click close others
 */
 
 /* "icons": {

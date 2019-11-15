@@ -60,10 +60,10 @@ const NavBar = props => {
             </button>
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
-              onClick={props.btnChangeBackground}
+              onClick={props.btnRefreshBackground}
             >
               {props.iconsVisibility === "true" ? (
-                <img src={"/assets/site/photo.png"} className="img-fluid" alt="" width={24} />
+                <img src={"/assets/site/refresh.png"} className="img-fluid" alt="" width={24} />
               ) : (
                 "Arkaplan"
               )}
@@ -111,6 +111,16 @@ const NavBar = props => {
                 <img src={"/assets/site/note.png"} className="img-fluid" alt="" width={24} />
               ) : (
                 "Notlar"
+              )}
+            </button>
+            <button
+              className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
+              onClick={props.btnChooseBackground}
+            >
+              {props.iconsVisibility === "true" ? (
+                <img src={"/assets/site/photo.png"} className="img-fluid" alt="" width={24} />
+              ) : (
+                "Arkaplan Seç"
               )}
             </button>
             <button
