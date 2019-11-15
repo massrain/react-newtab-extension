@@ -5,16 +5,14 @@ const SingleObject = props => {
     <>
       <div
         className={`container-fluid d-flex flex-column h-100 cursor--pointer Freq--SingleObject--boxStyle text-${props.colorTextData.mains}`}
-        onClick={() => props.redirectLink(props.contentLink)}
       >
         <div className="col-12 d-flex flex-column justify-content-center frequentlyBox">
           <div className={`row no-gutters justify-content-center`}>
-            <div
-              className={`col-12 h-100 p-0 justify-content-center text-center`}
-            >
+            <div className={`col-12 h-100 p-0 justify-content-center text-center`}>
               <img
                 src={props.contentIcon}
                 className={`img-fluid rounded-lg`}
+                onClick={() => props.redirectLink(props.contentLink)}
                 alt=""
                 style={{ height: "64px" }}
               />
@@ -22,7 +20,9 @@ const SingleObject = props => {
           </div>
           <div className="row no-gutters text-center">
             <div className="col-12 h-100 p-0">
-              <p className="mb-0">{props.contentName}</p>
+              <p className="mb-0" onClick={() => props.redirectLink(props.contentLink)}>
+                {props.contentName}
+              </p>
             </div>
           </div>
         </div>

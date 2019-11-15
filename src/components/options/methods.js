@@ -100,7 +100,7 @@ export const initialLayout = [
     maxW: 4,
     minH: 2,
     maxH: 4,
-    static: true
+    static: false
   },
   {
     i: "b",
@@ -112,7 +112,7 @@ export const initialLayout = [
     maxW: 4,
     minH: 2,
     maxH: 4,
-    static: true
+    static: false
   },
   {
     i: "c",
@@ -124,7 +124,7 @@ export const initialLayout = [
     maxW: 4,
     minH: 2,
     maxH: 4,
-    static: true
+    static: false
   },
   {
     i: "d",
@@ -136,7 +136,7 @@ export const initialLayout = [
     maxW: 4,
     minH: 2,
     maxH: 4,
-    static: true
+    static: false
   },
   {
     i: "e",
@@ -148,7 +148,7 @@ export const initialLayout = [
     maxW: 4,
     minH: 2,
     maxH: 4,
-    static: true
+    static: false
   }
 ];
 

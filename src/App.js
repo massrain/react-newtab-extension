@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar";
 import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
 import DigitalClock from "./components/DigitalClock";
+import NotesPopup from "./components/NotesPopup";
 //import { wallpaperDataBing } from "./components/options/cachedwallpapers";
 
 const App = props => {
@@ -27,6 +28,8 @@ const App = props => {
   const [LayoutDetails, setLayoutDetails] = useLocalStorage("freqlayoutdetails", initialLayoutDetails);
   const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", TextColors);
   const [iconsVisibility, setIconsVisibility] = useLocalStorage("iconsvisibility", "true");
+  const [Notes, setNotes] = useLocalStorage("quicknotes", {});
+  const [NotesVisibility, setNotesVisibility] = useState("none");
   const [OptionsVisibility, setOptionsVisibility] = useState("none");
   const [WeatherVisibility, setWeatherVisibility] = useState("none");
   const [BookmarksVisibility, setBookmarksVisibility] = useState("block");
@@ -35,6 +38,15 @@ const App = props => {
     props.history.push("/");
     getLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("contextmenu", function(event) {
+      event.preventDefault();
+    });
+    return () => {
+      alert("kkek");
+    };
   }, []);
 
   const showPosition = position => {
@@ -129,6 +141,9 @@ const App = props => {
     colorPack[keyColor] = resultWord;
     setColorTextData(colorPack);
   };
+  const changeNotesVisibility = () => {
+    NotesVisibility === "none" ? setNotesVisibility("block") : setNotesVisibility("none");
+  };
   //test
 
   /*   console.log(imgBackground);
@@ -155,6 +170,7 @@ const App = props => {
                 changeWeatherVisibility={changeWeatherVisibility}
                 changeBookmarksVisibility={changeBookmarksVisibility}
                 BookmarksVisibility={BookmarksVisibility}
+                changeNotesVisibility={changeNotesVisibility}
               />
             </div>
           </div>
@@ -223,6 +239,7 @@ const App = props => {
         iconsVisibility={iconsVisibility}
         changeIconsVisibility={changeIconsVisibility}
       />
+      <NotesPopup NotesVisibility={NotesVisibility} />
     </>
   );
 };
@@ -281,10 +298,10 @@ WALLPAPER API
 --v3
 ++arama butonuna yazıp aratınca ENTER
 +resolution icons + grid
-freq drag and drop, always draggable
+++freq drag and drop, always draggable
 freq right click menu
 freq add freq mainstream options
-freq singlelayout click name or icon hover pointer
+++freq singlelayout click name or icon hover pointer
 ++weather autolocation
 quick notes
 yer imlerini senkronize et
@@ -293,7 +310,8 @@ options menu add buttons single visiblity + date-time format
 ++ help modal
 ++ sidebar uzantıya yorum help btn
 +click closes modals
-
+notes popup css
+tekil todo gösterimi
 */
 
 /* "icons": {

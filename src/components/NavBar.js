@@ -105,6 +105,16 @@ const NavBar = props => {
             </Link>
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
+              onClick={props.changeNotesVisibility}
+            >
+              {props.iconsVisibility === "true" ? (
+                <img src={"/assets/site/note.png"} className="img-fluid" alt="" width={24} />
+              ) : (
+                "Notlar"
+              )}
+            </button>
+            <button
+              className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={() => {
                 props.setOptionsVisibility("block");
               }}

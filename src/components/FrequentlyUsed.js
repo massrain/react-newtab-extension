@@ -5,39 +5,19 @@ import Modal from "react-modal";
 
 const FrequentlyUsed = props => {
   //const [LayoutState, setLayoutState] = useState(props.LayoutData);
-  const [GridComponentKey, setGridComponentKey] = useState(5);
-  const [EditMode, setEditMode] = useState(false);
+  //const [GridComponentKey, setGridComponentKey] = useState(5);
   const [showModal, setShowModal] = useState(false);
 
   const ibNewWebsiteLink = useRef(null);
   const ibNewWebsiteName = useRef(null);
-  const btnEditGrid = () => {
-    setEditMode(true);
-    let layoutCopy = props.LayoutData;
-    layoutCopy.forEach(element => {
-      element.static = false;
-    });
-    props.setLayoutData(layoutCopy);
-    setGridComponentKey(Math.floor(Math.random() * 100));
-  };
-  const btnFinishEditGrid = () => {
-    setEditMode(false);
-    let layoutCopy = props.LayoutData;
-    layoutCopy.forEach(element => {
-      element.static = true;
-    });
-    props.setLayoutData(layoutCopy);
-    setGridComponentKey(Math.floor(Math.random() * 100));
-  };
+
 
   const onLayoutChange = newLayout => {
     props.setLayoutData(newLayout);
   };
 
   const redirectLink = link => {
-    if (EditMode === false) {
-      window.open(link, "_blank");
-    }
+    window.open(link, "_blank");
   };
 
   const btnAddNew = () => {
@@ -85,27 +65,6 @@ const FrequentlyUsed = props => {
 
   return (
     <>
-      <div className="row no-gutters justify-content-end">
-        <button
-          className="btn btn-sm btn-primary rounded-0"
-          type="button"
-          style={{ display: EditMode ? "block" : "none" }}
-          onClick={btnAddNew}
-        >
-          Yeni Ekle
-        </button>
-        <button
-          className="btn btn-sm btn-success rounded-0 ml-1"
-          style={{ display: EditMode ? "block" : "none" }}
-          onClick={btnFinishEditGrid}
-        >
-          Düzenlemeyi Bitir
-        </button>
-        <button className="btn btn-sm btn-warning rounded-0 ml-1" onClick={btnEditGrid}>
-          Düzenle
-        </button>
-      </div>
-
       <div className="row no-gutters mt-3">
         <GridLayout
           className="layout"
@@ -114,54 +73,7 @@ const FrequentlyUsed = props => {
           cols={12}
           rowHeight={50}
           width={1200}
-          key={GridComponentKey}
         >
-          {/*           <div key="a">
-            <SingleObject
-              redirectLink={redirectLink}
-              contentName={"Google"}
-              colorTextData={props.colorTextData}
-              contentLink={"https://google.com.tr"}
-              contentIcon={"/assets/site/google.png"}
-            />
-          </div>
-          <div key="b">
-            <SingleObject
-              redirectLink={redirectLink}
-              contentName={"Galatasaray Sözlük"}
-              colorTextData={props.colorTextData}
-              contentLink={"https://rerererarara.net"}
-              contentIcon={"/assets/site/gssozluk.jpg"}
-            />
-          </div>
-          <div key="c">
-            <SingleObject
-              redirectLink={redirectLink}
-              contentName={"Ekşi Sözlük"}
-              colorTextData={props.colorTextData}
-              contentLink={"https://eksisozluk.com"}
-              contentIcon={"/assets/site/eksisozluk.png"}
-            />
-          </div>
-          <div key="d">
-            <SingleObject
-              redirectLink={redirectLink}
-              contentName={"Youtube"}
-              colorTextData={props.colorTextData}
-              contentLink={"https://youtube.com"}
-              contentIcon={"/assets/site/youtube.png"}
-            />
-          </div>
-          <div key="e">
-            <SingleObject
-              redirectLink={redirectLink}
-              contentName={"Gmail"}
-              colorTextData={props.colorTextData}
-              contentLink={"https://gmail.com"}
-              contentIcon={"/assets/site/gmail.png"}
-            />
-          </div> */}
-
           {props.LayoutData.map((item, index) => {
             return (
               <div key={item.i}>
@@ -232,7 +144,7 @@ const FrequentlyUsed = props => {
                     <small className="form-text text-muted">
                       Site linki tam halinde, (http veya https ile), eklediğiniz web sitesinin tarayıcı'dan kopyalanan
                       hali ile olmalıdır. <br /> Örnek format: "https://google.com"
-                      <br/>
+                      <br />
                       Chrome tarayıcısına bağlı olarak bir sonraki açılışta otomatik site ikonu gelir.
                     </small>
                   </div>
