@@ -118,7 +118,7 @@ const NavBar = props => {
               style={{ display: props.navIconVisibilities.Gecmis ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
-                <img src={"/assets/site/Time.png"} className="img-fluid" alt="" width={24} />
+                <img src={"/assets/site/time.png"} className="img-fluid" alt="" width={24} />
               ) : (
                 "Geçmiş"
               )}

@@ -12,12 +12,14 @@ const FrequentlyUsed = props => {
   //const [GridComponentKey, setGridComponentKey] = useState(5);
   const [showModal, setShowModal] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [mousePositionX, setMousePositionX] = useState(null);
 
   const ibNewWebsiteLink = useRef(null);
   const ibNewWebsiteName = useRef(null);
 
-  const onLayoutChange = newLayout => {
-    props.setLayoutData(newLayout);
+  const onLayoutChange = (newLayout, allLayouts) => {
+    console.log(newLayout);
+    props.setLayoutData(allLayouts);
   };
 
   const redirectLink = link => {
@@ -75,15 +77,9 @@ const FrequentlyUsed = props => {
     setIsDragging(true);
   };
   const handleOnDragStop = () => {
-    setIsDragging(true);
+    setIsDragging(false);
   };
-  const handleContextMenu = e => {
-    return (
-      <div>
-        <p>test deneme</p>
-      </div>
-    );
-  };
+  const handleContextMenu = e => {};
 
   const btnAddNewFrequentlyVisited = () => {
     console.log("new");
@@ -91,29 +87,36 @@ const FrequentlyUsed = props => {
   const btnRemoveFreqObject = () => {
     console.log("remove item = " + 12);
   };
+  const handleCollect = props => {
+    console.log(props.children.props["data-index"]);
+    console.log(props.children.props["data-id"]);
+  };
   return (
     <>
       <div className="row no-gutters mt-3">
         <div className="col-12">
-          {console.log(props)}
           <ResponsiveGridLayout
             className="layout"
             layouts={props.LayoutData}
             onDragStart={handleOnDragStart}
             onDragStop={handleOnDragStop}
             rowHeight={50}
-            breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+            onLayoutChange={onLayoutChange}
+            breakpoints={{ lg: 1080, md: 720, sm: 540, xs: 240, xxs: 0 }}
             cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
           >
             {props.LayoutData.lg.map((item, index) => {
               return (
-                <div key={item.i} onContextMenu={handleContextMenu}>
+                <div key={item.i}>
                   <SingleObject
                     redirectLink={redirectLink}
                     contentName={props.LayoutDetails[index].name}
                     colorTextData={props.colorTextData}
                     contentLink={props.LayoutDetails[index].link}
                     contentIcon={props.LayoutDetails[index].icon}
+                    handleCollect={handleCollect}
+                    dataid={item.i}
+                    dataindex={index}
                   />
                 </div>
               );
@@ -143,7 +146,12 @@ const FrequentlyUsed = props => {
           })}
         </GridLayout> */}
       </div>
-
+      <ContextMenu id="some_unique_identifier" style={{ marginLeft: "-200px" }}>
+        <MenuItem>ContextMenu Item 1</MenuItem>
+        <MenuItem>ContextMenu Item 2</MenuItem>
+        <MenuItem divider />
+        <MenuItem>ContextMenu Item 3</MenuItem>
+      </ContextMenu>
       {/* props.LayoutData[props.LayoutData.length - 1].i === "d" */}
       <Modal
         isOpen={showModal}

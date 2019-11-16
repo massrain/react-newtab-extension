@@ -155,7 +155,7 @@ export const initialLayout2 = {
   md: [
     {
       i: "a",
-      x: 2,
+      x: 0,
       y: 0,
       w: 2,
       h: 2,
@@ -167,7 +167,7 @@ export const initialLayout2 = {
     },
     {
       i: "b",
-      x: 0,
+      x: 2,
       y: 0,
       w: 2,
       h: 2,
@@ -191,8 +191,8 @@ export const initialLayout2 = {
     },
     {
       i: "d",
-      x: 6,
-      y: 0,
+      x: 0,
+      y: 2,
       w: 2,
       h: 2,
       minW: 2,
@@ -203,8 +203,8 @@ export const initialLayout2 = {
     },
     {
       i: "e",
-      x: 8,
-      y: 0,
+      x: 0,
+      y: 4,
       w: 2,
       h: 2,
       minW: 2,
@@ -217,18 +217,6 @@ export const initialLayout2 = {
   sm: [
     {
       i: "a",
-      x: 2,
-      y: 0,
-      w: 2,
-      h: 2,
-      minW: 2,
-      maxW: 4,
-      minH: 2,
-      maxH: 4,
-      static: false
-    },
-    {
-      i: "b",
       x: 0,
       y: 0,
       w: 2,
@@ -240,9 +228,21 @@ export const initialLayout2 = {
       static: false
     },
     {
-      i: "c",
-      x: 4,
+      i: "b",
+      x: 2,
       y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "c",
+      x: 0,
+      y: 2,
       w: 2,
       h: 2,
       minW: 2,
@@ -253,8 +253,8 @@ export const initialLayout2 = {
     },
     {
       i: "d",
-      x: 6,
-      y: 0,
+      x: 0,
+      y: 4,
       w: 2,
       h: 2,
       minW: 2,
@@ -265,8 +265,8 @@ export const initialLayout2 = {
     },
     {
       i: "e",
-      x: 8,
-      y: 0,
+      x: 0,
+      y: 6,
       w: 2,
       h: 2,
       minW: 2,

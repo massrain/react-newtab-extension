@@ -81,9 +81,9 @@ const App = () => {
   const backgroundStyle = {
     backgroundImage:
       imgBackgroundChoice === "tabext"
-        ? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
-        : // `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
-          `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
+        ? //? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
+          `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
+        : `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
     //"url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
   const btnChangeBackground = () => {
