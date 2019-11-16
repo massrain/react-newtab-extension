@@ -262,18 +262,6 @@ const OptionsPopup = props => {
                         <input
                           type="checkbox"
                           className="custom-control-input"
-                          id="Ekranigizle"
-                          checked={props.navIconVisibilities.Ekranigizle}
-                          onChange={event => onChangeButtonVisibilities(event, "Ekranigizle")}
-                        />
-                        <label className="custom-control-label" htmlFor="Ekranigizle">
-                          Ekranı Gizle
-                        </label>
-                      </div>
-                      <div className="custom-control custom-switch">
-                        <input
-                          type="checkbox"
-                          className="custom-control-input"
                           id="Yardim"
                           checked={props.navIconVisibilities.Yardim}
                           onChange={event => onChangeButtonVisibilities(event, "Yardim")}

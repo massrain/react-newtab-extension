@@ -1,28 +1,23 @@
 import React, { useEffect } from "react";
-
-import { Route, Switch, withRouter } from "react-router-dom";
 import axios from "axios";
 import Mainpage from "./Mainpage";
-import Bookmarks from "./views/Bookmarks";
-import History from "./views/History";
 
-import { useLocalStorage, initialLayout, initialLayoutDetails } from "./components/options/methods";
+import { useLocalStorage, initialLayout2, initialLayoutDetails } from "./components/options/methods";
 import NavBar from "./components/NavBar";
 import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
 import DigitalClock from "./components/DigitalClock";
 import NotesPopup from "./components/NotesPopup";
 import { ChooseBgPopup } from "./components/ChooseBgPopup";
-//import { wallpaperDataBing } from "./components/options/cachedwallpapers";
+import { wallpaperDataBing } from "./components/options/cachedwallpapers";
 
-const App = props => {
+const App = () => {
   const TextColors = {
     mains: "light",
     navButtons: "light",
     sides: "#ffffff"
   };
   const initialNavVisibilities = {
-    Ekranigizle: true,
     Yardim: true,
     Yorumla: true,
     Havadurumu: true,
@@ -36,7 +31,7 @@ const App = props => {
   const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "tabext");
   const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "Ankara");
   const [weatherUnits, setWeatherUnits] = useLocalStorage("weatherunits", "metric");
-  const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", initialLayout);
+  const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", initialLayout2);
   const [LayoutDetails, setLayoutDetails] = useLocalStorage("freqlayoutdetails", initialLayoutDetails);
   const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", TextColors);
   const [iconsVisibility, setIconsVisibility] = useLocalStorage("iconsvisibility", "true");
@@ -49,8 +44,8 @@ const App = props => {
   const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
   const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
 
+  console.log(LayoutData);
   useEffect(() => {
-    props.history.push("/");
     getLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -60,7 +55,7 @@ const App = props => {
       event.preventDefault();
     });
     return () => {
-      alert("kkek");
+      // document.removeEventListener("contextmenu");
     };
   }, []);
 
@@ -86,14 +81,14 @@ const App = props => {
   const backgroundStyle = {
     backgroundImage:
       imgBackgroundChoice === "tabext"
-        ? //? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
-          `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
-        : // `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
-          "url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
+        ? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
+        : // `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
+          `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
+    //"url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
   const btnChangeBackground = () => {
     console.log(backgroundStyle);
-    if (imgBackground > 6) {
+    if (imgBackground > 12) {
       setImgBackground(1);
     } else {
       let newNumber = imgBackground + 1;
@@ -215,28 +210,13 @@ const App = props => {
           <div className="col-10 d-flex flex-column">
             <div className="row no-gutters flex-grow-1 align-items-start">
               <div className="container py-3 mb-5 ContentContainer" style={{ display: BookmarksVisibility }}>
-                <Switch>
-                  <Route
-                    exact
-                    path="/"
-                    render={props => (
-                      <Mainpage
-                        {...props}
-                        LayoutData={LayoutData}
-                        setLayoutData={setLayoutData}
-                        colorTextData={colorTextData}
-                        LayoutDetails={LayoutDetails}
-                        changeLayoutDetails={changeLayoutDetails}
-                      />
-                    )}
-                  />
-                  <Route
-                    exact
-                    path="/bookmarks"
-                    render={props => <Bookmarks {...props} colorTextData={colorTextData} />}
-                  />
-                  <Route exact path="/history" render={props => <History {...props} colorTextData={colorTextData} />} />
-                </Switch>
+                <Mainpage
+                  LayoutData={LayoutData}
+                  setLayoutData={setLayoutData}
+                  colorTextData={colorTextData}
+                  LayoutDetails={LayoutDetails}
+                  changeLayoutDetails={changeLayoutDetails}
+                />
               </div>
             </div>
             <div className="row no-gutters flex-grow-0 align-items-center">
@@ -293,56 +273,46 @@ const App = props => {
   );
 };
 
-export default withRouter(App);
+export default App;
 
 /*
 TODO: 
-SIKKULLANILANLAR YENİ EKLE
-ARKAPLAN API + KATEGORİ
+++ SIKKULLANILANLAR YENİ EKLE
+++ ARKAPLAN API + KATEGORİ
 ++ SANTİGRAT FAHRENHEİT
 ++ YANDEX ARAMA
 ++ BİNG ARAMA
 ++ WEBSİTE İÇERİSİNDE ARAMA
 ++ SIK KULLANILANLAR BORDERCOLOR
 ++ BİNG ARKAPLANLARI
-
 ++ YER İMLERİ VE HİSTORY ÇEKİM BUTONLA
 ++ HİSTORY VE BOOKMARK LİNK FULL CARDTA
-
 ++ TEXTLER DİNAMİK
 ++ TEXTLER RENKLİ COLORPICKER
 ++ BUTON RENKLERİ
 ++ BUTON RENKLERI COLORPICKER
 
-NAVBAR BUTON İKON
-SIK KULLANILANLAR İKONLARI
-HİSTORY VE BOOKMARK İCON
+++ NAVBAR BUTON İKON
+++ SIK KULLANILANLAR İKONLARI
+++ HİSTORY VE BOOKMARK İCON
 
-HAVADURUMU VISIBILITY PERSISTENT STATE
-BOOKMARK + HISTORY WEBSITE ICONS
-DATA IMPORT
-export filename
+++ HAVADURUMU VISIBILITY PERSISTENT STATE
+++ BOOKMARK + HISTORY WEBSITE ICONS
 
 -- V2
-??SAAT
+++SAAT
 ++NAVBAR SOL
 ++NAVBAR BG HOVER
 ++İCONS HOVER BÜYÜME
-
 ++FREQUENTS STYLE
 ++SIK KULLANILANLAR STYLE
 ++ARAMA STYLE
-
 ++OPTIONS STYLE SOL
-
 ++BOOKMARKS İCONS
 ++HİSTORY İCONS
-
 ++FREQUENTS EKLEME
 ++BOOKMARK SİLME
 WALLPAPER API
-*/
-/*
 
 --v3
 ++arama butonuna yazıp aratınca ENTER
@@ -350,10 +320,10 @@ WALLPAPER API
 ++freq drag and drop, always draggable
 freq right click menu
 freq add freq mainstream options
-++freq singlelayout click name or icon hover pointer
-++weather autolocation
-++quick notes
-yer imlerini senkronize et
+++ freq singlelayout click name or icon hover pointer
+++ weather autolocation
+++ quick notes
+++ yer imlerini senkronize et
 ++ wallpapers random + selective
 ++ options menu add buttons single visiblity + date-time format
 ++ help modal
@@ -361,11 +331,6 @@ yer imlerini senkronize et
 ++ click closes modals,image click close others
 ++ notes popup css
 ++ tekil todo gösterimi
+freq ondrag unclickable
+freq dragging bottom makes scroller
 */
-
-/* "icons": {
-  "16": "icons/16.png",
-  "32": "icons/32.png",
-  "48": "icons/48.png",
-  "128": "icons/128.png"
-}, */

@@ -1,23 +1,32 @@
 import React, { useState, useRef } from "react";
-import GridLayout from "react-grid-layout";
 import SingleObject from "./frequentlyused/SingleObject";
 import Modal from "react-modal";
+import MyResponsiveGrid from "./options/ResponsiveGrid";
+import { Responsive, WidthProvider } from "react-grid-layout";
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+
+const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const FrequentlyUsed = props => {
   //const [LayoutState, setLayoutState] = useState(props.LayoutData);
   //const [GridComponentKey, setGridComponentKey] = useState(5);
   const [showModal, setShowModal] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   const ibNewWebsiteLink = useRef(null);
   const ibNewWebsiteName = useRef(null);
-
 
   const onLayoutChange = newLayout => {
     props.setLayoutData(newLayout);
   };
 
   const redirectLink = link => {
-    window.open(link, "_blank");
+    if (isDragging !== true) {
+      console.log("nenkd");
+    } else {
+      console.log("elsesss");
+      window.open(link, "_blank");
+    }
   };
 
   const btnAddNew = () => {
@@ -42,7 +51,7 @@ const FrequentlyUsed = props => {
     if (ibNewWebsiteName.current.value !== null || ibNewWebsiteLink.current.value !== null) {
       addWebsiteData();
 
-      let lastString = props.LayoutData[props.LayoutData.length - 1].i;
+      let lastString = props.LayoutData[props.LayoutData.lg.length - 1].i;
       let pushContent = {
         i: String.fromCharCode(lastString.charCodeAt(0) + 1),
         x: 0,
@@ -56,17 +65,62 @@ const FrequentlyUsed = props => {
         static: true
       };
       let originalArray = props.LayoutData;
-      let resultArray = originalArray.concat(pushContent);
+      let resultArray = originalArray.lg.concat(pushContent);
       props.setLayoutData(resultArray);
 
       handleCloseModal();
     }
   };
+  const handleOnDragStart = () => {
+    setIsDragging(true);
+  };
+  const handleOnDragStop = () => {
+    setIsDragging(true);
+  };
+  const handleContextMenu = e => {
+    return (
+      <div>
+        <p>test deneme</p>
+      </div>
+    );
+  };
 
+  const btnAddNewFrequentlyVisited = () => {
+    console.log("new");
+  };
+  const btnRemoveFreqObject = () => {
+    console.log("remove item = " + 12);
+  };
   return (
     <>
       <div className="row no-gutters mt-3">
-        <GridLayout
+        <div className="col-12">
+          {console.log(props)}
+          <ResponsiveGridLayout
+            className="layout"
+            layouts={props.LayoutData}
+            onDragStart={handleOnDragStart}
+            onDragStop={handleOnDragStop}
+            rowHeight={50}
+            breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+            cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
+          >
+            {props.LayoutData.lg.map((item, index) => {
+              return (
+                <div key={item.i} onContextMenu={handleContextMenu}>
+                  <SingleObject
+                    redirectLink={redirectLink}
+                    contentName={props.LayoutDetails[index].name}
+                    colorTextData={props.colorTextData}
+                    contentLink={props.LayoutDetails[index].link}
+                    contentIcon={props.LayoutDetails[index].icon}
+                  />
+                </div>
+              );
+            })}
+          </ResponsiveGridLayout>
+        </div>
+        {/*         <GridLayout
           className="layout"
           layout={props.LayoutData}
           onLayoutChange={onLayoutChange}
@@ -87,7 +141,7 @@ const FrequentlyUsed = props => {
               </div>
             );
           })}
-        </GridLayout>
+        </GridLayout> */}
       </div>
 
       {/* props.LayoutData[props.LayoutData.length - 1].i === "d" */}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
 import { HelpModal } from "./modals/HelpModal";
 import { BookmarksModal } from "./modals/BookmarksModal";
 import { HistoryModal } from "./modals/HistoryModal";
@@ -40,18 +39,7 @@ const NavBar = props => {
     <>
       <div className="container">
         <div className="row no-gutters mt-3">
-          <div className="col-6 d-flex flex-column navButtons">
-            <button
-              className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
-              onClick={props.changeBookmarksVisibility}
-              style={{ display: props.navIconVisibilities.Ekranigizle ? "block" : "none" }}
-            >
-              {props.iconsVisibility === "true" ? (
-                <img src={"/assets/site/focus.png"} className="img-fluid" alt="" width={24} />
-              ) : (
-                "Ekranı Gizle"
-              )}
-            </button>
+          <div className={`${props.iconsVisibility === "true" ? "col-6 " : "col-12"} d-flex flex-column navButtons`}>
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={btnHelpClick}
@@ -101,19 +89,18 @@ const NavBar = props => {
       </div>
       <div className="container">
         <div className="row no-gutters mb-3">
-          <div className="col-6 d-flex flex-column navButtons">
-            <Link
+          <div className={`${props.iconsVisibility === "true" ? "col-6 " : "col-12"} d-flex flex-column navButtons`}>
+            <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
-              to="/"
-              onClick={props.BookmarksVisibility === "none" ? props.changeBookmarksVisibility : null}
+              onClick={props.changeBookmarksVisibility}
               style={{ display: props.navIconVisibilities.Anasayfa ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/home.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Anasayfa"
+                "Ana Ekran"
               )}
-            </Link>
+            </button>
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={btnBookmarkClick}
@@ -175,7 +162,7 @@ const NavBar = props => {
       </div>
 
       <HelpModal showHelpModal={showHelpModal} handleCloseModal={handleCloseHelpModal} />
-      <BookmarksModal
+{/*       <BookmarksModal
         showBookmarkModal={showBookmarkModal}
         handleCloseModal={handleCloseBookmarkModal}
         colorTextData={props.colorTextData}
@@ -184,9 +171,9 @@ const NavBar = props => {
         showHistoryModal={showHistoryModal}
         handleCloseModal={handleCloseHistoryModal}
         colorTextData={props.colorTextData}
-      />
+      /> */}
     </>
   );
 };
 
-export default withRouter(NavBar);
+export default NavBar;

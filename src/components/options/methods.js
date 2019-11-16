@@ -89,68 +89,318 @@ export const unixToDay = timestamp => {
   return days[new Date(timestamp * 1000).getDay()];
 };
 
-export const initialLayout = [
-  {
-    i: "a",
-    x: 2,
-    y: 0,
-    w: 2,
-    h: 2,
-    minW: 2,
-    maxW: 4,
-    minH: 2,
-    maxH: 4,
-    static: false
-  },
-  {
-    i: "b",
-    x: 0,
-    y: 0,
-    w: 2,
-    h: 2,
-    minW: 2,
-    maxW: 4,
-    minH: 2,
-    maxH: 4,
-    static: false
-  },
-  {
-    i: "c",
-    x: 4,
-    y: 0,
-    w: 2,
-    h: 2,
-    minW: 2,
-    maxW: 4,
-    minH: 2,
-    maxH: 4,
-    static: false
-  },
-  {
-    i: "d",
-    x: 6,
-    y: 0,
-    w: 2,
-    h: 2,
-    minW: 2,
-    maxW: 4,
-    minH: 2,
-    maxH: 4,
-    static: false
-  },
-  {
-    i: "e",
-    x: 8,
-    y: 0,
-    w: 2,
-    h: 2,
-    minW: 2,
-    maxW: 4,
-    minH: 2,
-    maxH: 4,
-    static: false
-  }
-];
+export const initialLayout2 = {
+  lg: [
+    {
+      i: "a",
+      x: 2,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "b",
+      x: 0,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "c",
+      x: 4,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "d",
+      x: 6,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "e",
+      x: 8,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    }
+  ],
+  md: [
+    {
+      i: "a",
+      x: 2,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "b",
+      x: 0,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "c",
+      x: 4,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "d",
+      x: 6,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "e",
+      x: 8,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    }
+  ],
+  sm: [
+    {
+      i: "a",
+      x: 2,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "b",
+      x: 0,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "c",
+      x: 4,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "d",
+      x: 6,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "e",
+      x: 8,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    }
+  ],
+  xs: [
+    {
+      i: "a",
+      x: 2,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "b",
+      x: 0,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "c",
+      x: 4,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "d",
+      x: 6,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "e",
+      x: 8,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    }
+  ],
+  xxs: [
+    {
+      i: "a",
+      x: 2,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "b",
+      x: 0,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "c",
+      x: 4,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "d",
+      x: 6,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    },
+    {
+      i: "e",
+      x: 8,
+      y: 0,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    }
+  ]
+};
 
 export const initialLayoutDetails = [
   {
