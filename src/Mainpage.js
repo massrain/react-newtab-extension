@@ -37,6 +37,7 @@ const Mainpage = props => {
             colorTextData={props.colorTextData}
             LayoutDetails={props.LayoutDetails}
             changeLayoutDetails={props.changeLayoutDetails}
+            handleCollect={props.handleCollect}
           />
         </div>
       </div>

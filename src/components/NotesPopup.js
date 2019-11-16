@@ -20,6 +20,8 @@ const NotesPopup = props => {
     console.log(resultArray);
     props.setNotes(resultArray);
   };
+
+  
   return (
     <>
       <div

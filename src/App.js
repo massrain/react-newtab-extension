@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Mainpage from "./Mainpage";
 
@@ -10,6 +10,9 @@ import DigitalClock from "./components/DigitalClock";
 import NotesPopup from "./components/NotesPopup";
 import { ChooseBgPopup } from "./components/ChooseBgPopup";
 import { wallpaperDataBing } from "./components/options/cachedwallpapers";
+
+import { ContextMenu, MenuItem } from "react-contextmenu";
+import AddFrequentlyPopup from "./components/AddFrequentlyPopup,";
 
 const App = () => {
   const TextColors = {
@@ -43,6 +46,9 @@ const App = () => {
   const [ChooseBgVisibility, setChooseBgVisibility] = useLocalStorage("choosebgvisibility", "none");
   const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
   const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
+
+  const [showModal, setShowModal] = useState(false);
+  const [collectContextData, setCollectContextData] = useState(null);
 
   console.log(LayoutData);
   useEffect(() => {
@@ -168,24 +174,41 @@ const App = () => {
     setImgBackground(value);
   };
   const btnBgImageClick = () => {
-    alert("asdasd");
     setOptionsVisibility("none");
     changeWeatherVisibility();
     btnChooseBackground();
     changeBookmarksVisibility();
     changeNotesVisibility();
   };
-  //test
-  /*   console.log(imgBackground);
-  console.log(imgBackgroundChoice);
-  console.log(weatherCity);
-  console.log(weatherUnits);
-  console.log(LayoutData);
-  console.log(LayoutDetails);
-  console.log(colorTextData);
-  console.log(iconsVisibility); */
+  const handleCollect = props => {
+    setCollectContextData([props.children.props["data-index"], props.children.props["data-id"]]);
+  };
+  const handleOpenAddFrequentlyModal = () => {
+    setShowModal(true);
+  };
+  const handleCloseAddFrequentlyModal = () => {
+    setShowModal(false);
+  };
+  const handleDeleteFrequently = () => {
+    let itemIndex = collectContextData[0];
+    let itemId = collectContextData[1];
+
+    function isBigEnough(value) {
+      return value !== props.Notes[id];
+    }
+    console.log(props.Notes);
+    let originalArray = props.Notes;
+    const resultArray = originalArray.filter(isBigEnough);
+    console.log(resultArray);
+    props.setNotes(resultArray);
+  };
   return (
     <>
+      <ContextMenu id="some_unique_identifier" style={{ marginLeft: "-200px" }}>
+        <MenuItem onClick={handleDeleteFrequently}>Sil</MenuItem>
+        <MenuItem divider />
+        <MenuItem onClick={handleOpenAddFrequentlyModal}>Yeni Ekle</MenuItem>
+      </ContextMenu>
       <div className="pageOverlay z-index-98"></div>
       <div className="bg-img BodyContent z-index-97" style={backgroundStyle} onClick={btnBgImageClick}></div>
       <div className="container-fluid p-0 BodyContent d-flex flex-column z-index-99">
@@ -216,6 +239,7 @@ const App = () => {
                   colorTextData={colorTextData}
                   LayoutDetails={LayoutDetails}
                   changeLayoutDetails={changeLayoutDetails}
+                  handleCollect={handleCollect}
                 />
               </div>
             </div>
@@ -268,6 +292,14 @@ const App = () => {
         ChooseBgVisibility={ChooseBgVisibility}
         setChooseBgVisibility={setChooseBgVisibility}
         selectImageBackground={selectImageBackground}
+      />
+      <AddFrequentlyPopup
+        changeLayoutDetails={changeLayoutDetails}
+        LayoutData={LayoutData}
+        setLayoutData={setLayoutData}
+        handleOpenAddFrequentlyModal={handleOpenAddFrequentlyModal}
+        handleCloseAddFrequentlyModal={handleCloseAddFrequentlyModal}
+        showModal={showModal}
       />
     </>
   );
