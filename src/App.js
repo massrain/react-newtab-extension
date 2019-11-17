@@ -50,7 +50,6 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [collectContextData, setCollectContextData] = useState(null);
 
-  console.log(LayoutData);
   useEffect(() => {
     getLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -87,9 +86,9 @@ const App = () => {
   const backgroundStyle = {
     backgroundImage:
       imgBackgroundChoice === "tabext"
-        ? //? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
-          `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
-        : `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
+        ? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
+        : // `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
+          `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
     //"url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
   const btnChangeBackground = () => {
@@ -189,18 +188,40 @@ const App = () => {
   const handleCloseAddFrequentlyModal = () => {
     setShowModal(false);
   };
+  const deleteWebsiteData = itemIndex => {
+    console.log(LayoutDetails[itemIndex]);
+    const isCorrectDetail = value => value !== LayoutDetails[itemIndex];
+    let originalArray = LayoutDetails;
+    let resultArray = originalArray.filter(isCorrectDetail);
+    setLayoutDetails(resultArray);
+  };
   const handleDeleteFrequently = () => {
     let itemIndex = collectContextData[0];
     let itemId = collectContextData[1];
 
-    function isBigEnough(value) {
-      return value !== props.Notes[id];
-    }
-    console.log(props.Notes);
-    let originalArray = props.Notes;
-    const resultArray = originalArray.filter(isBigEnough);
-    console.log(resultArray);
-    props.setNotes(resultArray);
+    console.log(itemId);
+    console.log(itemIndex);
+    const isCorrectLg = value => value !== LayoutData.lg[itemIndex];
+    const isCorrectMd = value => value !== LayoutData.md[itemIndex];
+    const isCorrectSm = value => value !== LayoutData.sm[itemIndex];
+    const isCorrectXs = value => value !== LayoutData.xs[itemIndex];
+    const isCorrectXxs = value => value !== LayoutData.xxs[itemIndex];
+
+    let originalArray = LayoutData;
+    let resultArray = {};
+    resultArray.lg = originalArray.lg.filter(isCorrectLg);
+    resultArray.md = originalArray.md.filter(isCorrectMd);
+    resultArray.sm = originalArray.sm.filter(isCorrectSm);
+    resultArray.xs = originalArray.xs.filter(isCorrectXs);
+    resultArray.xxs = originalArray.xxs.filter(isCorrectXxs);
+    deleteWebsiteData(itemIndex);
+    setLayoutData(resultArray);
+    //props.setNotes(resultArray);
+  };
+  const handleResetLayout = () => {
+    localStorage.removeItem("freqlayouts");
+    localStorage.removeItem("freqlayoutdetails");
+    window.location.reload();
   };
   return (
     <>
@@ -208,7 +229,9 @@ const App = () => {
         <MenuItem onClick={handleDeleteFrequently}>Sil</MenuItem>
         <MenuItem divider />
         <MenuItem onClick={handleOpenAddFrequentlyModal}>Yeni Ekle</MenuItem>
+        <MenuItem onClick={handleResetLayout}>Yerleşimi Sıfırla</MenuItem>
       </ContextMenu>
+
       <div className="pageOverlay z-index-98"></div>
       <div className="bg-img BodyContent z-index-97" style={backgroundStyle} onClick={btnBgImageClick}></div>
       <div className="container-fluid p-0 BodyContent d-flex flex-column z-index-99">
@@ -347,10 +370,10 @@ TODO:
 WALLPAPER API
 
 --v3
-++arama butonuna yazıp aratınca ENTER
-+resolution icons + grid
-++freq drag and drop, always draggable
-freq right click menu
+++ arama butonuna yazıp aratınca ENTER
+++ resolution icons + grid
+++ freq drag and drop, always draggable
+++ freq right click menu
 freq add freq mainstream options
 ++ freq singlelayout click name or icon hover pointer
 ++ weather autolocation
@@ -363,6 +386,6 @@ freq add freq mainstream options
 ++ click closes modals,image click close others
 ++ notes popup css
 ++ tekil todo gösterimi
-freq ondrag unclickable
-freq dragging bottom makes scroller
+++ freq ondrag unclickable
+++ freq dragging bottom makes scroller
 */

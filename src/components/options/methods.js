@@ -191,8 +191,8 @@ export const initialLayout2 = {
     },
     {
       i: "d",
-      x: 0,
-      y: 2,
+      x: 6,
+      y: 0,
       w: 2,
       h: 2,
       minW: 2,
@@ -241,8 +241,8 @@ export const initialLayout2 = {
     },
     {
       i: "c",
-      x: 0,
-      y: 2,
+      x: 4,
+      y: 0,
       w: 2,
       h: 2,
       minW: 2,
@@ -254,7 +254,7 @@ export const initialLayout2 = {
     {
       i: "d",
       x: 0,
-      y: 4,
+      y: 2,
       w: 2,
       h: 2,
       minW: 2,
@@ -265,8 +265,8 @@ export const initialLayout2 = {
     },
     {
       i: "e",
-      x: 0,
-      y: 6,
+      x: 2,
+      y: 2,
       w: 2,
       h: 2,
       minW: 2,

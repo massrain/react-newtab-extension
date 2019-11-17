@@ -10,7 +10,6 @@ export const ChooseBgPopup = props => {
         className="container-fluid p-1 ImageBackgroundPopup text-white text-center"
         style={{ display: props.ChooseBgVisibility }}
         onBlur={handleBlur}
-        contentEditable
       >
         <div className="row no-gutters justify-content-center overflowx--scroll h-100 w-100 scrollbarStyle2">
           <div className="col-12 justify-content-center text-center h-100 w-100">

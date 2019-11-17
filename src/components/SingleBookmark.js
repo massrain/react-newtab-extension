@@ -5,7 +5,7 @@ import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 const SingleBookmark = props => {
   let selectedFreqObject = useRef(null);
   const navToUrl = () => {
-    window.open(props.item.url, "_blank");
+    window.open(props.item.url);
   };
 
   function kekp(props) {

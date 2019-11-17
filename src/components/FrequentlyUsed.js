@@ -8,7 +8,6 @@ const FrequentlyUsed = props => {
   const [isDragging, setIsDragging] = useState(false);
 
   const onLayoutChange = (newLayout, allLayouts) => {
-    console.log(newLayout);
     props.setLayoutData(allLayouts);
   };
   const redirectLink = link => {
