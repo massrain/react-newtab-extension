@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
 import Modal from "react-modal";
+import { freqBuiltInWebsites } from "./options/methods";
 
 const AddFrequentlyPopup = props => {
   const ibNewWebsiteLink = useRef(null);
   const ibNewWebsiteName = useRef(null);
+
+  const savedWebsitesData = freqBuiltInWebsites;
 
   const addWebsiteData = () => {
     let objSent = {
@@ -43,10 +46,11 @@ const AddFrequentlyPopup = props => {
   };
 
   const addWebsiteDataFromBuildIn = data2 => {
+    console.log(data2);
     let objSent = {
       name: data2.name,
       link: data2.link,
-      icon: `chrome://favicon/size/16@2x/${data2.link}`
+      icon: data2.icon
     };
     props.changeLayoutDetails(objSent);
   };
@@ -77,6 +81,10 @@ const AddFrequentlyPopup = props => {
     props.handleCloseAddFrequentlyModal();
   };
 
+  const btnClickAddFromSaved = number => {
+    console.log(freqBuiltInWebsites[number]);
+    addFromBuiltIn(freqBuiltInWebsites[number]);
+  };
   return (
     <>
       <Modal
@@ -150,7 +158,25 @@ const AddFrequentlyPopup = props => {
                 </button>
               </div>
             </div>
-            <div className="col 8">kk</div>
+            <div className="col 8">
+              <div className="row no-gutters justify-content-center mt-2">
+                <h5>Genel kullanımlar</h5>
+              </div>
+              <div className="row no-gutters justify-content-center">
+                <div className="col-12">
+                  <div className="row no-gutters">
+                    {freqBuiltInWebsites.map((item, index) => (
+                      <SingleBoxNewFrequently
+                        data={item}
+                        key={index}
+                        itemIndex={index}
+                        btnClickAddFromSaved={btnClickAddFromSaved}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Modal>
@@ -159,3 +185,22 @@ const AddFrequentlyPopup = props => {
 };
 
 export default AddFrequentlyPopup;
+
+const SingleBoxNewFrequently = props => (
+  <div className="col-3 px-2">
+    <div className="card text-white bg-transparent border-white mb-3">
+      <div className="card-bod text-center justify-content-center">
+        <img src={props.data.icon} alt="" className="img-fluid freq--newitemadd mt-1" />
+        <p className="mb-1 mt-2">{props.data.name}</p>
+        <p className="card-text mt-1">
+          <button
+            className="btn btn-outline-info btn-sm rounded-0"
+            onClick={() => props.btnClickAddFromSaved(props.itemIndex)}
+          >
+            Ekle
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+);

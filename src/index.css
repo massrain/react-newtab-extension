@@ -86,7 +86,14 @@ cursor: context-menu
   overflow-y: hidden;
   white-space: nowrap;
 }
-
+.draggablePiece{
+  position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    cursor: move;
+}
 .notesOverflow{
   max-height:30vh;
   overflow-y: auto;
@@ -102,7 +109,10 @@ cursor: context-menu
   justify-content: center;
   user-select: none;
 }
-
+.freq--newitemadd {
+  height:48px !important;
+  border-radius: 9px;
+}
 .frequentlyBox {
   transition: transform 0.2s;
 }

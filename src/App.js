@@ -86,9 +86,9 @@ const App = () => {
   const backgroundStyle = {
     backgroundImage:
       imgBackgroundChoice === "tabext"
-        ? `url("/assets/wallpapers/bing${imgBackground}.jpg")`
-        : // `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
-          `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
+        ? // `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
+          `url("/assets/wallpapers/bing${imgBackground}.jpg")`
+        : `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
     //"url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
   const btnChangeBackground = () => {
@@ -113,7 +113,7 @@ const App = () => {
     setWeatherUnits(newUnits);
   };
   const btnRefreshBackground = () => {
-    if (imgBackground > 6) {
+    if (imgBackground > 12) {
       setImgBackground(1);
     } else {
       let newNumber = imgBackground + 1;
@@ -393,7 +393,7 @@ WALLPAPER API
 ++ freq ondrag unclickable
 ++ freq dragging bottom makes scroller
 ++ navbar buton yorumla yönlendir
-freq add freq mainstream options
+++ freq add freq mainstream options
 leftmenuclick eveywhere bookmark programmaticaly open
-notes draggable
+-- notes draggable
 */

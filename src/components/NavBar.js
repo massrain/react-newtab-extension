@@ -34,6 +34,10 @@ const NavBar = props => {
   const handleCloseHistoryModal = () => {
     setShowHistoryModal(false);
   };
+  const reviewExtension = () => {
+    let link = "https://chrome.google.com/webstore";
+    window.open(link, "_blank");
+  };
 
   return (
     <>
@@ -53,7 +57,7 @@ const NavBar = props => {
             </button>
             <button
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
-              onClick={props.changeBookmarksVisibility}
+              onClick={reviewExtension}
               style={{ display: props.navIconVisibilities.Yorumla ? "block" : "none" }}
             >
               {props.iconsVisibility === "true" ? (
@@ -163,7 +167,7 @@ const NavBar = props => {
       </div>
 
       <HelpModal showHelpModal={showHelpModal} handleCloseModal={handleCloseHelpModal} />
-{/*       <BookmarksModal
+      <BookmarksModal
         showBookmarkModal={showBookmarkModal}
         handleCloseModal={handleCloseBookmarkModal}
         colorTextData={props.colorTextData}
@@ -172,7 +176,7 @@ const NavBar = props => {
         showHistoryModal={showHistoryModal}
         handleCloseModal={handleCloseHistoryModal}
         colorTextData={props.colorTextData}
-      /> */}
+      />
     </>
   );
 };

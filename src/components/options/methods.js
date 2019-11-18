@@ -431,11 +431,20 @@ export const initialLayoutDetails = [
 ];
 
 export const freqBuiltInWebsites = [
-  { name: "Reddit", link: "https://reddit.com" },
-  { name: "Reddit", link: "https://reddit.com" },
-  { name: "Reddit", link: "https://reddit.com" },
-  { name: "Reddit", link: "https://reddit.com" },
-  { name: "Reddit", link: "https://reddit.com" },
-  { name: "Reddit", link: "https://reddit.com" },
-  { name: "Reddit", link: "https://reddit.com" }
+  { name: "Instagram", link: "https://instagram.com", icon: "/assets/site/instagram.png" },
+  { name: "Hepsiburada", link: "https://www.hepsiburada.com/", icon: "/assets/site/hepsiburada.png" },
+  { name: "Drive", link: "https://drive.google.com/?usp=chrome_app", icon: "/assets/site/googledrive.png" },
+  { name: "Netflix", link: "https://netflix.com", icon: "/assets/site/netflix.png" },
+  { name: "E-Devlet", link: "https://www.turkiye.gov.tr/", icon: "/assets/site/edevlet.png" },
+  { name: "Docs", link: "https://docs.google.com/", icon: "/assets/site/googledocs.png" },
+  { name: "Twitter", link: "https://twitter.com/", icon: "/assets/site/twitter.png" },
+  { name: "Spotify", link: "https://spotify.com", icon: "/assets/site/spotify.png" },
+  { name: "Haritalar", link: "https://map.google.com", icon: "/assets/site/googlemaps.png" },
+  { name: "Facebook", link: "https://www.facebook.com/", icon: "/assets/site/facebook.png" },
+  { name: "Twitch", link: "https://twitch.tv", icon: "/assets/site/twitch.png" },
+  { name: "Sahibinden", link: "https://www.sahibinden.com/", icon: "/assets/site/sahibinden.png" },
+  { name: "n11", link: "https://www.n11.com/", icon: "/assets/site/n11.png" },
+  { name: "Trendyol", link: "https://www.trendyol.com/", icon: "/assets/site/trendyol.png" },
+  { name: "Hürriyet", link: "http://www.hurriyet.com.tr/", icon: "/assets/site/hurriyet.jpg" },
+  { name: "GittiGidiyor", link: "https://www.gittigidiyor.com/", icon: "/assets/site/gittigidiyor.png" }
 ];
