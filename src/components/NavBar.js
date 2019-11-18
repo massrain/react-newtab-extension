@@ -138,6 +138,7 @@ const NavBar = props => {
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={props.btnChooseBackground}
               style={{ display: props.navIconVisibilities.Arkaplan ? "block" : "none" }}
+              id="btnChooseBgBackground"
             >
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/photo.png"} className="img-fluid" alt="" width={24} />

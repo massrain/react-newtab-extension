@@ -429,3 +429,13 @@ export const initialLayoutDetails = [
     icon: "/assets/site/youtube.png"
   }
 ];
+
+export const freqBuiltInWebsites = [
+  { name: "Reddit", link: "https://reddit.com" },
+  { name: "Reddit", link: "https://reddit.com" },
+  { name: "Reddit", link: "https://reddit.com" },
+  { name: "Reddit", link: "https://reddit.com" },
+  { name: "Reddit", link: "https://reddit.com" },
+  { name: "Reddit", link: "https://reddit.com" },
+  { name: "Reddit", link: "https://reddit.com" }
+];

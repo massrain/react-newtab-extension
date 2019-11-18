@@ -167,7 +167,11 @@ const App = () => {
     NotesVisibility === "none" ? setNotesVisibility("block") : setNotesVisibility("none");
   };
   const btnChooseBackground = () => {
-    ChooseBgVisibility === "none" ? setChooseBgVisibility("block") : setChooseBgVisibility("none");
+    if (ChooseBgVisibility === "none") {
+      setChooseBgVisibility("block");
+    } else {
+      setChooseBgVisibility("none");
+    }
   };
   const selectImageBackground = value => {
     setImgBackground(value);
@@ -315,6 +319,7 @@ const App = () => {
         ChooseBgVisibility={ChooseBgVisibility}
         setChooseBgVisibility={setChooseBgVisibility}
         selectImageBackground={selectImageBackground}
+        btnChooseBackground={btnChooseBackground}
       />
       <AddFrequentlyPopup
         changeLayoutDetails={changeLayoutDetails}
@@ -374,7 +379,6 @@ WALLPAPER API
 ++ resolution icons + grid
 ++ freq drag and drop, always draggable
 ++ freq right click menu
-freq add freq mainstream options
 ++ freq singlelayout click name or icon hover pointer
 ++ weather autolocation
 ++ quick notes
@@ -388,4 +392,8 @@ freq add freq mainstream options
 ++ tekil todo gösterimi
 ++ freq ondrag unclickable
 ++ freq dragging bottom makes scroller
+++ navbar buton yorumla yönlendir
+freq add freq mainstream options
+leftmenuclick eveywhere bookmark programmaticaly open
+notes draggable
 */

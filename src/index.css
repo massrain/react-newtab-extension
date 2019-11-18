@@ -141,6 +141,7 @@ cursor: context-menu
   backdrop-filter: blur(8px);
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 20px;
+  cursor: move;
 }
 
 .ImageBackgroundPopup {

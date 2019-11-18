@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 
 export const ChooseBgPopup = props => {
+  const chooseBgDiv = useRef(null);
+
   const handleBlur = () => {
-    console.log("outside");
+    props.btnChooseBackground();
   };
   return (
     <>
@@ -10,6 +12,9 @@ export const ChooseBgPopup = props => {
         className="container-fluid p-1 ImageBackgroundPopup text-white text-center"
         style={{ display: props.ChooseBgVisibility }}
         onBlur={handleBlur}
+        tabIndex="-1"
+        ref={chooseBgDiv}
+        id="chooseBgPopup"
       >
         <div className="row no-gutters justify-content-center overflowx--scroll h-100 w-100 scrollbarStyle2">
           <div className="col-12 justify-content-center text-center h-100 w-100">

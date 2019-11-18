@@ -14,16 +14,8 @@ const AddFrequentlyPopup = props => {
     props.changeLayoutDetails(objSent);
   };
 
-  const btnAddNewWebsiteConfirm = () => {
-    //console.log(ibNewWebsiteName.current.value);
-    //console.log(ibNewWebsiteLink.current.value);
-    //console.log(props.LayoutData.lg.length - 1);
-    if (
-      ibNewWebsiteName.current.value !== null ||
-      ibNewWebsiteLink.current.value !== null ||
-      ibNewWebsiteLink.current.value !== "" ||
-      ibNewWebsiteLink.current.value !== ""
-    ) {
+  const btnAddNewWebsiteConfirm = switchKey => {
+    if (ibNewWebsiteName.current.value !== "" && ibNewWebsiteLink.current.value !== "") {
       addWebsiteData();
       let lastString = props.LayoutData.lg[props.LayoutData.lg.length - 1].i;
       let pushContent = {
@@ -45,11 +37,44 @@ const AddFrequentlyPopup = props => {
       resultArray.sm = originalArray.sm.concat(pushContent);
       resultArray.xs = originalArray.xs.concat(pushContent);
       resultArray.xxs = originalArray.xxs.concat(pushContent);
-      console.log(originalArray);
-      console.log(resultArray);
       props.setLayoutData(resultArray);
       props.handleCloseAddFrequentlyModal();
     }
+  };
+
+  const addWebsiteDataFromBuildIn = data2 => {
+    let objSent = {
+      name: data2.name,
+      link: data2.link,
+      icon: `chrome://favicon/size/16@2x/${data2.link}`
+    };
+    props.changeLayoutDetails(objSent);
+  };
+
+  const addFromBuiltIn = data => {
+    addWebsiteDataFromBuildIn(data);
+    let lastString = props.LayoutData.lg[props.LayoutData.lg.length - 1].i;
+    let pushContent = {
+      i: String.fromCharCode(lastString.charCodeAt(0) + 1),
+      x: 0,
+      y: props.LayoutData.lg[props.LayoutData.lg.length - 1].y + 1,
+      w: 2,
+      h: 2,
+      minW: 2,
+      maxW: 4,
+      minH: 2,
+      maxH: 4,
+      static: false
+    };
+    let originalArray = props.LayoutData;
+    let resultArray = {};
+    resultArray.lg = originalArray.lg.concat(pushContent);
+    resultArray.md = originalArray.md.concat(pushContent);
+    resultArray.sm = originalArray.sm.concat(pushContent);
+    resultArray.xs = originalArray.xs.concat(pushContent);
+    resultArray.xxs = originalArray.xxs.concat(pushContent);
+    props.setLayoutData(resultArray);
+    props.handleCloseAddFrequentlyModal();
   };
 
   return (
@@ -76,13 +101,13 @@ const AddFrequentlyPopup = props => {
           }
         }}
       >
-        <div className="container">
-          <div className="row no-gutters justify-content-center">
-            <div className="col-10 justify-content-center">
+        <div className="container h-100">
+          <div className="row no-gutters h-100 justify-content-center">
+            <div className="col-4 justify-content-center">
               <div className="row no-gutters justify-content-center mt-2">
                 <h5>Yeni Ekle</h5>
               </div>
-              <div className="row no-gutters justify-content-center mt-2">
+              <div className="row no-gutters justify-content-center">
                 <div className="col-10">
                   <div className="form-group">
                     <label>İsim</label>
@@ -95,7 +120,7 @@ const AddFrequentlyPopup = props => {
                   </div>
                 </div>
               </div>
-              <div className="row no-gutters justify-content-center mt-3">
+              <div className="row no-gutters justify-content-center">
                 <div className="col-10">
                   <div className="form-group">
                     <label>Link:</label>
@@ -114,17 +139,18 @@ const AddFrequentlyPopup = props => {
                   </div>
                 </div>
               </div>
-              <div className="row no-gutters justify-content-center mt-2">
+              <div className="row no-gutters justify-content-center">
                 <button className="btn btn-success" onClick={btnAddNewWebsiteConfirm}>
                   Kaydet
                 </button>
               </div>
-              <div className="row no-gutters justify-content-center mt-2">
+              <div className="row no-gutters justify-content-center">
                 <button className="btn btn-primary" onClick={props.handleCloseAddFrequentlyModal}>
                   Kapat
                 </button>
               </div>
             </div>
+            <div className="col 8">kk</div>
           </div>
         </div>
       </Modal>

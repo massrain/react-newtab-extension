@@ -1,7 +1,5 @@
 import React, { useRef } from "react";
 
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
-
 const SingleBookmark = props => {
   let selectedFreqObject = useRef(null);
   const navToUrl = () => {
@@ -27,14 +25,8 @@ const SingleBookmark = props => {
       >
         <div className="card-body px-4 py-1">
           <p className="card-text d-flex align-items-center justify-content-center">
-            <ContextMenuTrigger id="freq_identifier">
-              <img
-                className="img-fluid mx-2"
-                src={`chrome://favicon/size/16@2x/${props.item.url}}`}
-                width={16}
-                alt=""
-              />
-            </ContextMenuTrigger>
+            <img className="img-fluid mx-2" src={`chrome://favicon/size/16@2x/${props.item.url}}`} width={16} alt="" />
+
             {props.item.title}
             <a href={props.item.url} className="mx-2" rel="noopener noreferrer">
               Link
@@ -42,23 +34,6 @@ const SingleBookmark = props => {
           </p>
         </div>
       </div>
-
-      <ContextMenu id="freq_identifier" style={{ marginLeft: "-100px" }}>
-        <div className="container-fluid p-0 bg-white">
-          <MenuItem data={{ foo: "bar" }} onClick={btnRemoveFreqObject} className="dropdown-item cursor--pointer">
-            Kaldır
-          </MenuItem>
-          <div className="dropdown-divider"></div>
-          <MenuItem divider />
-          <MenuItem
-            data={{ foo: "bar" }}
-            className="dropdown-item cursor--pointer"
-            onClick={btnAddNewFrequentlyVisited}
-          >
-            Yeni Ekle
-          </MenuItem>
-        </div>
-      </ContextMenu>
     </>
   );
 };
