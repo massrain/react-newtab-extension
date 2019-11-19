@@ -274,6 +274,20 @@ const App = () => {
               <div className="container">
                 <div className="row no-gutters justify-content-center">
                   <div className="col-12 text-center">
+                    <form method="get" title="Search Form" action="https://cse.google.com/cse/publicurl" target="_blank">
+                      <div>
+                        <input type="text" id="q" name="q" title="Search this site" alt="Search Text" maxlength="256" />
+                        <input type="hidden" id="cx" name="cx" value="003014573317456829330:tqxdlhxphtr" />
+                        <input
+                          type="image"
+                          id="searchSubmit"
+                          name="submit"
+                          src="https://www.flaticon.com/free-icon/active-search-symbol_34148"
+                          alt="Go"
+                          title="Submit Search Query"
+                        />
+                      </div>
+                    </form>
                     <h3 className={`display-4 text-${colorTextData.mains}`}>
                       <DigitalClock dateTimeFormat={dateTimeFormat} setDateTimeFormat={setDateTimeFormat} />
                     </h3>
@@ -396,4 +410,9 @@ WALLPAPER API
 ++ freq add freq mainstream options
 leftmenuclick eveywhere bookmark programmaticaly open
 -- notes draggable
+
+--v4
+responsiveness
+onblur background notes
+custom search
 */
