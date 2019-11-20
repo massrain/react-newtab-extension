@@ -1,7 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 export const ChooseBgPopup = props => {
   const chooseBgDiv = useRef(null);
+
+  useEffect(() => {
+    if (props.ChooseBgVisibility === "block") {
+      document.getElementById("chooseBgPopup").focus();
+    }
+  }, [props.ChooseBgVisibility]);
 
   const handleBlur = () => {
     props.btnChooseBackground();
@@ -12,7 +18,7 @@ export const ChooseBgPopup = props => {
         className="container-fluid p-1 ImageBackgroundPopup text-white text-center"
         style={{ display: props.ChooseBgVisibility }}
         onBlur={handleBlur}
-        tabIndex="-1"
+        tabIndex="1"
         ref={chooseBgDiv}
         id="chooseBgPopup"
       >

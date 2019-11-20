@@ -184,7 +184,8 @@ const App = () => {
     changeNotesVisibility();
   };
   const handleCollect = props => {
-    setCollectContextData([props.children.props["data-index"], props.children.props["data-id"]]);
+    console.log(props);
+    setCollectContextData([props.children[0].props["data-index"], props.children[0].props["data-id"]]);
   };
   const handleOpenAddFrequentlyModal = () => {
     setShowModal(true);
@@ -229,7 +230,7 @@ const App = () => {
   };
   return (
     <>
-      <ContextMenu id="some_unique_identifier" style={{ marginLeft: "-200px" }}>
+      <ContextMenu id="some_unique_identifier" style={{ marginLeft: "-100px" }}>
         <MenuItem onClick={handleDeleteFrequently}>Sil</MenuItem>
         <MenuItem divider />
         <MenuItem onClick={handleOpenAddFrequentlyModal}>Yeni Ekle</MenuItem>
@@ -274,20 +275,6 @@ const App = () => {
               <div className="container">
                 <div className="row no-gutters justify-content-center">
                   <div className="col-12 text-center">
-                    <form method="get" title="Search Form" action="https://cse.google.com/cse/publicurl" target="_blank">
-                      <div>
-                        <input type="text" id="q" name="q" title="Search this site" alt="Search Text" maxlength="256" />
-                        <input type="hidden" id="cx" name="cx" value="003014573317456829330:tqxdlhxphtr" />
-                        <input
-                          type="image"
-                          id="searchSubmit"
-                          name="submit"
-                          src="https://www.flaticon.com/free-icon/active-search-symbol_34148"
-                          alt="Go"
-                          title="Submit Search Query"
-                        />
-                      </div>
-                    </form>
                     <h3 className={`display-4 text-${colorTextData.mains}`}>
                       <DigitalClock dateTimeFormat={dateTimeFormat} setDateTimeFormat={setDateTimeFormat} />
                     </h3>
@@ -414,5 +401,8 @@ leftmenuclick eveywhere bookmark programmaticaly open
 --v4
 responsiveness
 onblur background notes
-custom search
+++custom search
+tests:
+custom search verilen linke çevril
+freq box ikonu
 */

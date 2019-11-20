@@ -6,8 +6,6 @@ const AddFrequentlyPopup = props => {
   const ibNewWebsiteLink = useRef(null);
   const ibNewWebsiteName = useRef(null);
 
-  const savedWebsitesData = freqBuiltInWebsites;
-
   const addWebsiteData = () => {
     let objSent = {
       name: ibNewWebsiteName.current.value,

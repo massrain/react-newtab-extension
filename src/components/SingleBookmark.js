@@ -1,20 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 
 const SingleBookmark = props => {
-  let selectedFreqObject = useRef(null);
   const navToUrl = () => {
     window.open(props.item.url);
-  };
-
-  function kekp(props) {
-    selectedFreqObject = props["data-capture"];
-  }
-
-  const btnAddNewFrequentlyVisited = () => {
-    console.log("new");
-  };
-  const btnRemoveFreqObject = () => {
-    console.log("remove item = " + selectedFreqObject);
   };
 
   return (

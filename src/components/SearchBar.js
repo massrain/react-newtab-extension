@@ -11,7 +11,8 @@ const SearchBar = props => {
   const onSearchTypeChange = e => {
     setSearchType(e.target.value);
   };
-  const btnSearchClick = () => {
+  const btnSearchClick = e => {
+    e.preventDefault();
     if (searchType === "default") {
       let linkGoogle = `http://www.google.com/search?q=${ibSearchBox.current.value}`;
       let linkYandex = `https://yandex.com.tr/search/?text=${ibSearchBox.current.value}`;
@@ -41,76 +42,86 @@ const SearchBar = props => {
       else if (searchWebsite === "yandex") window.open(linkYandex, "_blank");
       else if (searchWebsite === "bing") window.open(linkBing, "_blank");
     } else if (searchType === "website") {
-      let linkGoogle = `https://www.google.com/search?q=site%3Arerererarara.net+${ibSearchBox.current.value}`;
-      let linkYandex = `https://yandex.com.tr/search/?text=url%3Drerererarara.net+${ibSearchBox.current.value}`;
-      let linkBing = `https://www.bing.com/search?q=site%3A"rerererarara.net%22+${ibSearchBox.current.value}`;
-      if (searchWebsite === "google") window.open(linkGoogle, "_blank");
-      else if (searchWebsite === "yandex") window.open(linkYandex, "_blank");
-      else if (searchWebsite === "bing") window.open(linkBing, "_blank");
+      document.getElementById("theForm").submit();
+      //let linkGoogle = `https://www.google.com/search?q=site%3Arerererarara.net+${ibSearchBox.current.value}`;
+      //let linkYandex = `https://yandex.com.tr/search/?text=url%3Drerererarara.net+${ibSearchBox.current.value}`;
+      //let linkBing = `https://www.bing.com/search?q=site%3A"rerererarara.net%22+${ibSearchBox.current.value}`;
+      //if (searchWebsite === "google") window.open(linkGoogle, "_blank");
+      //else if (searchWebsite === "yandex") window.open(linkGoogle, "_blank");
+      //else if (searchWebsite === "bing") window.open(linkGoogle, "_blank");
     }
   };
   return (
     <>
       <div className="form-group mt-3">
-        <div className="input-group mb-3">
-          <div className="input-group-prepend">
-            <select
-              className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder`}
-              onChange={onSearchWebsiteChange}
-              value={searchWebsite}
-            >
-              <option value="google" className={`text-${props.colorTextData.mains}`}>
-                Google
-              </option>
-              <option value="yandex" className={`text-${props.colorTextData.mains}`}>
-                Yandex
-              </option>
-              <option value="bing" className={`text-${props.colorTextData.mains}`}>
-                Bing
-              </option>
-            </select>
-          </div>
-          <div className="input-group-prepend">
-            <select
-              className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder`}
-              onChange={onSearchTypeChange}
-              value={searchType}
-            >
-              <option value="default" className={`text-${props.colorTextData.mains}`}>
-                Tümü
-              </option>
-              <option value="image" className={`text-${props.colorTextData.mains}`}>
-                Görseller
-              </option>
-              <option value="video" className={`text-${props.colorTextData.mains}`}>
-                Videolar
-              </option>
-              <option value="map" className={`text-${props.colorTextData.mains}`}>
-                Harita
-              </option>
-              <option value="website" className={`text-${props.colorTextData.mains}`}>
-                Website
-              </option>
-            </select>
-          </div>
+        <form
+          onSubmit={btnSearchClick}
+          id="theForm"
+          method="get"
+          title="Search Form"
+          target="_blank"
+          action="https://cse.google.com/cse/publicurl"
+        >
+          <input type="hidden" id="cx" name="cx" value="003014573317456829330:tqxdlhxphtr" />
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <select
+                className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder`}
+                onChange={onSearchWebsiteChange}
+                value={searchWebsite}
+              >
+                <option value="google" className={`text-${props.colorTextData.mains} bg-transparent`}>
+                  Google
+                </option>
+                <option value="yandex" className={`text-${props.colorTextData.mains} bg-transparent`}>
+                  Yandex
+                </option>
+                <option value="bing" className={`text-${props.colorTextData.mains} bg-transparent`}>
+                  Bing
+                </option>
+              </select>
+            </div>
+            <div className="input-group-prepend">
+              <select
+                className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder`}
+                onChange={onSearchTypeChange}
+                value={searchType}
+              >
+                <option value="default" className={`text-${props.colorTextData.mains}`}>
+                  Tümü
+                </option>
+                <option value="image" className={`text-${props.colorTextData.mains}`}>
+                  Görseller
+                </option>
+                <option value="video" className={`text-${props.colorTextData.mains}`}>
+                  Videolar
+                </option>
+                <option value="map" className={`text-${props.colorTextData.mains}`}>
+                  Harita
+                </option>
+                <option value="website" className={`text-${props.colorTextData.mains}`}>
+                  Website
+                </option>
+              </select>
+            </div>
 
-          <input
-            type="text"
-            ref={ibSearchBox}
-            className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder border-${props.colorTextData.mains}`}
-            placeholder="Aramak istediğiniz.."
-            onKeyDown={event => {
-              if (event.key === "Enter") {
-                btnSearchClick();
-              }
-            }}
-          />
-          <div className="input-group-append">
-            <button className={`btn btn-outline-${props.colorTextData.mains} px-5`} onClick={btnSearchClick}>
-              Ara
-            </button>
+            <input
+              type="text"
+              ref={ibSearchBox}
+              name="q"
+              className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder border-${props.colorTextData.mains}`}
+              placeholder="Aramak istediğiniz.."
+              onKeyDown={event => {
+                if (event.key === "Enter") {
+                  btnSearchClick(event);
+                }
+              }}
+            />
+            <div className="input-group-append">
+              <input type="submit" className={`btn btn-outline-${props.colorTextData.mains} px-5`} value={"Ara"} />
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HelpModal } from "./modals/HelpModal";
 import { BookmarksModal } from "./modals/BookmarksModal";
 import { HistoryModal } from "./modals/HistoryModal";
@@ -7,6 +7,11 @@ const NavBar = props => {
   const [showHelpModal, setShowHelpModal] = useState(false);
   const [showBookmarkModal, setShowBookmarkModal] = useState(false);
   const [showHistoryModal, setShowHistoryModal] = useState(false);
+  const [visibilityButton, setVisibilityButton] = useState(false);
+
+  useEffect(() => {
+    setVisibilityButton(props.ChooseBgVisibility);
+  }, [props.ChooseBgVisibility]);
   const btnHelpClick = () => {
     showHelpModal ? handleCloseHelpModal() : handleOpenHelpModal();
   };
@@ -142,6 +147,7 @@ const NavBar = props => {
               className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
               onClick={props.btnChooseBackground}
               style={{ display: props.navIconVisibilities.Arkaplan ? "block" : "none" }}
+              disabled={visibilityButton === "block" ? true : false}
               id="btnChooseBgBackground"
             >
               {props.iconsVisibility === "true" ? (
@@ -167,7 +173,7 @@ const NavBar = props => {
       </div>
 
       <HelpModal showHelpModal={showHelpModal} handleCloseModal={handleCloseHelpModal} />
-{/*       <BookmarksModal
+      {/*       <BookmarksModal
         showBookmarkModal={showBookmarkModal}
         handleCloseModal={handleCloseBookmarkModal}
         colorTextData={props.colorTextData}
