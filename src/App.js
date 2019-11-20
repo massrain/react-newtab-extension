@@ -313,7 +313,13 @@ const App = () => {
         dateTimeFormat={dateTimeFormat}
         setDateTimeFormat={setDateTimeFormat}
       />
-      <NotesPopup NotesVisibility={NotesVisibility} colorTextData={colorTextData} Notes={Notes} setNotes={setNotes} />
+      <NotesPopup
+        changeNotesVisibility={changeNotesVisibility}
+        NotesVisibility={NotesVisibility}
+        colorTextData={colorTextData}
+        Notes={Notes}
+        setNotes={setNotes}
+      />
       <ChooseBgPopup
         setImgBackground={setImgBackground}
         imgBackground={imgBackground}

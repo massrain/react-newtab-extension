@@ -62,7 +62,7 @@ const SearchBar = props => {
           target="_blank"
           action="https://cse.google.com/cse/publicurl"
         >
-          <input type="hidden" id="cx" name="cx" value="003014573317456829330:tqxdlhxphtr" />
+          <input type="hidden" id="cx" name="cx" value="partner-pub-1206609202738714:7727531761" />
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <select
@@ -128,3 +128,20 @@ const SearchBar = props => {
 };
 
 export default SearchBar;
+
+/* 
+script async src='https://cse.google.com/cse.js?cx=partner-pub-1206609202738714:7727531761'></script>
+ */
+
+/* 
+ 
+ 
+Ekran boyutundaki küçülme & büyülmeye görebildiğim kadar baktım ve müdahale ettim. Windows, Linux, Mac'deki Chrome'larda veya her Chrome'da yazı boyutundan vs dolayı aynı cevabı alamayabiliyorum. Kapsamlı olarak test edip düzeltmelerini yapacağım. 1366x768 ve 1920x1080 benim 2 ekranın çözünürlüğü ve zaten dünyada en çok kullanılan 2 çözünürlük; yaparken ikisine de odaklandım.
+
+Duvar kağıtları seçimi ve notlar'a ekranda kendi alanları dışında herhangi bir yere tıklandığında kapatma koydum. Ancak bahsettiğim ufak bug'ı dün de çözemedim. Sadece kendi butonlarına tıklandığında önce dışarıya tıklandığı için kapanıyor, sonra butona tıklandığı için açılıyor; 10 farklı yöntem denedim sanırım. Şimdi de bakıyorum, farklı bir yöntemle çözülür en olmadı. Bu hata sebebiyle kendi alanları dışına tıklanma özelliğini deaktif ettim.(Duvarkağıdı seçiminde örnek olarak kalması için aktif)
+
+Custom Search eklendi. Ama arama yaptığımda tüm web'de arıyor sadece senin websitedende değil. Custom search'de böyle bi özellik var onu açmış olabilirsin. cse google sitesinden bakabilirsin. Ben kendi sitemde denedim örneğin; sadece kendi sitemde arama yapıyorum; ama senin kodu koyunca tüm web'de arıyor. Acaba arama motoru kimliğinde mi bir problem var dedim. Bi ona bakıp bana gönderebilirsin. Ayrıca custom search'i nasıl aratsın kullanıcı. İlk seçim kutusuna mı bir seçenek koyalım (google,bing) yazan yere; yoksa ikinci seçim kutusuna mı? (görsellerde ara, haritada ara, webde ara-< custom search bu). Ben 2. kutuda website seçeneğinde bıraktım lakin bana biraz göz önünde değilmiş gibi geldi. Onu ilk seçim kutusuna da koyabilirim; veya google-bing vs'yi kaldırıp direk custom search'i de bırakabilirim, ne dersen.
+
+İkon ekleme sayfası var abi bir kaç ana websitesiyle. Orada şöyle bir durum var. O ana sık ziyaret edilenler kutusu tıklanıp basılı tutulup hareket ettirilebiliyor sola sağa aşağı vs. Lakin biz aynı zamanda da sağ tık menüsü eklemek istedik. 2'sini aynı yerlerde aynı aksiyonlara sokamadım bu bizi baya uğraştırdı. Sana gönderdiğim halinde sadece sağ tık Site isminin üzerindeyken vardı; fare imlecini değiştirerek oralarda bir aksiyon var havasını kullanıcıya vermeye çalışmıştım. Ben şimdi onu biraz genişlettim. Aynı zamanda bir buton da sağ üste koydum menüyü açmak için. Eğer kullanıcılar sağ tık yapabileceğini anlamazlar diyor isen; o ufak rahatsızlık vermeyecek şekilde menü butonundan menüyü açabilirler; anlarlar diyor isen ikonu kaldırayım ismin üzerine sağ tıklama aktif kalsın. Veya ikisi de kalsın. Ben 2sini de aktif ettim şu anda.
+
+*/

@@ -18,7 +18,7 @@ export const ChooseBgPopup = props => {
         className="container-fluid p-1 ImageBackgroundPopup text-white text-center"
         style={{ display: props.ChooseBgVisibility }}
         onBlur={handleBlur}
-        tabIndex="1"
+        tabIndex="-1"
         ref={chooseBgDiv}
         id="chooseBgPopup"
       >

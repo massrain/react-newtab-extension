@@ -1,7 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 const NotesPopup = props => {
   const ibNewNoteBox = useRef(null);
+
+  useEffect(() => {
+    if (props.NotesVisibility === "block") {
+      document.getElementById("chooseNotesPopup").focus();
+    }
+  }, [props.NotesVisibility]);
 
   const btnAddNoteClick = () => {
     let originalArray = props.Notes;
@@ -21,12 +27,17 @@ const NotesPopup = props => {
     props.setNotes(resultArray);
   };
 
-  
+/*   const handleBlur = () => {
+    props.changeNotesVisibility();
+  }; */
   return (
     <>
       <div
         className="container-fluid px-3 py-2 NotesPopup text-white text-center mw--50 notesOverflow scrollbarStyle2"
         style={{ display: props.NotesVisibility }}
+        /* onBlur={handleBlur} */
+        tabIndex="-1"
+        id="chooseNotesPopup"
       >
         <div className="row no-gutters px-4 justify-content-center ">
           <div className="col-12 p-1 justify-content-center text-center">

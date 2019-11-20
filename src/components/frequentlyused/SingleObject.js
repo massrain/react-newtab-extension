@@ -42,7 +42,10 @@ const SingleObject = props => {
                 </p>
               </div>
               <span className="draggablePiece">
-                <button className="btn btn-sm btn-outline-secondary border-0 p-0" onClick={toggleMenu}>☰</button>
+                <button className="btn btn-sm btn-outline-primary border-0 p-0" onClick={toggleMenu}>
+                  <img src="/assets/site/menu.png" className="img-fluid" alt="" style={{ height: "8px" }} />
+                  {/* ☰ */}
+                </button>
               </span>
             </ContextMenuTrigger>
           </div>

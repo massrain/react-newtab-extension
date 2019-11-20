@@ -173,7 +173,7 @@ const NavBar = props => {
       </div>
 
       <HelpModal showHelpModal={showHelpModal} handleCloseModal={handleCloseHelpModal} />
-      {/*       <BookmarksModal
+      <BookmarksModal
         showBookmarkModal={showBookmarkModal}
         handleCloseModal={handleCloseBookmarkModal}
         colorTextData={props.colorTextData}
@@ -182,7 +182,7 @@ const NavBar = props => {
         showHistoryModal={showHistoryModal}
         handleCloseModal={handleCloseHistoryModal}
         colorTextData={props.colorTextData}
-      /> */}
+      />
     </>
   );
 };
