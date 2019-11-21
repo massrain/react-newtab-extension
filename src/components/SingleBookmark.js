@@ -12,13 +12,12 @@ const SingleBookmark = props => {
         onClick={navToUrl}
       >
         <div className="card-body px-4 py-1">
-          <p className="card-text d-flex align-items-center justify-content-center">
+          <p className="card-text d-flex align-items-center justify-content-center text-break" style={{fontSize: "0.7rem"}}>
             <img className="img-fluid mx-2" src={`chrome://favicon/size/16@2x/${props.item.url}}`} width={16} alt="" />
-
             {props.item.title}
-            <a href={props.item.url} className="mx-2" rel="noopener noreferrer">
+{/*             <a href={props.item.url} className="mx-2" rel="noopener noreferrer">
               Link
-            </a>
+            </a> */}
           </p>
         </div>
       </div>

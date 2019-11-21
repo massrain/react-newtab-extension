@@ -255,12 +255,15 @@ const App = () => {
                 btnRefreshBackground={btnRefreshBackground}
                 btnChooseBackground={btnChooseBackground}
                 navIconVisibilities={navIconVisibilities}
+                selectImageBackground={selectImageBackground}
+                Notes={Notes}
+                setNotes={setNotes}
               />
             </div>
           </div>
           <div className="col-10 d-flex flex-column">
             <div className="row no-gutters flex-grow-1 align-items-start">
-              <div className="container py-3 mb-5 ContentContainer" style={{ display: BookmarksVisibility }}>
+              <div className="container py-3 mb-5 ContentContainer mt-4" style={{ display: BookmarksVisibility }}>
                 <Mainpage
                   LayoutData={LayoutData}
                   setLayoutData={setLayoutData}
@@ -313,13 +316,13 @@ const App = () => {
         dateTimeFormat={dateTimeFormat}
         setDateTimeFormat={setDateTimeFormat}
       />
-      <NotesPopup
+{/*       <NotesPopup
         changeNotesVisibility={changeNotesVisibility}
         NotesVisibility={NotesVisibility}
         colorTextData={colorTextData}
         Notes={Notes}
         setNotes={setNotes}
-      />
+      /> */}
       <ChooseBgPopup
         setImgBackground={setImgBackground}
         imgBackground={imgBackground}
@@ -411,4 +414,29 @@ onblur background notes
 tests:
 custom search verilen linke çevril
 freq box ikonu
+
+
+--v5
+--custom search first select
+--custom search
+
+++resimseçimi ve notlar sol kapanma sorunu giderildi.
+++resimseçimi, notlar, geçmiş, bookmarklar sol tarafa ince şekilde yerleştirildi. resimseçimi veya notlar eski haline getirilebilir.
+++havadurumu pozisyonu kayıt altına alınıyor. bir sonraki açılışta aynı yerde açılıyor. ekranın başka yerine tıklandığında kasıtlı olarak kapanmasını açmadım
+ widget tarzı ekranda kalmasının olabileceğini göstermek için; ama o da istenirse diğerleri gibi kapat aç yapılabilir.
+++havadurumu celcius-fahrenheit simgeler
+
+--içe aktar
+--başka simge üzerinden yeni ikon ekleniyor işlevli değil
+--yerleşimi sıfırla uyarı
+--ekran resmi bing
+--yeni site ekleme menüsü x ile kapanmalı
+--yeni eklenen simgeler layoutda kötü yere geliyor, 
+--layout değişimleri savelenmiyor
+--not olayı modal olabilir veya navbar butons disabled
+--hava durumu modal olabilir veya navbar butons disable
+--select bg modal olabilir veya navbar butons disable
+--freq margin top
+--yer imleri ve geçmiş sola dayalı
+--yeni ekleme butonu lokasyon
 */

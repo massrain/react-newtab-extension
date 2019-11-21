@@ -55,7 +55,6 @@ const NotesPopup = props => {
                 }}
               />
             </div>
-
             <div className="row no-gutters mt-3">
               <div className="col-12">
                 {props.Notes.map((item, index) => (

@@ -80,6 +80,13 @@ cursor: context-menu
   overflow-y: auto;
   max-height: 70vh;
 }
+.static--overflowy--scroll {
+  overflow-y: auto;
+}
+.imagepicker--overflowy {
+  overflow-y: auto;
+   max-height: -webkit-fill-available; 
+}
 .overflowx--scroll {
   overflow-x: auto;
   max-height: 80vh;

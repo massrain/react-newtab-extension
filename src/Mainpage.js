@@ -16,7 +16,7 @@ const Mainpage = props => {
   return (
     <>
       <div className="row no-gutters justify-content-center">
-        <div className="col-8 p-3">
+        <div className="col-8 pb-3 px-3">
           <SearchBar colorTextData={props.colorTextData} />
         </div>
       </div>

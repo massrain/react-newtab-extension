@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { unixToDay } from "./options/methods";
+import { unixToDay, useLocalStorage } from "./options/methods";
 import { responseWeatherList } from "./options/cachedweathers";
 import Draggable from "react-draggable";
 
 const WeatherPopup = props => {
   const [WeatherData, setWeatherData] = useState(responseWeatherList);
+  let defaultpositions = { x: 0, y: 0 };
+  const [weatherPopupPosition, setWeatherPopupPosition] = useLocalStorage("weatherdragpositions", defaultpositions);
 
   useEffect(() => {
     let apiKey = process.env.REACT_APP_API_KEY;
@@ -28,9 +30,14 @@ const WeatherPopup = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.weatherCity]);
 
+  const handleStop = (e, position) => {
+    let newpositions = { x: position.x, y: position.y };
+    setWeatherPopupPosition(newpositions);
+  };
+
   return (
     <>
-      <Draggable>
+      <Draggable onStop={handleStop} defaultPosition={weatherPopupPosition}>
         <div
           className="container-fluid p-4 WeatherPopup text-white text-center"
           style={{ display: props.WeatherVisibility }}
@@ -51,9 +58,11 @@ const WeatherPopup = props => {
             <div className="col-12 p-0">
               {/* First Row */}
               <div className="row no-gutters">
-                <div className="col-2">*</div>
+                <div className="col-2">&deg;</div>
                 <div className="col-8">{WeatherData.city.name}</div>
-                <div className="col-2">C*</div>
+                <div className="col-2">
+                  {props.weatherUnits === "imperial" ? <span>&deg;F</span> : <span>&deg;C</span>}
+                </div>
               </div>
               {/* Second Row */}
               <hr className="border-light my-2" />
@@ -63,7 +72,9 @@ const WeatherPopup = props => {
                   <div className="row no-gutters justify-content-center">
                     {Math.floor(WeatherData.list[0].main.temp)}
                   </div>
-                  <div className="row no-gutters justify-content-center text-secondary">*C</div>
+                  <div className="row no-gutters justify-content-center text-secondary">
+                    {props.weatherUnits === "imperial" ? <span>&deg;F</span> : <span>&deg;C</span>}
+                  </div>
                 </div>
 
                 <div className="col-4 px-3">

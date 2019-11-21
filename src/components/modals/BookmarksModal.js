@@ -40,17 +40,17 @@ export const BookmarksModal = props => {
         content: {
           color: "lightsteelblue",
           backgroundColor: "rgba(30,30,30,0.75)",
-          top: "20vh",
-          left: "20vw",
-          right: "20vw",
-          bottom: "20vh"
+          top: "5vh",
+          left: "5vw",
+          right: "70vw",
+          bottom: "5vh"
         }
       }}
     >
       <div className="container h-100">
         <div className="row no-gutters justify-content-center h-100">
           <div className="col-12 h-100 justify-content-center">
-            <div className="row h-100 no-gutters justify-content-center overflowy--scroll scrollbarStyle my-1">
+            <div className="row h-100 no-gutters justify-content-center static--overflowy--scroll scrollbarStyle my-1">
               <div className="col-11 justify-content-center text-center">
                 <h5>Yer İmleri</h5>
                 <br />
