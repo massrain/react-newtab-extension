@@ -7,11 +7,34 @@ import { bootstrapToHexColors } from "./options/methods";
 const OptionsPopup = props => {
   const ibWeatherCity = useRef(null);
 
+  const allStorage = () => {
+    let values = [],
+      keys = Object.keys(localStorage),
+      i = keys.length;
+    //console.log(keys);
+    while (i--) {
+      values.push(localStorage.getItem(keys[i]));
+    }
+    return values;
+  };
+  const localStorageToObject = () => {
+    let newObject = {};
+    Object.keys(localStorage).forEach(element => {
+      newObject[element] = localStorage.getItem(element);
+    });
+    return newObject;
+  };
+
   const exportLayoutData = () => {
     // 1. get data from localstorage or state
-    let blob = new Blob([JSON.stringify(props.LayoutData)], { type: "application/json;charset=utf-8" });
-    saveAs(blob, "layoutdata.json");
+    let resultData = JSON.stringify(localStorageToObject());
     // 2. save it to json file
+
+    let blob = new Blob([resultData], { type: "application/json; charset=utf-8" });
+    var date = new Date();
+    let filename =
+      Math.floor(Math.random() * 99) + 1 + "tabext_" + date.getDate() + date.getMonth() + date.getFullYear() + ".json";
+    saveAs(blob, filename);
   };
   const importLayoutData = () => {
     //1. get json file from browser.

@@ -7,12 +7,12 @@ import NavBar from "./components/NavBar";
 import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
 import DigitalClock from "./components/DigitalClock";
-import NotesPopup from "./components/NotesPopup";
 import { ChooseBgPopup } from "./components/ChooseBgPopup";
 import { wallpaperDataBing } from "./components/options/cachedwallpapers";
 
 import { ContextMenu, MenuItem } from "react-contextmenu";
 import AddFrequentlyPopup from "./components/AddFrequentlyPopup,";
+import iziToast from "izitoast";
 
 const App = () => {
   const TextColors = {
@@ -224,9 +224,35 @@ const App = () => {
     //props.setNotes(resultArray);
   };
   const handleResetLayout = () => {
-    localStorage.removeItem("freqlayouts");
-    localStorage.removeItem("freqlayoutdetails");
-    window.location.reload();
+    iziToast.question({
+      timeout: 20000,
+      close: false,
+      overlay: true,
+      displayMode: "once",
+      id: "question",
+      zindex: 999,
+      title: "Uyarı",
+      message: "Yerleşimi sıfırlamak istediğinize emin misiniz?",
+      position: "center",
+      buttons: [
+        [
+          "<button><b>Sıfırla</b></button>",
+          function(instance, toast) {
+            localStorage.removeItem("freqlayouts");
+            localStorage.removeItem("freqlayoutdetails");
+            window.location.reload();
+            instance.hide({ transitionOut: "fadeOut" }, toast, "button");
+          },
+          true
+        ],
+        [
+          "<button>Vazgeç</button>",
+          function(instance, toast) {
+            instance.hide({ transitionOut: "fadeOut" }, toast, "button");
+          }
+        ]
+      ]
+    });
   };
   return (
     <>
@@ -316,7 +342,7 @@ const App = () => {
         dateTimeFormat={dateTimeFormat}
         setDateTimeFormat={setDateTimeFormat}
       />
-{/*       <NotesPopup
+      {/*       <NotesPopup
         changeNotesVisibility={changeNotesVisibility}
         NotesVisibility={NotesVisibility}
         colorTextData={colorTextData}
@@ -425,18 +451,14 @@ freq box ikonu
 ++havadurumu pozisyonu kayıt altına alınıyor. bir sonraki açılışta aynı yerde açılıyor. ekranın başka yerine tıklandığında kasıtlı olarak kapanmasını açmadım
  widget tarzı ekranda kalmasının olabileceğini göstermek için; ama o da istenirse diğerleri gibi kapat aç yapılabilir.
 ++havadurumu celcius-fahrenheit simgeler
+++yeni site ekleme menüsü x ile kapanmalı
+++freq margin top
 
+++yerleşimi sıfırla uyarı
 --içe aktar
---başka simge üzerinden yeni ikon ekleniyor işlevli değil
---yerleşimi sıfırla uyarı
---ekran resmi bing
---yeni site ekleme menüsü x ile kapanmalı
---yeni eklenen simgeler layoutda kötü yere geliyor, 
+--yeni simge ekleme pozisyon x+ yapmayı dene
+--ekran resmi bing -- cachedeathers
 --layout değişimleri savelenmiyor
---not olayı modal olabilir veya navbar butons disabled
 --hava durumu modal olabilir veya navbar butons disable
---select bg modal olabilir veya navbar butons disable
---freq margin top
---yer imleri ve geçmiş sola dayalı
 --yeni ekleme butonu lokasyon
 */

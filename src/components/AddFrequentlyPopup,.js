@@ -22,12 +22,13 @@ const AddFrequentlyPopup = props => {
       let pushContent = {
         i: String.fromCharCode(lastString.charCodeAt(0) + 1),
         x: 0,
-        y: props.LayoutData.lg[props.LayoutData.lg.length - 1].y + 1,
+        //y: props.LayoutData.lg[props.LayoutData.lg.length - 1].y + 1,
+        y: 0,
         w: 2,
         h: 2,
         minW: 2,
-        maxW: 4,
         minH: 2,
+        maxW: 4,
         maxH: 4,
         static: false
       };
@@ -39,7 +40,7 @@ const AddFrequentlyPopup = props => {
       resultArray.xs = originalArray.xs.concat(pushContent);
       resultArray.xxs = originalArray.xxs.concat(pushContent);
       props.setLayoutData(resultArray);
-      props.handleCloseAddFrequentlyModal();
+      //props.handleCloseAddFrequentlyModal();
     }
   };
 
@@ -59,7 +60,8 @@ const AddFrequentlyPopup = props => {
     let pushContent = {
       i: String.fromCharCode(lastString.charCodeAt(0) + 1),
       x: 0,
-      y: props.LayoutData.lg[props.LayoutData.lg.length - 1].y + 1,
+      y: 0,
+      //y: props.LayoutData.lg[props.LayoutData.lg.length - 1].y + 1,
       w: 2,
       h: 2,
       minW: 2,
@@ -76,7 +78,7 @@ const AddFrequentlyPopup = props => {
     resultArray.xs = originalArray.xs.concat(pushContent);
     resultArray.xxs = originalArray.xxs.concat(pushContent);
     props.setLayoutData(resultArray);
-    props.handleCloseAddFrequentlyModal();
+    //props.handleCloseAddFrequentlyModal();
   };
 
   const btnClickAddFromSaved = number => {
