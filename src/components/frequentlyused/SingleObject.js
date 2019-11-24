@@ -31,16 +31,17 @@ const SingleObject = props => {
             className="row no-gutters text-center cursor--contextmenu justify-content-center"
             onClick={props.MouseTrack}
           >
+            <div className="col-12 h-100 p-0 text-center" data-index={props.dataindex} data-id={props.dataid}>
+              <p className="mb-0 cursor--pointer" onClick={() => props.redirectLink(props.contentLink)}>
+                {props.contentName}
+              </p>
+            </div>
             <ContextMenuTrigger
               id={"some_unique_identifier"}
               collect={props.handleCollect}
               ref={c => (contextTrigger = c)}
             >
-              <div className="col-12 h-100 p-0 text-center" data-index={props.dataindex} data-id={props.dataid}>
-                <p className="mb-0 cursor--pointer" onClick={() => props.redirectLink(props.contentLink)}>
-                  {props.contentName}
-                </p>
-              </div>
+              <div data-index={props.dataindex} data-id={props.dataid}></div>
               <span className="draggablePiece">
                 <button className="btn btn-sm btn-outline-primary border-0 p-0" onClick={toggleMenu}>
                   <img src="/assets/site/menu.png" className="img-fluid" alt="" style={{ height: "8px" }} />

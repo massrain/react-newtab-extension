@@ -8,7 +8,7 @@ import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
 import DigitalClock from "./components/DigitalClock";
 import { ChooseBgPopup } from "./components/ChooseBgPopup";
-import { wallpaperDataBing } from "./components/options/cachedwallpapers";
+//import { wallpaperDataBing } from "./components/options/cachedwallpapers";
 
 import { ContextMenu, MenuItem } from "react-contextmenu";
 import AddFrequentlyPopup from "./components/AddFrequentlyPopup,";
@@ -88,7 +88,7 @@ const App = () => {
       imgBackgroundChoice === "tabext"
         ? // `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
           `url("/assets/wallpapers/bing${imgBackground}.jpg")`
-        : `url(${wallpaperDataBing.value[imgBackground].contentUrl})`
+        : `url("/assets/wallpapers/bingw32/wallpaper${imgBackground}.jpg")`
     //"url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
   const btnChangeBackground = () => {
@@ -174,6 +174,7 @@ const App = () => {
     }
   };
   const selectImageBackground = value => {
+    setImgBackgroundChoice("tabext");
     setImgBackground(value);
   };
   const btnBgImageClick = () => {
@@ -451,14 +452,14 @@ freq box ikonu
 ++havadurumu pozisyonu kayıt altına alınıyor. bir sonraki açılışta aynı yerde açılıyor. ekranın başka yerine tıklandığında kasıtlı olarak kapanmasını açmadım
  widget tarzı ekranda kalmasının olabileceğini göstermek için; ama o da istenirse diğerleri gibi kapat aç yapılabilir.
 ++havadurumu celcius-fahrenheit simgeler
-++yeni site ekleme menüsü x ile kapanmalı
-++freq margin top
 
-++yerleşimi sıfırla uyarı
+++Yeni site ekleme menüsü, yeni bir site ana ekrana eklendiğinde kapanmıyor; eklemeye devam edilebilmesi için.
+++En üstte sayfa başlangıcı için biraz boşluk var.
+++Yerleşimi sıfırlarken uyarı veriliyor.
+++Yeni ekleme penceresi ekranın ortasında değil, sağ tarafta ince.
+++Yeni eklenenler 2.sıraya sağa doğru ekleniyor.
+++Ekran resmi bing'den çekilenlerdeki problem giderildi. 
+++Ikon yer değişimlerinin kayıt altına alınmaması sorunu giderildi.
 --içe aktar
---yeni simge ekleme pozisyon x+ yapmayı dene
---ekran resmi bing -- cachedeathers
---layout değişimleri savelenmiyor
 --hava durumu modal olabilir veya navbar butons disable
---yeni ekleme butonu lokasyon
 */

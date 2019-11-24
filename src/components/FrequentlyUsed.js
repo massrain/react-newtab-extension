@@ -12,10 +12,8 @@ const FrequentlyUsed = props => {
   };
   const redirectLink = link => {
     if (isDragging !== true) {
-      console.log("nenkd");
       handleOnDragStop();
     } else {
-      console.log("elsesss");
       window.open(link, "_blank");
     }
   };

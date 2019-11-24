@@ -57,10 +57,12 @@ const AddFrequentlyPopup = props => {
   const addFromBuiltIn = data => {
     addWebsiteDataFromBuildIn(data);
     let lastString = props.LayoutData.lg[props.LayoutData.lg.length - 1].i;
+
+    let xposlast = props.LayoutData.lg[props.LayoutData.lg.length - 1].x;
     let pushContent = {
       i: String.fromCharCode(lastString.charCodeAt(0) + 1),
-      x: 0,
-      y: 0,
+      x: xposlast >= 8 ? 0 : xposlast + 2,
+      y: Infinity,
       //y: props.LayoutData.lg[props.LayoutData.lg.length - 1].y + 1,
       w: 2,
       h: 2,
@@ -84,6 +86,8 @@ const AddFrequentlyPopup = props => {
   const btnClickAddFromSaved = number => {
     console.log(freqBuiltInWebsites[number]);
     addFromBuiltIn(freqBuiltInWebsites[number]);
+    let objDiv = document.getElementById("BookmarklarRow");
+    objDiv.scrollTop = objDiv.scrollHeight;
   };
   return (
     <>
@@ -102,16 +106,16 @@ const AddFrequentlyPopup = props => {
           content: {
             color: "lightsteelblue",
             backgroundColor: "rgba(30,30,30,0.75)",
-            top: "20vh",
-            left: "20vw",
-            right: "20vw",
-            bottom: "20vh"
+            top: "5vh",
+            left: "80vw",
+            right: "1vw",
+            bottom: "5vh"
           }
         }}
       >
-        <div className="container h-100">
-          <div className="row no-gutters h-100 justify-content-center">
-            <div className="col-4 justify-content-center">
+        <div className="container-fluid h-100">
+          <div className="row no-gutters justify-content-center">
+            <div className="col-12 justify-content-center">
               <div className="row no-gutters justify-content-center mt-2">
                 <h5>Yeni Ekle</h5>
               </div>
@@ -139,8 +143,10 @@ const AddFrequentlyPopup = props => {
                       ref={ibNewWebsiteLink}
                     />
                     <small className="form-text text-muted">
+                      <span className="text-danger">Örnek format: "https://google.com"</span>
+                      <br />
                       Site linki tam halinde, (http veya https ile), eklediğiniz web sitesinin tarayıcı'dan kopyalanan
-                      hali ile olmalıdır. <br /> Örnek format: "https://google.com"
+                      hali ile olmalıdır.
                       <br />
                       Chrome tarayıcısına bağlı olarak bir sonraki açılışta otomatik site ikonu gelir.
                     </small>
@@ -158,7 +164,10 @@ const AddFrequentlyPopup = props => {
                 </button>
               </div>
             </div>
-            <div className="col 8">
+          </div>
+          <hr />
+          <div className="row no-gutters h-100 justify-content-center">
+            <div className="col-12">
               <div className="row no-gutters justify-content-center mt-2">
                 <h5>Genel kullanımlar</h5>
               </div>
@@ -187,7 +196,7 @@ const AddFrequentlyPopup = props => {
 export default AddFrequentlyPopup;
 
 const SingleBoxNewFrequently = props => (
-  <div className="col-3 px-2">
+  <div className="col-4 px-2">
     <div className="card text-white bg-transparent border-white mb-3">
       <div className="card-bod text-center justify-content-center">
         <img src={props.data.icon} alt="" className="img-fluid freq--newitemadd mt-1" />

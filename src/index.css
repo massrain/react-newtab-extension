@@ -21,6 +21,7 @@ body {
 .navButtons > .btn-sm:hover {
   transform: scale(1.2);
   background-color: transparent!important;
+  color: white;
 }
 .optionsPopup {
   width: 100vw;

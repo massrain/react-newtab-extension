@@ -29,7 +29,7 @@ const Mainpage = props => {
         </div>
       </div> */}
 
-      <div className="row no-gutters justify-content-center BookmarksRow">
+      <div className="row no-gutters justify-content-center BookmarksRow" id="BookmarklarRow">
         <div className="col-10">
           <FrequentlyUsed
             LayoutData={props.LayoutData}
