@@ -13,6 +13,7 @@ import { ChooseBgPopup } from "./components/ChooseBgPopup";
 import { ContextMenu, MenuItem } from "react-contextmenu";
 import AddFrequentlyPopup from "./components/AddFrequentlyPopup,";
 import iziToast from "izitoast";
+import { SupportDropdown } from "./components/SupportDropdown";
 
 const App = () => {
   const TextColors = {
@@ -42,11 +43,11 @@ const App = () => {
   const [NotesVisibility, setNotesVisibility] = useLocalStorage("notesvisibility", "none");
   const [OptionsVisibility, setOptionsVisibility] = useLocalStorage("optionsvisibility", "none");
   const [WeatherVisibility, setWeatherVisibility] = useLocalStorage("weathervisibility", "none");
-  const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "block");
   const [ChooseBgVisibility, setChooseBgVisibility] = useLocalStorage("choosebgvisibility", "none");
   const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
   const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
 
+  const [BookmarksVisibility, setBookmarksVisibility] = useState("block");
   const [showModal, setShowModal] = useState(false);
   const [collectContextData, setCollectContextData] = useState(null);
 
@@ -289,16 +290,18 @@ const App = () => {
             </div>
           </div>
           <div className="col-10 d-flex flex-column">
-            <div className="row no-gutters flex-grow-1 align-items-start">
-              <div className="container py-3 mb-5 ContentContainer mt-4" style={{ display: BookmarksVisibility }}>
-                <Mainpage
-                  LayoutData={LayoutData}
-                  setLayoutData={setLayoutData}
-                  colorTextData={colorTextData}
-                  LayoutDetails={LayoutDetails}
-                  changeLayoutDetails={changeLayoutDetails}
-                  handleCollect={handleCollect}
-                />
+            <div className="row no-gutters flex-grow-1 align-items-start justify-content-center">
+              <div className="col-10">
+                <div className="container py-3 mb-5 ContentContainer mt-4" style={{ display: BookmarksVisibility }}>
+                  <Mainpage
+                    LayoutData={LayoutData}
+                    setLayoutData={setLayoutData}
+                    colorTextData={colorTextData}
+                    LayoutDetails={LayoutDetails}
+                    changeLayoutDetails={changeLayoutDetails}
+                    handleCollect={handleCollect}
+                  />
+                </div>
               </div>
             </div>
             <div className="row no-gutters flex-grow-0 align-items-center">
@@ -313,7 +316,9 @@ const App = () => {
               </div>
             </div>
           </div>
-          <div className="col-1"></div>
+          <div className="col-1 d-flex flex-column justify-content-end">
+            <SupportDropdown colorTextData={colorTextData} iconsVisibility={iconsVisibility} />
+          </div>
         </div>
       </div>
 
@@ -462,4 +467,15 @@ freq box ikonu
 ++Ikon yer değişimlerinin kayıt altına alınmaması sorunu giderildi.
 --içe aktar
 --hava durumu modal olabilir veya navbar butons disable
+
+
+--v6
+++Youtube ikonu ilk satırda
+++Notlar biraz daha geniş
+++ikonlar kısmını biraz küçülttüm yanlardaki blur kısımlarını; daha da küçülmeyi deneyeceğim.
+++Anasayfa kapat-aç
+++Sağ alta destek butonu
+
+--havadurumu her açılışta geolocation
+--içe aktar
 */

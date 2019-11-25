@@ -93,7 +93,7 @@ export const initialLayout2 = {
   lg: [
     {
       i: "a",
-      x: 2,
+      x: 0,
       y: 0,
       w: 2,
       h: 2,
@@ -105,7 +105,7 @@ export const initialLayout2 = {
     },
     {
       i: "b",
-      x: 0,
+      x: 2,
       y: 0,
       w: 2,
       h: 2,
@@ -203,8 +203,8 @@ export const initialLayout2 = {
     },
     {
       i: "e",
-      x: 0,
-      y: 4,
+      x: 8,
+      y: 0,
       w: 2,
       h: 2,
       minW: 2,
@@ -253,8 +253,8 @@ export const initialLayout2 = {
     },
     {
       i: "d",
-      x: 0,
-      y: 2,
+      x: 6,
+      y: 0,
       w: 2,
       h: 2,
       minW: 2,
@@ -265,8 +265,8 @@ export const initialLayout2 = {
     },
     {
       i: "e",
-      x: 2,
-      y: 2,
+      x: 8,
+      y: 0,
       w: 2,
       h: 2,
       minW: 2,

@@ -198,9 +198,11 @@ export default AddFrequentlyPopup;
 const SingleBoxNewFrequently = props => (
   <div className="col-4 px-2">
     <div className="card text-white bg-transparent border-white mb-3">
-      <div className="card-bod text-center justify-content-center">
+      <div className="text-center justify-content-center">
         <img src={props.data.icon} alt="" className="img-fluid freq--newitemadd mt-1" />
-        <p className="mb-1 mt-2">{props.data.name}</p>
+        <p className="mb-1 mt-2" style={{ fontSize: "0.8rem" }}>
+          {props.data.name}
+        </p>
         <p className="card-text mt-1">
           <button
             className="btn btn-outline-info btn-sm rounded-0"

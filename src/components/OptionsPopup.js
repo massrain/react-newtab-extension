@@ -16,8 +16,7 @@ const OptionsPopup = props => {
   };
 
   const objectToLocalStorage = () => {
-    let filetext = `{"datetimeformat":"tr-TR","iconsvisibility":"\"true\"","backgroundimgchoice":"\"tabext\"","weathercity":"\"Fethiye\"","naviconvisibilities":"{\"Yardim\":true,\"Yorumla\":true,\"Havadurumu\":true,\"Arkaplan\":true,\"Anasayfa\":true,\"Yerimleri\":true,\"Gecmis\":true,\"Notlar\":true}","freqlayouts":"{\"lg\":[{\"i\":\"a\",\"x\":2,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"b\",\"x\":0,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"c\",\"x\":4,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"d\",\"x\":6,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"e\",\"x\":8,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false}],\"md\":[{\"w\":2,\"h\":2,\"x\":0,\"y\":0,\"i\":\"a\",\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"moved\":false,\"static\":false},{\"w\":2,\"h\":2,\"x\":2,\"y\":0,\"i\":\"b\",\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"moved\":false,\"static\":false},{\"w\":2,\"h\":2,\"x\":4,\"y\":0,\"i\":\"c\",\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"moved\":false,\"static\":false},{\"w\":2,\"h\":2,\"x\":6,\"y\":0,\"i\":\"d\",\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"moved\":false,\"static\":false},{\"w\":2,\"h\":2,\"x\":8,\"y\":0,\"i\":\"e\",\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"moved\":false,\"static\":false}],\"sm\":[{\"i\":\"a\",\"x\":0,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"b\",\"x\":2,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"c\",\"x\":4,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"d\",\"x\":0,\"y\":2,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"e\",\"x\":2,\"y\":2,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false}],\"xs\":[{\"i\":\"a\",\"x\":2,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"b\",\"x\":0,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"c\",\"x\":4,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"d\",\"x\":6,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"e\",\"x\":8,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false}],\"xxs\":[{\"i\":\"a\",\"x\":2,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"b\",\"x\":0,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"c\",\"x\":4,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"d\",\"x\":6,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false},{\"i\":\"e\",\"x\":8,\"y\":0,\"w\":2,\"h\":2,\"minW\":2,\"maxW\":4,\"minH\":2,\"maxH\":4,\"static\":false}]}","optionsvisibility":"\"block\"","backgroundimg":"1","weathervisibility":"\"none\""}`;
-    let data = JSON.parse(filetext, function replacer(key, value) {
+/*     let data = JSON.parse(filetext, function replacer(key, value) {
       return value;
     });
     console.log(data);
@@ -26,7 +25,7 @@ const OptionsPopup = props => {
       console.log(data[element]);
       localStorage.removeItem(element);
       localStorage.setItem(element, JSON.parse(data[element]));
-    });
+    }); */
   };
 
   const exportLayoutData = () => {

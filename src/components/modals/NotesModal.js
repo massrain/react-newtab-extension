@@ -38,7 +38,7 @@ const NotesModal = props => {
             backgroundColor: "rgba(30,30,30,0.75)",
             top: "20vh",
             left: "5vw",
-            right: "80vw",
+            right: "70vw",
             bottom: "20vh"
           }
         }}
@@ -105,7 +105,7 @@ const SingleNote = props => (
         <div
           className={`card border-secondary bg-transparent itemCard text-${props.colorTextData.mains} cursor--pointer`}
         >
-          <div className="card-body px-4 py-1">
+          <div className="card-body px-2 py-1">
             <p className="card-text d-flex align-items-center justify-content-center text-break">{props.contentData}</p>
           </div>
         </div>
