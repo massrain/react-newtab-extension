@@ -6,17 +6,19 @@ import { bootstrapToHexColors } from "./options/methods";
 
 const OptionsPopup = props => {
   const ibWeatherCity = useRef(null);
+  const ibFileUpload = useRef(null);
 
   const localStorageToObject = () => {
     let newObject = {};
     Object.keys(localStorage).forEach(element => {
       newObject[element] = localStorage.getItem(element);
     });
+    console.log(newObject);
     return newObject;
   };
 
   const objectToLocalStorage = () => {
-/*     let data = JSON.parse(filetext, function replacer(key, value) {
+    /*     let data = JSON.parse(filetext, function replacer(key, value) {
       return value;
     });
     console.log(data);
@@ -32,18 +34,34 @@ const OptionsPopup = props => {
     let resultData = JSON.stringify(localStorageToObject(), function replacer(key, value) {
       return value;
     });
-
-    let blob = new Blob([resultData], { type: "text/plain" });
+    let resultData2 = JSON.stringify(localStorageToObject());
+    let blob = new Blob([resultData2], { type: "application/json", charset: "utf-8" });
     var date = new Date();
     let filename =
-      Math.floor(Math.random() * 99) + 1 + "tabext_" + date.getDate() + date.getMonth() + date.getFullYear() + ".txt";
+      Math.floor(Math.random() * 99) + 1 + "tabext_" + date.getDate() + date.getMonth() + date.getFullYear() + ".json";
     saveAs(blob, filename);
   };
   const importLayoutData = () => {
+    console.log(ibFileUpload);
+    //console.log(JSON.parse(text));
     //1. get json file from browser.
-    objectToLocalStorage();
+    //objectToLocalStorage();
     //2. check some areas
     //3. load it to localstorage
+  };
+
+  const onFileUploadChange = event => {
+    let result;
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = function(event) {
+      // The file's text will be printed here
+      //console.log(event.target.result);
+      result = event.target.result;
+      console.log(JSON.parse(result));
+    };
+    //console.log(result);
   };
 
   const onChangeWeatherUnits = e => {
@@ -184,9 +202,18 @@ const OptionsPopup = props => {
                       <button className="btn btn-sm btn-info" onClick={exportLayoutData}>
                         Dışa Aktar
                       </button>
-                      <button className="btn btn-sm btn-info" disabled onClick={importLayoutData}>
+                      <button className="btn btn-sm btn-info" onClick={importLayoutData}>
                         İçe Aktar
                       </button>
+                      <div class="file btn btn-lg btn-primary fileuploaddiv">
+                        Upload
+                        <input
+                          type="file"
+                          className="fileuploadinput"
+                          onChange={onFileUploadChange}
+                          ref={ibFileUpload}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

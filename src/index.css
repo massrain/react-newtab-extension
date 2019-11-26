@@ -112,6 +112,18 @@ cursor: context-menu
   flex:0 0 auto;
 }
 
+.fileuploaddiv {
+  position: relative;
+  overflow: hidden;
+}
+.fileuploadinput {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
 .Freq--SingleObject--boxStyle {
   align-items: flex-end;
   justify-content: center;

@@ -47,7 +47,7 @@ const App = () => {
   const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
   const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
 
-  const [BookmarksVisibility, setBookmarksVisibility] = useState("block");
+  const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("block");
   const [showModal, setShowModal] = useState(false);
   const [collectContextData, setCollectContextData] = useState(null);
 
@@ -292,16 +292,18 @@ const App = () => {
           <div className="col-10 d-flex flex-column">
             <div className="row no-gutters flex-grow-1 align-items-start justify-content-center">
               <div className="col-10">
-                <div className="container py-3 mb-5 ContentContainer mt-4" style={{ display: BookmarksVisibility }}>
-                  <Mainpage
-                    LayoutData={LayoutData}
-                    setLayoutData={setLayoutData}
-                    colorTextData={colorTextData}
-                    LayoutDetails={LayoutDetails}
-                    changeLayoutDetails={changeLayoutDetails}
-                    handleCollect={handleCollect}
-                  />
-                </div>
+                {BookmarksVisibility === "block" ? (
+                  <div className="container py-3 mb-5 ContentContainer mt-4">
+                    <Mainpage
+                      LayoutData={LayoutData}
+                      setLayoutData={setLayoutData}
+                      colorTextData={colorTextData}
+                      LayoutDetails={LayoutDetails}
+                      changeLayoutDetails={changeLayoutDetails}
+                      handleCollect={handleCollect}
+                    />
+                  </div>
+                ) : null}
               </div>
             </div>
             <div className="row no-gutters flex-grow-0 align-items-center">
