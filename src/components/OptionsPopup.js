@@ -17,37 +17,28 @@ const OptionsPopup = props => {
     return newObject;
   };
 
-  const objectToLocalStorage = () => {
-    /*     let data = JSON.parse(filetext, function replacer(key, value) {
-      return value;
-    });
-    console.log(data);
-    Object.keys(data).forEach(element => {
-      console.log("kekes");
-      console.log(data[element]);
+  const objectToLocalStorage = parsed => {
+    Object.keys(parsed).forEach(element => {
+      console.log(parsed[element]);
       localStorage.removeItem(element);
-      localStorage.setItem(element, JSON.parse(data[element]));
-    }); */
+      localStorage.setItem(element, parsed[element]);
+    });
+    iziToast.success({
+      title: "Başarılı",
+      message: "İçe aktarma tamamlandı. Sekmenizi yenileyin veya yeni sekme açın."
+    });
   };
 
   const exportLayoutData = () => {
-    let resultData = JSON.stringify(localStorageToObject(), function replacer(key, value) {
+    /*     let resultData = JSON.stringify(localStorageToObject(), function replacer(key, value) {
       return value;
-    });
+    }); */
     let resultData2 = JSON.stringify(localStorageToObject());
     let blob = new Blob([resultData2], { type: "application/json", charset: "utf-8" });
     var date = new Date();
     let filename =
       Math.floor(Math.random() * 99) + 1 + "tabext_" + date.getDate() + date.getMonth() + date.getFullYear() + ".json";
     saveAs(blob, filename);
-  };
-  const importLayoutData = () => {
-    console.log(ibFileUpload);
-    //console.log(JSON.parse(text));
-    //1. get json file from browser.
-    //objectToLocalStorage();
-    //2. check some areas
-    //3. load it to localstorage
   };
 
   const onFileUploadChange = event => {
@@ -56,10 +47,8 @@ const OptionsPopup = props => {
     var reader = new FileReader();
     reader.readAsText(file);
     reader.onload = function(event) {
-      // The file's text will be printed here
-      //console.log(event.target.result);
       result = event.target.result;
-      console.log(JSON.parse(result));
+      objectToLocalStorage(JSON.parse(result));
     };
     //console.log(result);
   };
@@ -199,14 +188,11 @@ const OptionsPopup = props => {
                   <p className="mb-1">Sık Kullanılanlar</p>
                   <div className="row no-gutters">
                     <div className="col-12">
-                      <button className="btn btn-sm btn-info" onClick={exportLayoutData}>
+                      <button className="btn btn-sm btn-info mr-2" onClick={exportLayoutData}>
                         Dışa Aktar
                       </button>
-                      <button className="btn btn-sm btn-info" onClick={importLayoutData}>
+                      <div className="file btn btn-sm btn-info fileuploaddiv">
                         İçe Aktar
-                      </button>
-                      <div class="file btn btn-lg btn-primary fileuploaddiv">
-                        Upload
                         <input
                           type="file"
                           className="fileuploadinput"

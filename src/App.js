@@ -8,7 +8,6 @@ import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
 import DigitalClock from "./components/DigitalClock";
 import { ChooseBgPopup } from "./components/ChooseBgPopup";
-//import { wallpaperDataBing } from "./components/options/cachedwallpapers";
 
 import { ContextMenu, MenuItem } from "react-contextmenu";
 import AddFrequentlyPopup from "./components/AddFrequentlyPopup,";
@@ -33,7 +32,7 @@ const App = () => {
   };
   const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 5);
   const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "tabext");
-  const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "Ankara");
+  const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "");
   const [weatherUnits, setWeatherUnits] = useLocalStorage("weatherunits", "metric");
   const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", initialLayout2);
   const [LayoutDetails, setLayoutDetails] = useLocalStorage("freqlayoutdetails", initialLayoutDetails);
@@ -47,12 +46,12 @@ const App = () => {
   const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
   const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
 
-  const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("block");
+  const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "block");
   const [showModal, setShowModal] = useState(false);
   const [collectContextData, setCollectContextData] = useState(null);
 
   useEffect(() => {
-    getLocation();
+    if (weatherCity === "") getLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -478,6 +477,6 @@ freq box ikonu
 ++Anasayfa kapat-aç
 ++Sağ alta destek butonu
 
---havadurumu her açılışta geolocation
---içe aktar
+++havadurumu her açılışta geolocation
+++içe aktar
 */
