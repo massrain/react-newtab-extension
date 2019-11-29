@@ -11,7 +11,7 @@ const SearchBar = props => {
   const onSearchTypeChange = e => {
     setSearchType(e.target.value);
   };
-  const btnSearchClick = e => {
+  /*   const btnSearchClick = e => {
     e.preventDefault();
     if (searchType === "default") {
       let linkGoogle = `http://www.google.com/search?q=${ibSearchBox.current.value}`;
@@ -50,12 +50,16 @@ const SearchBar = props => {
       //else if (searchWebsite === "yandex") window.open(linkGoogle, "_blank");
       //else if (searchWebsite === "bing") window.open(linkGoogle, "_blank");
     }
+  }; */
+
+  const btnSearchClick2 = () => {
+    document.getElementById("theForm").submit();
   };
   return (
     <>
       <div className="form-group mt-3">
         <form
-          onSubmit={btnSearchClick}
+          onSubmit={btnSearchClick2}
           id="theForm"
           method="get"
           title="Search Form"
@@ -64,7 +68,7 @@ const SearchBar = props => {
         >
           <input type="hidden" id="cx" name="cx" value="partner-pub-1206609202738714:7727531761" />
           <div className="input-group mb-3">
-            <div className="input-group-prepend">
+            {/*             <div className="input-group-prepend">
               <select
                 className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder`}
                 onChange={onSearchWebsiteChange}
@@ -104,7 +108,7 @@ const SearchBar = props => {
                 </option>
               </select>
             </div>
-
+ */}
             <input
               type="text"
               ref={ibSearchBox}
@@ -113,7 +117,7 @@ const SearchBar = props => {
               placeholder="Aramak istediğiniz.."
               onKeyDown={event => {
                 if (event.key === "Enter") {
-                  btnSearchClick(event);
+                  btnSearchClick2(event);
                 }
               }}
             />
