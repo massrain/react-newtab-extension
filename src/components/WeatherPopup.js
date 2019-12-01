@@ -4,10 +4,13 @@ import { unixToDay, useLocalStorage } from "./options/methods";
 import { responseWeatherList } from "./options/cachedweathers";
 import Draggable from "react-draggable";
 
+import { useTranslation } from "react-i18next";
+
 const WeatherPopup = props => {
   const [WeatherData, setWeatherData] = useState(responseWeatherList);
   let defaultpositions = { x: 0, y: 0 };
   const [weatherPopupPosition, setWeatherPopupPosition] = useLocalStorage("weatherdragpositions", defaultpositions);
+  const { t } = useTranslation();
 
   useEffect(() => {
     let apiKey = process.env.REACT_APP_API_KEY;
@@ -42,18 +45,7 @@ const WeatherPopup = props => {
           className="container-fluid p-4 WeatherPopup text-white text-center"
           style={{ display: props.WeatherVisibility }}
         >
-          <div className="row no-gutters">
-            {/*           <div className="col-12">
-            <h4>
-              {WeatherData.name} - {WeatherData.city.country}
-            </h4>
-            <h5>
-              <img src={"http://openweathermap.org/img/w/" + WeatherData.weather[0].icon + ".png"} alt="" />-{" "}
-              {WeatherData.weather[0].description}
-            </h5>
-            <h3>{Math.floor(WeatherData.main.temp)}&deg;</h3>
-          </div> */}
-          </div>
+          <div className="row no gutters"></div>
           <div className="row no-gutters">
             <div className="col-12 p-0">
               {/* First Row */}
@@ -68,7 +60,7 @@ const WeatherPopup = props => {
               <hr className="border-light my-2" />
               <div className="row no-gutters">
                 <div className="col-4 px-3">
-                  <div className="row no-gutters justify-content-center text-secondary">Temp</div>
+                  <div className="row no-gutters justify-content-center text-secondary">{t("weather.temp")}</div>
                   <div className="row no-gutters justify-content-center">
                     {Math.floor(WeatherData.list[0].main.temp)}
                   </div>
@@ -78,12 +70,12 @@ const WeatherPopup = props => {
                 </div>
 
                 <div className="col-4 px-3">
-                  <div className="row no-gutters justify-content-center text-secondary">Humidity</div>
+                  <div className="row no-gutters justify-content-center text-secondary">{t("weather.humidity")}</div>
                   <div className="row no-gutters justify-content-center">{WeatherData.list[0].main.humidity}</div>
                   <div className="row no-gutters justify-content-center text-secondary">%</div>
                 </div>
                 <div className="col-4 px-3">
-                  <div className="row no-gutters justify-content-center text-secondary">Wind</div>
+                  <div className="row no-gutters justify-content-center text-secondary">{t("weather.wind")}</div>
                   <div className="row no-gutters justify-content-center">
                     {Math.floor(WeatherData.list[0].wind.speed)}
                   </div>

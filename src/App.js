@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Mainpage from "./Mainpage";
-
+import { useTranslation } from "react-i18next";
 import { useLocalStorage, initialLayout2, initialLayoutDetails } from "./components/options/methods";
 import NavBar from "./components/NavBar";
 import OptionsPopup from "./components/OptionsPopup";
 import WeatherPopup from "./components/WeatherPopup";
 import DigitalClock from "./components/DigitalClock";
-import { ChooseBgPopup } from "./components/ChooseBgPopup";
 
 import { ContextMenu, MenuItem } from "react-contextmenu";
 import AddFrequentlyPopup from "./components/AddFrequentlyPopup,";
@@ -45,13 +44,17 @@ const App = () => {
   const [ChooseBgVisibility, setChooseBgVisibility] = useLocalStorage("choosebgvisibility", "none");
   const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
   const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
+  const [languageChoice, setLanguageChoice] = useLocalStorage("language", "tr");
 
   const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "block");
   const [showModal, setShowModal] = useState(false);
   const [collectContextData, setCollectContextData] = useState(null);
 
+  const { t, i18n } = useTranslation();
+
   useEffect(() => {
     if (weatherCity === "") getLocation();
+    if (localStorage.getItem("language") === '"en"') i18n.changeLanguage("en");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -232,12 +235,12 @@ const App = () => {
       displayMode: "once",
       id: "question",
       zindex: 999,
-      title: "Uyarı",
-      message: "Yerleşimi sıfırlamak istediğinize emin misiniz?",
+      title: t("reset_layout.warning"),
+      message: t("reset_layout.text"),
       position: "center",
       buttons: [
         [
-          "<button><b>Sıfırla</b></button>",
+          `<button><b>${t("reset_layout.button_yes")}</b></button>`,
           function(instance, toast) {
             localStorage.removeItem("freqlayouts");
             localStorage.removeItem("freqlayoutdetails");
@@ -247,7 +250,7 @@ const App = () => {
           true
         ],
         [
-          "<button>Vazgeç</button>",
+          `<button>${t("reset_layout.button_no")}</button>`,
           function(instance, toast) {
             instance.hide({ transitionOut: "fadeOut" }, toast, "button");
           }
@@ -258,10 +261,10 @@ const App = () => {
   return (
     <>
       <ContextMenu id="some_unique_identifier" style={{ marginLeft: "-100px" }}>
-        <MenuItem onClick={handleDeleteFrequently}>Sil</MenuItem>
+        <MenuItem onClick={handleDeleteFrequently}>{t("rightclick_menu.delete")}</MenuItem>
         <MenuItem divider />
-        <MenuItem onClick={handleOpenAddFrequentlyModal}>Yeni Ekle</MenuItem>
-        <MenuItem onClick={handleResetLayout}>Yerleşimi Sıfırla</MenuItem>
+        <MenuItem onClick={handleOpenAddFrequentlyModal}>{t("rightclick_menu.addnew")}</MenuItem>
+        <MenuItem onClick={handleResetLayout}>{t("rightclick_menu.reset_layout")}</MenuItem>
       </ContextMenu>
 
       <div className="pageOverlay z-index-98"></div>
@@ -348,22 +351,10 @@ const App = () => {
         setNavIconVisibilities={setNavIconVisibilities}
         dateTimeFormat={dateTimeFormat}
         setDateTimeFormat={setDateTimeFormat}
+        languageChoice={languageChoice}
+        setLanguageChoice={setLanguageChoice}
       />
-      {/*       <NotesPopup
-        changeNotesVisibility={changeNotesVisibility}
-        NotesVisibility={NotesVisibility}
-        colorTextData={colorTextData}
-        Notes={Notes}
-        setNotes={setNotes}
-      /> */}
-      <ChooseBgPopup
-        setImgBackground={setImgBackground}
-        imgBackground={imgBackground}
-        ChooseBgVisibility={ChooseBgVisibility}
-        setChooseBgVisibility={setChooseBgVisibility}
-        selectImageBackground={selectImageBackground}
-        btnChooseBackground={btnChooseBackground}
-      />
+
       <AddFrequentlyPopup
         changeLayoutDetails={changeLayoutDetails}
         LayoutData={LayoutData}
@@ -479,4 +470,12 @@ freq box ikonu
 
 ++havadurumu her açılışta geolocation
 ++içe aktar
+
+
+--v7
+++translations
+--translations_days
+--examples from jsonfile
+++options_language
+++suspense
 */

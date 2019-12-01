@@ -3,10 +3,12 @@ import { saveAs } from "file-saver";
 import iziToast from "izitoast";
 import { CirclePicker } from "react-color";
 import { bootstrapToHexColors } from "./options/methods";
+import { useTranslation } from "react-i18next";
 
 const OptionsPopup = props => {
   const ibWeatherCity = useRef(null);
   const ibFileUpload = useRef(null);
+  const { t, i18n } = useTranslation();
 
   const localStorageToObject = () => {
     let newObject = {};
@@ -24,8 +26,8 @@ const OptionsPopup = props => {
       localStorage.setItem(element, parsed[element]);
     });
     iziToast.success({
-      title: "Başarılı",
-      message: "İçe aktarma tamamlandı. Sekmenizi yenileyin veya yeni sekme açın."
+      title: t("options.frequently_used_popup_title"),
+      message: t("options.frequently_used_popup_text")
     });
   };
 
@@ -71,6 +73,10 @@ const OptionsPopup = props => {
   const onChangeDateTimeFormat = e => {
     props.setDateTimeFormat(e.target.value);
   };
+  const onChangeLanguage = e => {
+    props.setLanguageChoice(e.target.value);
+    i18n.changeLanguage(e.target.value);
+  };
   return (
     <>
       <div className="container-fluid p-0 optionsPopup animated fadeIn" style={{ display: props.OptionsVisibility }}>
@@ -82,9 +88,9 @@ const OptionsPopup = props => {
             }}
           ></div>
           <div className="col-md-2 text-white optionsContainer h-100">
-            <div className="container-fluid optionsColumnContainer h-100 scroll-y scrollbarStyle py-5 d-flex flex-column justify-content-evenly">
+            <div className="container-fluid optionsColumnContainer h-100 scroll-y scrollbarStyle py-4 d-flex flex-column justify-content-evenly">
               <div className="row no-gutters align-items-center" style={{ justifyContent: "space-evenly" }}>
-                <h5 className="m-0">TabExtension</h5>
+                <h5 className="m-0">{t("options.title")}</h5>
                 <button
                   className="btn btn-link text-danger p-1"
                   onClick={() => {
@@ -99,10 +105,10 @@ const OptionsPopup = props => {
               <div className="row no-gutters justify-content-center">
                 <div className="col-12 px-4">
                   <div className="row no-gutters mt-1 justify-content-center text-center">
-                    <h5 className="mb-1">Hava Durumu</h5>
+                    <h5 className="mb-1">{t("options.weather_title")}</h5>
                   </div>
                   <div className="row no-gutters mt-2 justify-content-center text-center">
-                    <label>Şehir</label>
+                    <label>{t("options.weather_city")}</label>
                     <div className="input-group">
                       <input
                         type="text"
@@ -116,12 +122,12 @@ const OptionsPopup = props => {
                           onClick={() => {
                             props.changeWeatherCity(ibWeatherCity.current.value);
                             iziToast.success({
-                              title: "Başarılı",
-                              message: "Şehir yenilendi"
+                              title: t("options.weather_popup_title"),
+                              message: t("options.weather_popup_text")
                             });
                           }}
                         >
-                          Onayla
+                          {t("options.weather_button_confirm")}
                         </button>
                       </div>
                     </div>
@@ -161,8 +167,8 @@ const OptionsPopup = props => {
               <hr className="border-white mx-3" />
 
               <div className="row no-gutters justify-content-center">
-                <div className="col-12 px-4">
-                  <p className="mb-1">Saat Formatı</p>
+                <div className="col-12 px-3">
+                  <p className="mb-1">{t("options.clock_title")}</p>
                   <div className="row no-gutters">
                     <div className="col-12">
                       <select
@@ -184,15 +190,38 @@ const OptionsPopup = props => {
               <hr className="border-white mx-3" />
 
               <div className="row no-gutters justify-content-center">
+                <div className="col-12 px-3">
+                  <p className="mb-1">{t("options.language_title")}</p>
+                  <div className="row no-gutters">
+                    <div className="col-12">
+                      <select
+                        className="form-control rounded-0 bg-transparent text-white"
+                        onChange={onChangeLanguage}
+                        value={props.languageChoice}
+                      >
+                        <option value="tr" className="text-primary">
+                          Türkçe
+                        </option>
+                        <option value="en" className="text-primary">
+                          English
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr className="border-white mx-3" />
+
+              <div className="row no-gutters justify-content-center">
                 <div className="col-12 px-4">
-                  <p className="mb-1">Sık Kullanılanlar</p>
+                  <p className="mb-1">{t("options.frequently_used")}</p>
                   <div className="row no-gutters">
                     <div className="col-12">
                       <button className="btn btn-sm btn-info mr-2" onClick={exportLayoutData}>
-                        Dışa Aktar
+                        {t("options.frequently_used_export")}
                       </button>
                       <div className="file btn btn-sm btn-info fileuploaddiv">
-                        İçe Aktar
+                        {t("options.frequently_used_import")}
                         <input
                           type="file"
                           className="fileuploadinput"
@@ -208,7 +237,7 @@ const OptionsPopup = props => {
 
               <div className="row no-gutters justify-content-center">
                 <div className="col-12 px-4">
-                  <p className="mb-1">Arkaplan</p>
+                  <p className="mb-1">{t("options.background_title")}</p>
                   <div className="row no-gutters">
                     <div className="col-12">
                       <select
@@ -217,10 +246,10 @@ const OptionsPopup = props => {
                         value={props.imgBackgroundChoice}
                       >
                         <option value="tabext" className="text-primary">
-                          Uzantı
+                          {t("options.background_choice_1")}
                         </option>
                         <option value="bing" className="text-primary">
-                          Bing
+                          {t("options.background_choice_2")}
                         </option>
                       </select>
                     </div>
@@ -231,11 +260,11 @@ const OptionsPopup = props => {
 
               <div className="row no-gutters justify-content-center">
                 <div className="col-12 px-4">
-                  <p className="mb-1">Renkler</p>
+                  <p className="mb-1">{t("options.colors_title")}</p>
                   <div className="row no-gutters">
                     <div className="col-12 justify-content-center text-center">
                       <div className="row no-gutters justify-content-center text-center">
-                        <span>Üst Butonlar</span>
+                        <span>{t("options.colors_buttons")}</span>
                       </div>
                       <div className="row no-gutters justify-content-center text-center">
                         <CirclePicker
@@ -252,7 +281,7 @@ const OptionsPopup = props => {
                   <div className="row no-gutters">
                     <div className="col-12">
                       <div className="row no-gutters justify-content-center text-center">
-                        <span>Yazılar</span>
+                        <span>{t("options.colors_texts")}</span>
                       </div>
                       <div className="row no-gutters justify-content-center text-center">
                         <CirclePicker
@@ -271,20 +300,19 @@ const OptionsPopup = props => {
               <hr className="border-white mx-3" />
               <div className="row no-gutters justify-content-center">
                 <div className="col-12 px-4">
-                  <p className="mb-1">Renkler</p>
                   <div className="row no-gutters">
                     <div className="col-12">
-                      <span>İkon Görünümü</span>
+                      <span>{t("options.icon_display_title")}</span>
                       <select
                         className="form-control rounded-0 bg-transparent text-white"
                         onChange={props.changeIconsVisibility}
                         value={props.iconsVisibility}
                       >
                         <option value="true" className="text-primary">
-                          Açık
+                          {t("options.icon_display_open")}
                         </option>
                         <option value="false" className="text-primary">
-                          Kapalı
+                          {t("options.icon_display_close")}
                         </option>
                       </select>
                     </div>
@@ -295,7 +323,7 @@ const OptionsPopup = props => {
               <hr className="border-white mx-3" />
               <div className="row no-gutters justify-content-start">
                 <div className="col-12 px-4">
-                  <p className="mb-1">Butonlar</p>
+                  <p className="mb-1">{t("options.button_display_title")}</p>
                   <div className="row no-gutters">
                     <div className="col-12 text-left">
                       <div className="custom-control custom-switch">
@@ -307,7 +335,7 @@ const OptionsPopup = props => {
                           onChange={event => onChangeButtonVisibilities(event, "Yardim")}
                         />
                         <label className="custom-control-label" htmlFor="Yardim">
-                          Yardım
+                          {t("options.button_display_help")}
                         </label>
                       </div>
                       <div className="custom-control custom-switch">
@@ -319,7 +347,7 @@ const OptionsPopup = props => {
                           onChange={event => onChangeButtonVisibilities(event, "Yorumla")}
                         />
                         <label className="custom-control-label" htmlFor="Yorumla">
-                          Uzantıyı Yorumla
+                          {t("options.button_display_review")}
                         </label>
                       </div>
                       <div className="custom-control custom-switch">
@@ -331,7 +359,7 @@ const OptionsPopup = props => {
                           onChange={event => onChangeButtonVisibilities(event, "Havadurumu")}
                         />
                         <label className="custom-control-label" htmlFor="Havadurumu">
-                          Hava Durumu
+                          {t("options.button_display_weather")}
                         </label>
                       </div>
                       <div className="custom-control custom-switch">
@@ -343,7 +371,7 @@ const OptionsPopup = props => {
                           onChange={event => onChangeButtonVisibilities(event, "Arkaplan")}
                         />
                         <label className="custom-control-label" htmlFor="Arkaplan">
-                          Arkaplan
+                          {t("options.button_display_background")}
                         </label>
                       </div>
                       {/*  */}
@@ -356,7 +384,7 @@ const OptionsPopup = props => {
                           onChange={event => onChangeButtonVisibilities(event, "Anasayfa")}
                         />
                         <label className="custom-control-label" htmlFor="Anasayfa">
-                          Anasayfa
+                          {t("options.button_display_mainscreen")}
                         </label>
                       </div>
                       <div className="custom-control custom-switch">
@@ -368,7 +396,7 @@ const OptionsPopup = props => {
                           onChange={event => onChangeButtonVisibilities(event, "Yerimleri")}
                         />
                         <label className="custom-control-label" htmlFor="Yerimleri">
-                          Yer imleri
+                          {t("options.button_display_bookmarks")}
                         </label>
                       </div>
                       <div className="custom-control custom-switch">
@@ -380,7 +408,7 @@ const OptionsPopup = props => {
                           onChange={event => onChangeButtonVisibilities(event, "Gecmis")}
                         />
                         <label className="custom-control-label" htmlFor="Gecmis">
-                          Geçmiş
+                          {t("options.button_display_history")}
                         </label>
                       </div>
                       <div className="custom-control custom-switch">
@@ -392,7 +420,7 @@ const OptionsPopup = props => {
                           onChange={event => onChangeButtonVisibilities(event, "Notlar")}
                         />
                         <label className="custom-control-label" htmlFor="Notlar">
-                          Notlar
+                          {t("options.button_display_notes")}
                         </label>
                       </div>
                       {/*  */}

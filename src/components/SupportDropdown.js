@@ -1,7 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export const SupportDropdown = props => {
-  console.log(props);
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="row no-gutters justify-content-end pb-1 pr-1">
@@ -15,21 +17,21 @@ export const SupportDropdown = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/support.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Support"
+                t("support.button")
               )}
             </button>
             <div className={`dropdown-menu bg-transparent border border-${props.colorTextData.navButtons}`}>
               <button className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}>
-                Link 1
+                {t("support.link_1")}
               </button>
               <button className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}>
-                Link 2
+                {t("support.link_2")}
               </button>
               <button className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}>
-                Link 3
+                {t("support.link_3")}
               </button>
               <button className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}>
-                Link 4
+                {t("support.link_4")}
               </button>
             </div>
           </div>

@@ -1,8 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Modal from "react-modal";
+import { useTranslation } from "react-i18next";
 
 const NotesModal = props => {
   const ibNewNoteBox = useRef(null);
+  const { t } = useTranslation();
 
   const btnAddNoteClick = () => {
     let originalArray = props.Notes;
@@ -47,7 +49,7 @@ const NotesModal = props => {
           <div className="row no-gutters justify-content-center h-100">
             <div className="col-12 d-flex flex-column justify-content-between my-2 h-100">
               <div className="row no-gutters justify-content-center">
-                <h5 className={`text-${props.colorTextData.mains}`}>Notlarım</h5>
+                <h5 className={`text-${props.colorTextData.mains}`}>{t("notes.title")}</h5>
               </div>
               <div className="row no-gutters justify-content-center flex-grow-1 imagepicker--overflowy scrollbarStyle2">
                 <div className="col-12 p-1 justify-content-center text-center">
@@ -56,7 +58,7 @@ const NotesModal = props => {
                       type="text"
                       ref={ibNewNoteBox}
                       className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder border-${props.colorTextData.mains}`}
-                      placeholder="Yeni bir not girin.."
+                      placeholder={t("notes.create_new")}
                       onKeyDown={event => {
                         if (event.key === "Enter") {
                           btnAddNoteClick();
@@ -85,7 +87,7 @@ const NotesModal = props => {
                   className={`btn btn-outline-${props.colorTextData.navButtons}`}
                   onClick={() => props.setShowNotesModal(false)}
                 >
-                  Kapat
+                  {t("notes.close_button")}
                 </button>
               </div>
             </div>

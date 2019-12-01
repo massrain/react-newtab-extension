@@ -4,6 +4,7 @@ import { BookmarksModal } from "./modals/BookmarksModal";
 import { HistoryModal } from "./modals/HistoryModal";
 import ImagePickerModal from "./modals/ImagePickerModal";
 import NotesModal from "./modals/NotesModal";
+import { useTranslation } from "react-i18next";
 
 const NavBar = props => {
   const [showHelpModal, setShowHelpModal] = useState(false);
@@ -12,6 +13,7 @@ const NavBar = props => {
   const [showBookmarkModal, setShowBookmarkModal] = useState(false);
   const [showHistoryModal, setShowHistoryModal] = useState(false);
   const [visibilityButton, setVisibilityButton] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setVisibilityButton(props.ChooseBgVisibility);
@@ -67,7 +69,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/help.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Yardım"
+                t("navbar.help")
               )}
             </button>
             <button
@@ -78,7 +80,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/comment.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Uzantıyı Yorumla"
+                t("navbar.review")
               )}
             </button>
             <button
@@ -89,7 +91,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/partly.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Hava Durumu"
+                t("navbar.weather")
               )}
             </button>
             <button
@@ -100,7 +102,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/refresh.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Arkaplan"
+                t("navbar.bg_refresh")
               )}
             </button>
           </div>
@@ -117,7 +119,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/home.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Ana Ekran"
+                t("navbar.mainscreen")
               )}
             </button>
             <button
@@ -128,7 +130,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/bookmark.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Yer imleri"
+                t("navbar.bookmarks")
               )}
             </button>
             <button
@@ -139,7 +141,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/time.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Geçmiş"
+                t("navbar.history")
               )}
             </button>
             <button
@@ -150,7 +152,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/note.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Notlar"
+                t("navbar.notes")
               )}
             </button>
             <button
@@ -163,7 +165,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/photo.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Arkaplan Seç"
+                t("navbar.bg_choose")
               )}
             </button>
             <button
@@ -175,7 +177,7 @@ const NavBar = props => {
               {props.iconsVisibility === "true" ? (
                 <img src={"/assets/site/settings.png"} className="img-fluid" alt="" width={24} />
               ) : (
-                "Ayarlar"
+                t("navbar.settings")
               )}
             </button>
           </div>

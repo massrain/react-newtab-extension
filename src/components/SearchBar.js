@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
 const SearchBar = props => {
+  const ibSearchBox = useRef(null);
+  /*  
   const [searchWebsite, setSearchWebsite] = useState("google");
   const [searchType, setSearchType] = useState("default");
-  const ibSearchBox = useRef(null);
 
   const onSearchWebsiteChange = e => {
     setSearchWebsite(e.target.value);
@@ -11,7 +12,7 @@ const SearchBar = props => {
   const onSearchTypeChange = e => {
     setSearchType(e.target.value);
   };
-  /*   const btnSearchClick = e => {
+    const btnSearchClick = e => {
     e.preventDefault();
     if (searchType === "default") {
       let linkGoogle = `http://www.google.com/search?q=${ibSearchBox.current.value}`;

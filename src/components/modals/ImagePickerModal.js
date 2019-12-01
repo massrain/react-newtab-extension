@@ -1,7 +1,9 @@
 import React from "react";
 import Modal from "react-modal";
+import { useTranslation } from "react-i18next";
 
 const ImagePickerModal = props => {
+  const { t } = useTranslation();
   return (
     <>
       <Modal
@@ -29,7 +31,7 @@ const ImagePickerModal = props => {
           <div className="row no-gutters justify-content-center h-100">
             <div className="col-12 d-flex flex-column justify-content-between my-2 h-100">
               <div className="row no-gutters justify-content-center">
-                <h5 className={`text-${props.colorTextData.mains}`}>Arkaplan Seçimi</h5>
+                <h5 className={`text-${props.colorTextData.mains}`}>{t("background.choice")}</h5>
               </div>
               <div className="row no-gutters justify-content-center flex-grow-1 imagepicker--overflowy scrollbarStyle2">
                 {/* <img src="/assets/wallpapers/bing1.jpg" alt="" className="img-fluid" /> */}
@@ -44,7 +46,7 @@ const ImagePickerModal = props => {
                   className={`btn btn-outline-${props.colorTextData.navButtons}`}
                   onClick={() => props.setShowImagePickerModal(false)}
                 >
-                  Kapat
+                  {t("background.close_button")}
                 </button>
               </div>
             </div>

@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
 import Modal from "react-modal";
 import { freqBuiltInWebsites } from "./options/methods";
+import { useTranslation } from "react-i18next";
 
 const AddFrequentlyPopup = props => {
   const ibNewWebsiteLink = useRef(null);
   const ibNewWebsiteName = useRef(null);
+  const { t } = useTranslation();
 
   const addWebsiteData = () => {
     let objSent = {
@@ -107,7 +109,7 @@ const AddFrequentlyPopup = props => {
             color: "lightsteelblue",
             backgroundColor: "rgba(30,30,30,0.75)",
             top: "5vh",
-            left: "80vw",
+            left: "70vw",
             right: "1vw",
             bottom: "5vh"
           }
@@ -117,15 +119,15 @@ const AddFrequentlyPopup = props => {
           <div className="row no-gutters justify-content-center">
             <div className="col-12 justify-content-center">
               <div className="row no-gutters justify-content-center mt-2">
-                <h5>Yeni Ekle</h5>
+                <h5>{t("mainscreen.title")}</h5>
               </div>
               <div className="row no-gutters justify-content-center">
                 <div className="col-10">
                   <div className="form-group">
-                    <label>İsim</label>
+                    <label>{t("mainscreen.name")}</label>
                     <input
                       type="text"
-                      placeholder="Yeni site ismi"
+                      placeholder={t("mainscreen.name_box")}
                       className="form-control rounded-0 bg-transparent text-white"
                       ref={ibNewWebsiteName}
                     />
@@ -135,32 +137,31 @@ const AddFrequentlyPopup = props => {
               <div className="row no-gutters justify-content-center">
                 <div className="col-10">
                   <div className="form-group">
-                    <label>Link:</label>
+                    <label>{t("mainscreen.link")}</label>
                     <input
                       type="text"
-                      placeholder="Yeni site linki"
+                      placeholder={t("mainscreen.link_box")}
                       className="form-control rounded-0 bg-transparent text-white"
                       ref={ibNewWebsiteLink}
                     />
                     <small className="form-text text-muted">
-                      <span className="text-danger">Örnek format: "https://google.com"</span>
+                      <span className="text-danger">{t("mainscreen.warning_format")}</span>
                       <br />
-                      Site linki tam halinde, (http veya https ile), eklediğiniz web sitesinin tarayıcı'dan kopyalanan
-                      hali ile olmalıdır.
+                      {t("mainscreen.warning_1")}
                       <br />
-                      Chrome tarayıcısına bağlı olarak bir sonraki açılışta otomatik site ikonu gelir.
+                      {t("mainscreen.warning_2")}
                     </small>
                   </div>
                 </div>
               </div>
               <div className="row no-gutters justify-content-center">
                 <button className="btn btn-success" onClick={btnAddNewWebsiteConfirm}>
-                  Kaydet
+                  {t("mainscreen.save")}
                 </button>
               </div>
               <div className="row no-gutters justify-content-center">
                 <button className="btn btn-primary" onClick={props.handleCloseAddFrequentlyModal}>
-                  Kapat
+                  {t("mainscreen.close")}
                 </button>
               </div>
             </div>
@@ -169,7 +170,7 @@ const AddFrequentlyPopup = props => {
           <div className="row no-gutters h-100 justify-content-center">
             <div className="col-12">
               <div className="row no-gutters justify-content-center mt-2">
-                <h5>Genel kullanımlar</h5>
+                <h5>{t("mainscreen.examples_title")}</h5>
               </div>
               <div className="row no-gutters justify-content-center">
                 <div className="col-12">
@@ -195,23 +196,26 @@ const AddFrequentlyPopup = props => {
 
 export default AddFrequentlyPopup;
 
-const SingleBoxNewFrequently = props => (
-  <div className="col-4 px-2">
-    <div className="card text-white bg-transparent border-white mb-3">
-      <div className="text-center justify-content-center">
-        <img src={props.data.icon} alt="" className="img-fluid freq--newitemadd mt-1" />
-        <p className="mb-1 mt-2" style={{ fontSize: "0.8rem" }}>
-          {props.data.name}
-        </p>
-        <p className="card-text mt-1">
-          <button
-            className="btn btn-outline-info btn-sm rounded-0"
-            onClick={() => props.btnClickAddFromSaved(props.itemIndex)}
-          >
-            Ekle
-          </button>
-        </p>
+const SingleBoxNewFrequently = props => {
+  const { t } = useTranslation();
+  return (
+    <div className="col-4 px-2">
+      <div className="card text-white bg-transparent border-white mb-3">
+        <div className="text-center justify-content-center">
+          <img src={props.data.icon} alt="" className="img-fluid freq--newitemadd mt-1" />
+          <p className="mb-1 mt-2" style={{ fontSize: "0.8rem" }}>
+            {props.data.name}
+          </p>
+          <p className="card-text mt-1">
+            <button
+              className="btn btn-outline-info btn-sm rounded-0"
+              onClick={() => props.btnClickAddFromSaved(props.itemIndex)}
+            >
+              {t("mainscreen.examples_button_add")}
+            </button>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
