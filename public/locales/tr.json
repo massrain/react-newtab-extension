@@ -102,5 +102,11 @@
     "button_close": "Kapat",
     "examples_title": "Genel Kullanımlar",
     "examples_button_add":"Ekle"
+  },
+  "history_popup_title": "Geçmiş",
+  "bookmarks_popup_title": "Yer İmleri",
+  "searchbar": {
+    "input_placeholder": "Aramak istediğiniz..",
+    "confirm_button": "Ara"
   }
 }

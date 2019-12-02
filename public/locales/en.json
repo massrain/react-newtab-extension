@@ -57,10 +57,10 @@
     "pazar":"Paz"
   },
   "options": {
-    "title": "TabExtension",
+    "title": "TabExtension English",
     "weather_title": "Weather",
     "weather_city": "City",
-    "weather_button_confirm": "Confirm",
+    "weather_button_confirm": "Onayla",
     "weather_popup_title": "Başarılı",
     "weather_popup_text": "Şehir yenilendi",
     "clock_title": "Saat Formatı",
@@ -102,5 +102,11 @@
     "button_close": "Kapat",
     "examples_title": "Genel Kullanımlar",
     "examples_button_add":"Ekle"
+  },
+  "history_popup_title": "Geçmiş",
+  "bookmarks_popup_title": "Yer İmleri",
+  "searchbar": {
+    "input_placeholder": "Aramak istediğiniz..",
+    "confirm_button": "Ara"
   }
 }

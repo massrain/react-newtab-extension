@@ -37,15 +37,14 @@ const App = () => {
   const [LayoutDetails, setLayoutDetails] = useLocalStorage("freqlayoutdetails", initialLayoutDetails);
   const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", TextColors);
   const [iconsVisibility, setIconsVisibility] = useLocalStorage("iconsvisibility", "true");
-  const [Notes, setNotes] = useLocalStorage("quicknotes", ["İlk Notunuz..."]);
+  const [Notes, setNotes] = useLocalStorage("quicknotes", ["addiyos.com"]);
   const [NotesVisibility, setNotesVisibility] = useLocalStorage("notesvisibility", "none");
   const [OptionsVisibility, setOptionsVisibility] = useLocalStorage("optionsvisibility", "none");
   const [WeatherVisibility, setWeatherVisibility] = useLocalStorage("weathervisibility", "none");
   const [ChooseBgVisibility, setChooseBgVisibility] = useLocalStorage("choosebgvisibility", "none");
   const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
   const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
-  const [languageChoice, setLanguageChoice] = useLocalStorage("language", "tr");
-
+  const [languageChoice, setLanguageChoice] = useLocalStorage("language", "en");
   const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "block");
   const [showModal, setShowModal] = useState(false);
   const [collectContextData, setCollectContextData] = useState(null);
