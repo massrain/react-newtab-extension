@@ -292,7 +292,7 @@ cursor: context-menu
 }
 
 .pageOverlay {
-  background-image: url("/assets/wallpapers/wallpaperoverlay.png");
+  background-image: url("/assets/site/wallpaperoverlay.png");
   background-size: 100% 100%;
   position: absolute;
   top: 0;

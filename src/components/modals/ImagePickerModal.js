@@ -34,10 +34,16 @@ const ImagePickerModal = props => {
                 <h5 className={`text-${props.colorTextData.mains}`}>{t("background.choice")}</h5>
               </div>
               <div className="row no-gutters justify-content-center flex-grow-1 imagepicker--overflowy scrollbarStyle2">
-                {/* <img src="/assets/wallpapers/bing1.jpg" alt="" className="img-fluid" /> */}
                 <div className="col-12">
-                  {Array.apply(0, Array(13)).map(function(x, i) {
-                    return <ImageDisplayer key={i} number={i} selectImageBackground={props.selectImageBackground} />;
+                  {Array.apply(0, Array(props.BgPhotoCount)).map(function(x, i) {
+                    return (
+                      <ImageDisplayer
+                        key={i}
+                        number={i}
+                        selectImageBackground={props.selectImageBackground}
+                        imgBackgroundChoice={props.imgBackgroundChoice}
+                      />
+                    );
                   })}
                 </div>
               </div>
@@ -61,11 +67,20 @@ export default ImagePickerModal;
 
 const ImageDisplayer = props => (
   <div className="row no-gutters my-2 p-2">
-    <img
-      src={`/assets/wallpapers/bing${props.number}.jpg`}
-      alt=""
-      className="img-fluid cursor--pointer"
-      onClick={() => props.selectImageBackground(props.number)}
-    />
+    {props.imgBackgroundChoice === "default" ? (
+      <img
+        src={`/assets/wallpapers/default/wallpaper${props.number}.jpg`}
+        alt=""
+        className="img-fluid cursor--pointer"
+        onClick={() => props.selectImageBackground(props.number)}
+      />
+    ) : (
+      <img
+        src={`/assets/wallpapers/alternative/wallpaper${props.number}.jpg`}
+        alt=""
+        className="img-fluid cursor--pointer"
+        onClick={() => props.selectImageBackground(props.number)}
+      />
+    )}
   </div>
 );

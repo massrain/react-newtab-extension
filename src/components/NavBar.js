@@ -189,6 +189,8 @@ const NavBar = props => {
         colorTextData={props.colorTextData}
         selectImageBackground={props.selectImageBackground}
         setShowImagePickerModal={setShowImagePickerModal}
+        imgBackgroundChoice={props.imgBackgroundChoice}
+        BgPhotoCount={props.BgPhotoCount}
       />
       <NotesModal
         showNotesModal={showNotesModal}

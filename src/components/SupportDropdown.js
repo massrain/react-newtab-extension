@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export const SupportDropdown = props => {
+  const [LinkResources, setLinkResources] = useState({});
   const { t } = useTranslation();
+
+  useEffect(() => {
+    fetch("/methods/supportlinks.json")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        setLinkResources(data);
+      });
+  }, []);
+
+  const handleLinking = num => {
+    //console.log(LinkResources[num]);
+    window.location.href = LinkResources[num];
+  };
 
   return (
     <>
@@ -21,16 +38,28 @@ export const SupportDropdown = props => {
               )}
             </button>
             <div className={`dropdown-menu bg-transparent border border-${props.colorTextData.navButtons}`}>
-              <button className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}>
+              <button
+                className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}
+                onClick={() => handleLinking("link_1")}
+              >
                 {t("support.link_1")}
               </button>
-              <button className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}>
+              <button
+                className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}
+                onClick={() => handleLinking("link_2")}
+              >
                 {t("support.link_2")}
               </button>
-              <button className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}>
+              <button
+                className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}
+                onClick={() => handleLinking("link_3")}
+              >
                 {t("support.link_3")}
               </button>
-              <button className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}>
+              <button
+                className={`btn btn-outline-${props.colorTextData.navButtons} btn-block rounded-0`}
+                onClick={() => handleLinking("link_4")}
+              >
                 {t("support.link_4")}
               </button>
             </div>

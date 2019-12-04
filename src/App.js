@@ -30,8 +30,8 @@ const App = () => {
     Notlar: true
   };
 
-  const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 5);
-  const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "tabext");
+  const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 1);
+  const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "default");
   const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "");
   const [weatherUnits, setWeatherUnits] = useLocalStorage("weatherunits", "metric");
   const [LayoutData, setLayoutData] = useLocalStorage("freqlayouts", initialLayout2);
@@ -76,13 +76,14 @@ const App = () => {
   useEffect(() => {
     if (weatherCity === "") getLocation();
     if (localStorage.getItem("language") === '"en"') i18n.changeLanguage("en");
+    if (localStorage.getItem("bgchoice") !== "user") setImgBackground(Math.floor(Math.random() * 10) + 1);
 
     fetch("/methods/backgroundcounts.json")
       .then(response => {
         return response.json();
       })
       .then(data => {
-        imgBackgroundChoice === "tabext" ? setBgPhotoCount(data.bing) : setBgPhotoCount(data.wallpaper);
+        imgBackgroundChoice === "default" ? setBgPhotoCount(data.default) : setBgPhotoCount(data.alternative);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -117,10 +118,10 @@ const App = () => {
   };
   const backgroundStyle = {
     backgroundImage:
-      imgBackgroundChoice === "tabext"
+      imgBackgroundChoice === "default"
         ? // `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
-          `url("/assets/wallpapers/bing${imgBackground}.jpg")`
-        : `url("/assets/wallpapers/wp/wallpaper${imgBackground}.jpg")`
+          `url("/assets/wallpapers/default/wallpaper${imgBackground}.jpg")`
+        : `url("/assets/wallpapers/alternative/wallpaper${imgBackground}.jpg")`
     //"url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
   const btnChangeBackground = () => {
@@ -153,6 +154,7 @@ const App = () => {
   };
   const changeImgBackgroundChoice = e => {
     setImgBackgroundChoice(e.target.value);
+    setImgBackground(1);
   };
   const changeLayoutDetails = data => {
     let originalArray = LayoutDetails;
@@ -205,7 +207,7 @@ const App = () => {
     }
   };
   const selectImageBackground = value => {
-    setImgBackgroundChoice("tabext");
+    localStorage.setItem("bgchoice", "user");
     setImgBackground(value);
   };
   const btnBgImageClick = () => {
@@ -313,7 +315,9 @@ const App = () => {
                 btnRefreshBackground={btnRefreshBackground}
                 btnChooseBackground={btnChooseBackground}
                 navIconVisibilities={navIconVisibilities}
+                imgBackgroundChoice={imgBackgroundChoice}
                 selectImageBackground={selectImageBackground}
+                BgPhotoCount={BgPhotoCount}
                 Notes={Notes}
                 setNotes={setNotes}
               />
@@ -513,6 +517,8 @@ freq box ikonu
 ++freq defaults from json
 --addios debug bitcoin ??
 
+-- v9
+-- random background at first
 
 
 ["default_search", "weather_days", "backgroundcounts", `languages`];

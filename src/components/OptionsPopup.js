@@ -380,10 +380,10 @@ const OptionsPopup = props => {
                         onChange={props.changeImgBackgroundChoice}
                         value={props.imgBackgroundChoice}
                       >
-                        <option value="tabext" className="text-primary">
+                        <option value="default" className="text-primary">
                           {t("options.background_choice_1")}
                         </option>
-                        <option value="bing" className="text-primary">
+                        <option value="alternative" className="text-primary">
                           {t("options.background_choice_2")}
                         </option>
                       </select>

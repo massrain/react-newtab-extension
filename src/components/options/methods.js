@@ -265,8 +265,8 @@ export const initialLayout2 = {
     },
     {
       i: "e",
-      x: 0,
-      y: 4,
+      x: 2,
+      y: 2,
       w: 2,
       h: 2,
       minW: 2,
