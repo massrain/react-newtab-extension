@@ -1,8 +1,6 @@
 import locales_en from "./locales/en.json";
 import locales_tr from './locales/tr.json';
 
-let trdata;
-
 /* fetch("/locales/tr.json")
   .then(response => {
     return response.json();

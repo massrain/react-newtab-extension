@@ -183,7 +183,6 @@ const NavBar = props => {
           </div>
         </div>
       </div>
-
       <HelpModal showHelpModal={showHelpModal} handleCloseModal={handleCloseHelpModal} />
       <ImagePickerModal
         showImagePickerModal={showImagePickerModal}

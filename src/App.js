@@ -29,6 +29,7 @@ const App = () => {
     Gecmis: true,
     Notlar: true
   };
+
   const [imgBackground, setImgBackground] = useLocalStorage("backgroundimg", 5);
   const [imgBackgroundChoice, setImgBackgroundChoice] = useLocalStorage("backgroundimgchoice", "tabext");
   const [weatherCity, setWeatherCity] = useLocalStorage("weathercity", "");
@@ -48,12 +49,41 @@ const App = () => {
   const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "block");
   const [showModal, setShowModal] = useState(false);
   const [collectContextData, setCollectContextData] = useState(null);
+  const [BgPhotoCount, setBgPhotoCount] = useState(12);
 
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
+    function json2array(json) {
+      var result = [];
+      var keys = Object.keys(json);
+      keys.forEach(function(key) {
+        result.push(json[key]);
+      });
+      return result;
+    }
+
+    fetch("/methods/websitesdefault.json")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        setLayoutDetails(json2array(data));
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     if (weatherCity === "") getLocation();
     if (localStorage.getItem("language") === '"en"') i18n.changeLanguage("en");
+
+    fetch("/methods/backgroundcounts.json")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        imgBackgroundChoice === "tabext" ? setBgPhotoCount(data.bing) : setBgPhotoCount(data.wallpaper);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -90,12 +120,11 @@ const App = () => {
       imgBackgroundChoice === "tabext"
         ? // `url("/assets/wallpapers/firewatch${imgBackground}.jpg")`
           `url("/assets/wallpapers/bing${imgBackground}.jpg")`
-        : `url("/assets/wallpapers/bingw32/wallpaper${imgBackground}.jpg")`
+        : `url("/assets/wallpapers/wp/wallpaper${imgBackground}.jpg")`
     //"url(https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-US)"
   };
   const btnChangeBackground = () => {
-    console.log(backgroundStyle);
-    if (imgBackground > 12) {
+    if (imgBackground > BgPhotoCount) {
       setImgBackground(1);
     } else {
       let newNumber = imgBackground + 1;
@@ -187,7 +216,7 @@ const App = () => {
     changeNotesVisibility();
   };
   const handleCollect = props => {
-    console.log(props);
+    //console.log(props);
     setCollectContextData([props.children[0].props["data-index"], props.children[0].props["data-id"]]);
   };
   const handleOpenAddFrequentlyModal = () => {
@@ -477,4 +506,22 @@ freq box ikonu
 --examples from jsonfile
 ++options_language
 ++suspense
+
+--v8
+++translation days
+++freq examples from json
+++freq defaults from json
+--addios debug bitcoin ??
+
+
+
+["default_search", "weather_days", "backgroundcounts", `languages`];
+
+--Günler çeviriye eklenlendi . Weather -> Days kısmından çevrilebilir.
+--Manifest'e search provider ekledim lakin hata vermekte..
+--eskiden locales içerisinde olan dil dosyaları hariç ayar dosyaları (websiteler vs) "methods/" klasörü içerisinde artık.
+--background wallpaper sayılarını ekledim. "methotds/backgroundcounts.json içerisinde" şu an 12 tane örneğin. ben wallpaper klasörüne 10 tane daha eklersem istediğim arkaplan resmini onu 22 yapmam gerekecek, hangi klasöre eklediysem onun sayısını artırıyorum.
+--hem yeni ekle dediğinde gelen, hem de default olarak gelen siteler methods içerisindeki json dosyalarından değiştirilebilir.
+--locales'deki dillerin tamamı tanımlandı. artık yeni bir json dosyası açılarak o dil otomatik aktif oluyor. örneğin "it" için it.json dosyası oluşturmam yeterli.
+--dil isimleri dillerin json dosyalarına eklendi. 
 */

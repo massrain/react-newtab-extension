@@ -205,6 +205,141 @@ const OptionsPopup = props => {
                         <option value="en" className="text-primary">
                           English
                         </option>
+                        <option value="am" className="text-primary">
+                          {t("languages.am")}
+                        </option>
+                        <option value="bn" className="text-primary">
+                          {t("languages.bn")}
+                        </option>
+                        <option value="da" className="text-primary">
+                          {t("languages.da")}
+                        </option>
+                        <option value="fa" className="text-primary">
+                          {t("languages.fa")}
+                        </option>
+                        <option value="fr" className="text-primary">
+                          {t("languages.fr")}
+                        </option>
+                        <option value="hr" className="text-primary">
+                          {t("languages.hr")}
+                        </option>
+                        <option value="it" className="text-primary">
+                          {t("languages.it")}
+                        </option>
+                        <option value="lt" className="text-primary">
+                          {t("languages.lt")}
+                        </option>
+                        <option value="ms" className="text-primary">
+                          {t("languages.ms")}
+                        </option>
+                        <option value="pl" className="text-primary">
+                          {t("languages.pl")}
+                        </option>
+                        <option value="ro" className="text-primary">
+                          {t("languages.ro")}
+                        </option>
+                        <option value="sl" className="text-primary">
+                          {t("languages.sl")}
+                        </option>
+                        <option value="sw" className="text-primary">
+                          {t("languages.sw")}
+                        </option>
+                        <option value="zh_CN" className="text-primary">
+                          {t("languages.zh_CN")}
+                        </option>
+                        <option value="ar" className="text-primary">
+                          {t("languages.ar")}
+                        </option>
+                        <option value="ca" className="text-primary">
+                          {t("languages.ca")}
+                        </option>
+                        <option value="de" className="text-primary">
+                          {t("languages.de")}
+                        </option>
+                        <option value="es" className="text-primary">
+                          {t("languages.es")}
+                        </option>
+                        <option value="fi" className="text-primary">
+                          {t("languages.fi")}
+                        </option>
+                        <option value="he" className="text-primary">
+                          {t("languages.he")}
+                        </option>
+                        <option value="hu" className="text-primary">
+                          {t("languages.hu")}
+                        </option>
+                        <option value="ja" className="text-primary">
+                          {t("languages.ja")}
+                        </option>
+                        <option value="lv" className="text-primary">
+                          {t("languages.lv")}
+                        </option>
+                        <option value="nl" className="text-primary">
+                          {t("languages.nl")}
+                        </option>
+                        <option value="pt_BR" className="text-primary">
+                          {t("languages.pt_BR")}
+                        </option>
+                        <option value="ru" className="text-primary">
+                          {t("languages.ru")}
+                        </option>
+                        <option value="sr" className="text-primary">
+                          {t("languages.sr")}
+                        </option>
+                        <option value="ta" className="text-primary">
+                          {t("languages.ta")}
+                        </option>
+                        <option value="uk" className="text-primary">
+                          {t("languages.uk")}
+                        </option>
+                        <option value="zh_TW" className="text-primary">
+                          {t("languages.zh_TW")}
+                        </option>
+                        <option value="bg" className="text-primary">
+                          {t("languages.bg")}
+                        </option>
+                        <option value="cs" className="text-primary">
+                          {t("languages.cs")}
+                        </option>
+                        <option value="el" className="text-primary">
+                          {t("languages.el")}
+                        </option>
+                        <option value="et" className="text-primary">
+                          {t("languages.et")}
+                        </option>
+                        <option value="fil" className="text-primary">
+                          {t("languages.fil")}
+                        </option>
+                        <option value="hi" className="text-primary">
+                          {t("languages.hi")}
+                        </option>
+                        <option value="id" className="text-primary">
+                          {t("languages.id")}
+                        </option>
+                        <option value="ko" className="text-primary">
+                          {t("languages.ko")}
+                        </option>
+                        <option value="ml" className="text-primary">
+                          {t("languages.ml")}
+                        </option>
+                        <option value="no" className="text-primary">
+                          {t("languages.no")}
+                        </option>
+                        <option value="pt_PT" className="text-primary">
+                          {t("languages.pt_PT")}
+                        </option>
+                        <option value="sk" className="text-primary">
+                          {t("languages.sk")}
+                        </option>
+                        <option value="sv" className="text-primary">
+                          {t("languages.sv")}
+                        </option>
+                        <option value="th" className="text-primary">
+                          {t("languages.th")}
+                        </option>
+                        <option value="vi" className="text-primary">
+                          {t("languages.vi")}
+                        </option>
                       </select>
                     </div>
                   </div>

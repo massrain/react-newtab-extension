@@ -1,9 +1,30 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Modal from "react-modal";
-import { freqBuiltInWebsites } from "./options/methods";
+//import { freqBuiltInWebsites } from "./options/methods";
 import { useTranslation } from "react-i18next";
 
 const AddFrequentlyPopup = props => {
+  const [freqBuiltInWebsites, setFreqBuiltInWebsites] = useState([]);
+
+  function json2array(json) {
+    var result = [];
+    var keys = Object.keys(json);
+    keys.forEach(function(key) {
+      result.push(json[key]);
+    });
+    return result;
+  }
+
+  useEffect(() => {
+    fetch("/methods/websites.json")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        setFreqBuiltInWebsites(json2array(data));
+      });
+  }, []);
+
   const ibNewWebsiteLink = useRef(null);
   const ibNewWebsiteName = useRef(null);
   const { t } = useTranslation();
@@ -156,12 +177,12 @@ const AddFrequentlyPopup = props => {
               </div>
               <div className="row no-gutters justify-content-center">
                 <button className="btn btn-success" onClick={btnAddNewWebsiteConfirm}>
-                  {t("mainscreen.save")}
+                  {t("mainscreen.button_save")}
                 </button>
               </div>
               <div className="row no-gutters justify-content-center">
                 <button className="btn btn-primary" onClick={props.handleCloseAddFrequentlyModal}>
-                  {t("mainscreen.close")}
+                  {t("mainscreen.button_close")}
                 </button>
               </div>
             </div>

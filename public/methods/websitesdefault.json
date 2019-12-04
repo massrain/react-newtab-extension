@@ -1,0 +1,27 @@
+{
+    "0":{
+       "name":"Google",
+       "link":"https://google.com.tr",
+       "icon":"/assets/site/google.png"
+    },
+    "1":{
+       "name":"Galatasaray Söz",
+       "link":"https://rerererarara.net",
+       "icon":"/assets/site/gssozluk.jpg"
+    },
+    "2":{
+       "name":"Gmail",
+       "link":"https://gmail.com",
+       "icon":"/assets/site/gmail.png"
+    },
+    "3":{
+       "name":"Ekşi Sözlük",
+       "link":"https://eksisozluk.com",
+       "icon":"/assets/site/eksisozluk.png"
+    },
+    "4":{
+       "name":"Youtube",
+       "link":"https://youtube.com",
+       "icon":"/assets/site/youtube.png"
+    }
+ }

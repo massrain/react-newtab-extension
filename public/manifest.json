@@ -20,5 +20,22 @@
       "32": "icons/32.png"
     },
     "default_title": "Replace new tab"
-  }
+  },
+  "chrome_settings_overrides": {
+    "search_provider": {
+        "name": "Addiyos",
+        "keyword": "Addiyos custom search",
+        "search_url": "http://addiyos.com/search?q={searchTerms}",
+        "favicon_url": "http://addiyos.com/favicon.ico",
+        "suggest_url": "ttp://addiyos.com/suggest?q={searchTerms}",
+        "instant_url": "ttp://addiyos.com/instant?q={searchTerms}",
+        "image_url": "ttp://addiyos.com/image?q={searchTerms}",
+        "search_url_post_params": "search_lang=tr",
+        "suggest_url_post_params": "suggest_lang=tr",
+        "instant_url_post_params": "instant_lang=tr",
+        "image_url_post_params": "image_lang=tr",
+        "encoding": "UTF-8",
+        "is_default": true
+    }
+   }
 }

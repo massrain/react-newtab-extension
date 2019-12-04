@@ -38,6 +38,37 @@ const WeatherPopup = props => {
     setWeatherPopupPosition(newpositions);
   };
 
+  const translationDays = day => {
+    let returnedDay = unixToDay(day);
+    let resultDay;
+    switch (returnedDay) {
+      case "Paz":
+        resultDay = t("weather.days.sunday");
+        break;
+      case "Pzt":
+        resultDay = t("weather.days.monday");
+        break;
+      case "Sal":
+        resultDay = t("weather.days.tuesday");
+        break;
+      case "Çar":
+        resultDay = t("weather.days.wednesday");
+        break;
+      case "Per":
+        resultDay = t("weather.days.thursday");
+        break;
+      case "Cum":
+        resultDay = t("weather.days.friday");
+        break;
+      case "Cmt":
+        resultDay = t("weather.days.saturday");
+        break;
+      default:
+        resultDay = "1";
+        break;
+    }
+    return resultDay;
+  };
   return (
     <>
       <Draggable onStop={handleStop} defaultPosition={weatherPopupPosition}>
@@ -88,7 +119,7 @@ const WeatherPopup = props => {
               <div className="row no-gutters">
                 <div className="col px-3">
                   <div className="row no-gutters justify-content-center text-secondary">
-                    {unixToDay(WeatherData.list[0].dt)}
+                    {translationDays(WeatherData.list[0].dt)}
                   </div>
                   <div className="row no-gutters justify-content-center">
                     <img
@@ -106,7 +137,7 @@ const WeatherPopup = props => {
                 </div>
                 <div className="col px-3">
                   <div className="row no-gutters justify-content-center text-secondary">
-                    {unixToDay(WeatherData.list[8].dt)}
+                    {translationDays(WeatherData.list[8].dt)}
                   </div>
                   <div className="row no-gutters justify-content-center">
                     <img
@@ -124,7 +155,7 @@ const WeatherPopup = props => {
                 </div>
                 <div className="col px-3">
                   <div className="row no-gutters justify-content text-secondary">
-                    {unixToDay(WeatherData.list[16].dt)}
+                    {translationDays(WeatherData.list[16].dt)}
                   </div>
                   <div className="row no-gutters justify-content">
                     <img
@@ -140,7 +171,7 @@ const WeatherPopup = props => {
                 </div>
                 <div className="col px-3">
                   <div className="row no-gutters justify-content-center text-secondary">
-                    {unixToDay(WeatherData.list[24].dt)}
+                    {translationDays(WeatherData.list[24].dt)}
                   </div>
                   <div className="row no-gutters justify-content-center">
                     <img
@@ -158,7 +189,7 @@ const WeatherPopup = props => {
                 </div>
                 <div className="col px-3">
                   <div className="row no-gutters justify-content-center text-secondary">
-                    {unixToDay(WeatherData.list[32].dt)}
+                    {translationDays(WeatherData.list[32].dt)}
                   </div>
                   <div className="row no-gutters justify-content-center">
                     <img
