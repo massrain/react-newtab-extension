@@ -5,9 +5,11 @@ import { HistoryModal } from "./modals/HistoryModal";
 import ImagePickerModal from "./modals/ImagePickerModal";
 import NotesModal from "./modals/NotesModal";
 import { useTranslation } from "react-i18next";
+import GamesModal from "./modals/GamesModal";
 
 const NavBar = props => {
   const [showHelpModal, setShowHelpModal] = useState(false);
+  const [showGamesModal, setShowGamesModal] = useState(false);
   const [showImagePickerModal, setShowImagePickerModal] = useState(false);
   const [showNotesModal, setShowNotesModal] = useState(false);
   const [showBookmarkModal, setShowBookmarkModal] = useState(false);
@@ -21,6 +23,9 @@ const NavBar = props => {
   const btnHelpClick = () => {
     showHelpModal ? handleCloseHelpModal() : handleOpenHelpModal();
   };
+  const btnGamesClick = () => {
+    showGamesModal ? handleCloseGamesModal() : handleOpenGamesModal();
+  };
   const btnBookmarkClick = () => {
     showBookmarkModal ? handleCloseBookmarkModal() : handleOpenBookmarkModal();
   };
@@ -32,6 +37,12 @@ const NavBar = props => {
   };
   const handleCloseHelpModal = () => {
     setShowHelpModal(false);
+  };
+  const handleOpenGamesModal = () => {
+    setShowGamesModal(true);
+  };
+  const handleCloseGamesModal = () => {
+    setShowGamesModal(false);
   };
   const handleOpenBookmarkModal = () => {
     setShowBookmarkModal(true);
@@ -81,6 +92,17 @@ const NavBar = props => {
                 <img src={"/assets/site/comment.png"} className="img-fluid" alt="" width={24} />
               ) : (
                 t("navbar.review")
+              )}
+            </button>
+            <button
+              className={`my-1 btn btn-sm btn-outline-${props.colorTextData.navButtons} p-1`}
+              onClick={btnGamesClick}
+              style={{ display: props.navIconVisibilities.Oyunlar ? "block" : "none" }}
+            >
+              {props.iconsVisibility === "true" ? (
+                <img src={"/assets/site/games.png"} className="img-fluid" alt="" width={24} />
+              ) : (
+                t("navbar.games")
               )}
             </button>
             <button
@@ -199,6 +221,7 @@ const NavBar = props => {
         Notes={props.Notes}
         setNotes={props.setNotes}
       />
+      <GamesModal showGamesModal={showGamesModal} handleCloseModal={handleCloseGamesModal} />
       <BookmarksModal
         showBookmarkModal={showBookmarkModal}
         handleCloseModal={handleCloseBookmarkModal}

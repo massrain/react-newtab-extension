@@ -22,6 +22,7 @@ const App = () => {
   const initialNavVisibilities = {
     Yardim: true,
     Yorumla: true,
+    Oyunlar: true,
     Havadurumu: true,
     Arkaplan: true,
     Anasayfa: true,
@@ -38,7 +39,7 @@ const App = () => {
   const [LayoutDetails, setLayoutDetails] = useLocalStorage("freqlayoutdetails", initialLayoutDetails);
   const [colorTextData, setColorTextData] = useLocalStorage("colortextdata", TextColors);
   const [iconsVisibility, setIconsVisibility] = useLocalStorage("iconsvisibility", "true");
-  const [Notes, setNotes] = useLocalStorage("quicknotes", ["addiyos.com"]);
+  const [Notes, setNotes] = useLocalStorage("quicknotes", ["Note..."]);
   const [NotesVisibility, setNotesVisibility] = useLocalStorage("notesvisibility", "none");
   const [OptionsVisibility, setOptionsVisibility] = useLocalStorage("optionsvisibility", "none");
   const [WeatherVisibility, setWeatherVisibility] = useLocalStorage("weathervisibility", "none");
@@ -530,4 +531,18 @@ freq box ikonu
 --hem yeni ekle dediğinde gelen, hem de default olarak gelen siteler methods içerisindeki json dosyalarından değiştirilebilir.
 --locales'deki dillerin tamamı tanımlandı. artık yeni bir json dosyası açılarak o dil otomatik aktif oluyor. örneğin "it" için it.json dosyası oluşturmam yeterli.
 --dil isimleri dillerin json dosyalarına eklendi. 
+
+
+v10
+--games eklendi
+tr.json / en.json değişen yerler:
+  -15.satır navbar>games eklendi.
+  -background ve notes arasına 35.satır civarı, games eklendi.
+  -91.satıra "button_display_oyunlar" : "Oyunlar", eklendi; options içinde.
+--methods içerine games.json eklendi. oyunlar sekmesinden açılanlar buradan kontrol edilebilir, sayısı istenildiği gibi artırılabilir veya azaltılabilir formata uyudğu sürece. 
+--arama cse'ye yönlendirildi, lakin arama motoru sanıyorum kapatılmış, ben kendi cse kodumla denediğimde çalışıyor. örneğin arama yerine 
+https://cse.google.com/cse?cx=partner-pub-1206609202738714%3A7727531761
+bu benim arama motoru, burdan arama yapabiliyorum ama senin kodu tarayıcıya koyduğumuzda açılmıyor. 
+bu da seninki https://cse.google.com/cse?cx=partner-pub-8838201208897308:9416942362
+onu halledersen arama da çalışır, ben senin kodu koydum şimdi extension'un içerisine.
 */

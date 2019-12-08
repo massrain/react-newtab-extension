@@ -13,6 +13,7 @@
   "navbar":{
      "help":"Yardım",
      "review":"Uzantıyı Yorumla",
+     "games" : "Oyunlar",
      "weather":"Hava Durumu",
      "bg_refresh":"Arkaplan",
      "mainscreen":"Ana Ekran",
@@ -31,6 +32,10 @@
   "background":{
      "choice":"Arkaplan Seçimi",
      "close_button":"Kapat"
+  },
+  "games": {
+     "title": "Oyunlar",
+     "close_button" : "Kapat"
   },
   "notes":{
      "title":"Notlarım",
@@ -83,6 +88,7 @@
      "icon_display_close":"Kapalı",
      "button_display_title":"Butonlar",
      "button_display_help":"Yardım",
+     "button_display_oyunlar" : "Oyunlar",
      "button_display_review":"Uzantıyı yorumla",
      "button_display_weather":"Hava Durumu",
      "button_display_background":"Arkaplan",
