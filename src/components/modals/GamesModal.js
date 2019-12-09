@@ -25,6 +25,16 @@ const GamesModal = props => {
       });
   }, []);
 
+  const handleAllGamesClick = () => {
+    fetch("/methods/gameslink.json")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        window.open(data.all_games, "_blank");
+      });
+  };
+
   return (
     <Modal
       isOpen={props.showGamesModal}
@@ -54,16 +64,26 @@ const GamesModal = props => {
               <h5>{t("games.title")}</h5>
             </div>
             <div className="row no-gutters justify-content-center mt-3">
-              {BuiltInGames.map(element => (
-                <div className="col-4 p-3 text-center">
+              {BuiltInGames.map((element, i) => (
+                <div className="col-4 p-3 text-center" key={i}>
                   <div className="border border-secondary p-2">
-                    <img src={element.image} alt="" className="img-fluid" />
+                    <img
+                      src={element.image}
+                      alt=""
+                      className="img-fluid cursor--pointer"
+                      onClick={() => window.open(element.link, "_blank")}
+                    />
                     <a href={element.link} target="_blank" rel="noopener noreferrer">
                       {element.title}
                     </a>
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="row no-gutters justify-content-center mt-2">
+              <button className="btn btn-success font-weight-bold btn-lg" onClick={handleAllGamesClick}>
+                {t("games.all_games")}
+              </button>
             </div>
             <div className="row no-gutters justify-content-center mt-2">
               <button className="btn btn-primary" onClick={props.handleCloseModal}>

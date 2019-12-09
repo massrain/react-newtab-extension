@@ -1,6 +1,7 @@
 {
   "name": "Sarget - Sekme",
   "version": "0.0.2",
+  "default_locale": "en",
   "description": "Yeni sekme.",
   "author": "Emre A",
   "manifest_version": 2,

@@ -27,10 +27,12 @@ const SearchBar = props => {
           action="https://cse.google.com/cse/publicurl"
         >
           <div className="input-group mb-3">
-            <input type="hidden" id="cx" name="cx" value="partner-pub-8838201208897308:9416942362" />
+            {/* <input type="hidden" id="cx" name="cx" value="partner-pub-8838201208897308:9416942362" /> */}
+            <input type="hidden" id="cx" name="cx" value="003014573317456829330:tqxdlhxphtr" />
             <input
               type="text"
               ref={ibSearchBox}
+              name="q"
               className={`form-control rounded-0 bg-transparent text-${props.colorTextData.mains} border-0 searchBorder border-${props.colorTextData.mains}`}
               placeholder={t("searchbar.input_placeholder")}
               onKeyDown={event => {

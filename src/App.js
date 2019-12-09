@@ -545,4 +545,13 @@ https://cse.google.com/cse?cx=partner-pub-1206609202738714%3A7727531761
 bu benim arama motoru, burdan arama yapabiliyorum ama senin kodu tarayıcıya koyduğumuzda açılmıyor. 
 bu da seninki https://cse.google.com/cse?cx=partner-pub-8838201208897308:9416942362
 onu halledersen arama da çalışır, ben senin kodu koydum şimdi extension'un içerisine.
+
+
+v11
+--arama kodu eklendi
+--all games butonu eklendi. linki gameslink.json dosyasından ayarlanıyor.
+--games fotolara link verildi
+--en.json eklendi
+--manifest'e default language eklendi
+--dil eklemeler otomatik, locales içerisinde örneğin es.json diye dosya açılınca ispanyolca da desteklenir hale geliyor.
 */
