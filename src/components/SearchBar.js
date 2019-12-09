@@ -7,13 +7,12 @@ const SearchBar = props => {
 
   const btnSearchClick2 = e => {
     e.preventDefault();
-    document.getElementById("theForm").submit();
-
-    /*     if (ibSearchBox.current.value === null || ibSearchBox.current.value === "") {
+    //document.getElementById("theForm").submit();
+    if (ibSearchBox.current.value === null || ibSearchBox.current.value === "") {
       console.log("empty search");
     } else {
-      window.location.href = `http://addiyos.com/search?q=${ibSearchBox.current.value}`;
-    } */
+      window.location.href = `http://addiyos.com/index.html?q=${ibSearchBox.current.value}`;
+    }
   };
   return (
     <>
