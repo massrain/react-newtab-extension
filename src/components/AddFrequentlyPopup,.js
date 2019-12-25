@@ -70,9 +70,9 @@ const AddFrequentlyPopup = props => {
   const addWebsiteDataFromBuildIn = data2 => {
     console.log(data2);
     let objSent = {
-      name: data2.name,
-      link: data2.link,
-      icon: data2.icon
+      name: data2?.name,
+      link: data2?.link,
+      icon: data2?.icon
     };
     props.changeLayoutDetails(objSent);
   };
@@ -225,7 +225,7 @@ const SingleBoxNewFrequently = props => {
         <div className="text-center justify-content-center">
           <img src={props.data.icon} alt="" className="img-fluid freq--newitemadd mt-1" />
           <p className="mb-1 mt-2" style={{ fontSize: "0.8rem" }}>
-            {props.data.name}
+            {props.data?.name}
           </p>
           <p className="card-text mt-1">
             <button

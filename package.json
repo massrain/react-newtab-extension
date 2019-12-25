@@ -5,20 +5,20 @@
   "dependencies": {
     "animate.css": "^3.7.2",
     "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.4.1",
     "file-saver": "^2.0.2",
-    "i18next": "^19.0.1",
+    "i18next": "^19.0.2",
     "i18next-fetch-backend": "^2.2.0",
     "izitoast": "^1.4.0",
-    "react": "^16.11.0",
+    "react": "^16.12.0",
     "react-color": "^2.17.3",
     "react-contextmenu": "^2.13.0",
-    "react-dom": "^16.11.0",
-    "react-draggable": "^4.1.0",
+    "react-dom": "^16.12.0",
+    "react-draggable": "^4.2.0",
     "react-grid-layout": "^0.17.1",
-    "react-i18next": "^11.2.5",
+    "react-i18next": "^11.2.7",
     "react-modal": "^3.11.1",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

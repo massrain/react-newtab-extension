@@ -82,7 +82,7 @@ const WeatherPopup = props => {
               {/* First Row */}
               <div className="row no-gutters">
                 <div className="col-2">&deg;</div>
-                <div className="col-8">{WeatherData.city.name}</div>
+                <div className="col-8">{WeatherData.city?.name}</div>
                 <div className="col-2">
                   {props.weatherUnits === "imperial" ? <span>&deg;F</span> : <span>&deg;C</span>}
                 </div>

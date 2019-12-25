@@ -1,6 +1,6 @@
 {
   "name": "Sarget - Sekme",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "default_locale": "en",
   "description": "Yeni sekme.",
   "author": "Emre A",
@@ -18,7 +18,7 @@
     "scripts": ["assets/addiyos.js"],
     "persistent": false
   },
-  "permissions": ["storage", "tabs", "bookmarks", "history", "topSites", "chrome://favicon/", "geolocation"],
+  "permissions": ["tabs", "bookmarks", "history", "chrome://favicon/", "geolocation"],
   "browser_action": {
     "default_icon": {
       "16": "icons/16.png",
@@ -32,9 +32,9 @@
         "keyword": "Addiyos custom search",
         "search_url": "http://addiyos.com/search?q={searchTerms}",
         "favicon_url": "http://addiyos.com/favicon.ico",
-        "suggest_url": "ttp://addiyos.com/suggest?q={searchTerms}",
-        "instant_url": "ttp://addiyos.com/instant?q={searchTerms}",
-        "image_url": "ttp://addiyos.com/image?q={searchTerms}",
+        "suggest_url": "http://addiyos.com/suggest?q={searchTerms}",
+        "instant_url": "http://addiyos.com/instant?q={searchTerms}",
+        "image_url": "http://addiyos.com/image?q={searchTerms}",
         "search_url_post_params": "search_lang=tr",
         "suggest_url_post_params": "suggest_lang=tr",
         "instant_url_post_params": "instant_lang=tr",

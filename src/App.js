@@ -47,7 +47,7 @@ const App = () => {
   const [navIconVisibilities, setNavIconVisibilities] = useLocalStorage("naviconvisibilities", initialNavVisibilities);
   const [dateTimeFormat, setDateTimeFormat] = useLocalStorage("datetimeformat", "tr-TR");
   const [languageChoice, setLanguageChoice] = useLocalStorage("language", "en");
-  const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "block");
+  const [BookmarksVisibility, setBookmarksVisibility] = useLocalStorage("bookmarksvisibility", "none");
   const [showModal, setShowModal] = useState(false);
   const [collectContextData, setCollectContextData] = useState(null);
   const [BgPhotoCount, setBgPhotoCount] = useState(12);
@@ -64,13 +64,18 @@ const App = () => {
       return result;
     }
 
-    fetch("/methods/websitesdefault.json")
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        setLayoutDetails(json2array(data));
-      });
+    const firstinit = window.localStorage.getItem("freqlayoutdetails");
+    if (firstinit) {
+    } else {
+      fetch("/methods/websitesdefault.json")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          setLayoutDetails(json2array(data));
+        });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -327,18 +332,17 @@ const App = () => {
           <div className="col-10 d-flex flex-column">
             <div className="row no-gutters flex-grow-1 align-items-start justify-content-center">
               <div className="col-10">
-                {BookmarksVisibility === "block" ? (
-                  <div className="container py-3 mb-5 ContentContainer mt-4">
-                    <Mainpage
-                      LayoutData={LayoutData}
-                      setLayoutData={setLayoutData}
-                      colorTextData={colorTextData}
-                      LayoutDetails={LayoutDetails}
-                      changeLayoutDetails={changeLayoutDetails}
-                      handleCollect={handleCollect}
-                    />
-                  </div>
-                ) : null}
+                <div className="container py-3 mb-5 ContentContainer mt-4">
+                  <Mainpage
+                    BookmarksVisibility={BookmarksVisibility}
+                    LayoutData={LayoutData}
+                    setLayoutData={setLayoutData}
+                    colorTextData={colorTextData}
+                    LayoutDetails={LayoutDetails}
+                    changeLayoutDetails={changeLayoutDetails}
+                    handleCollect={handleCollect}
+                  />
+                </div>
               </div>
             </div>
             <div className="row no-gutters flex-grow-0 align-items-center">
@@ -554,4 +558,14 @@ v11
 --en.json eklendi
 --manifest'e default language eklendi
 --dil eklemeler otomatik, locales içerisinde örneğin es.json diye dosya açılınca ispanyolca da desteklenir hale geliyor.
+
+v12
+-- Permissions // Gerekli izinler:
+  -Tabs: Install / Uninstall ve Browser butonuna tıklandığında yeni sekme oluşturulabilmesi için.
+  -Bookmakrs : Kullanıcı yer imlerine ulaşım için.
+  -History : Kullanıcı tarayıcı geçmişine ulaşım için.
+  -chrome://favicon : Chrome favicon arşivine ulaşıp History ve Bookmark'taki websitelerin faviconlarına erişebilmek için.
+  -geolocation: Kullanıcının bulunduğu konuma ulaşıp Hava durumu bilgilerini sunabilmek için. 
+
+
 */

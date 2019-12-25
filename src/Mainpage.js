@@ -5,14 +5,6 @@ import SearchBar from "./components/SearchBar";
 import FrequentlyUsed from "./components/FrequentlyUsed";
 
 const Mainpage = props => {
-  /*   const goDefaultTab = () => {
-    chrome.tabs.getCurrent(tab => {
-      chrome.tabs.update(tab.id, {
-        url: "chrome-search://local-ntp/local-ntp.html"
-      });
-    });
-  }; */
-
   return (
     <>
       <div className="row no-gutters justify-content-center">
@@ -29,18 +21,20 @@ const Mainpage = props => {
         </div>
       </div> */}
 
-      <div className="row no-gutters justify-content-center BookmarksRow" id="BookmarklarRow">
-        <div className="col-10">
-          <FrequentlyUsed
-            LayoutData={props.LayoutData}
-            setLayoutData={props.setLayoutData}
-            colorTextData={props.colorTextData}
-            LayoutDetails={props.LayoutDetails}
-            changeLayoutDetails={props.changeLayoutDetails}
-            handleCollect={props.handleCollect}
-          />
+      {props.BookmarksVisibility === "block" ? (
+        <div className="row no-gutters justify-content-center BookmarksRow" id="BookmarklarRow">
+          <div className="col-10">
+            <FrequentlyUsed
+              LayoutData={props.LayoutData}
+              setLayoutData={props.setLayoutData}
+              colorTextData={props.colorTextData}
+              LayoutDetails={props.LayoutDetails}
+              changeLayoutDetails={props.changeLayoutDetails}
+              handleCollect={props.handleCollect}
+            />
+          </div>
         </div>
-      </div>
+      ) : null}
     </>
   );
 };

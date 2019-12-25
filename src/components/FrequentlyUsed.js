@@ -43,10 +43,10 @@ const FrequentlyUsed = props => {
                 <div key={item.i}>
                   <SingleObject
                     redirectLink={redirectLink}
-                    contentName={props.LayoutDetails[index].name}
+                    contentName={props.LayoutDetails[index]?.name}
                     colorTextData={props.colorTextData}
-                    contentLink={props.LayoutDetails[index].link}
-                    contentIcon={props.LayoutDetails[index].icon}
+                    contentLink={props.LayoutDetails[index]?.link}
+                    contentIcon={props.LayoutDetails[index]?.icon}
                     handleCollect={props.handleCollect}
                     dataid={item.i}
                     dataindex={index}
